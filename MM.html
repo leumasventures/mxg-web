@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Management in Psychiatry</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e9f5ff;
+            color: #333;
+        }
+        #trigger {
+            padding: 18px 40px;
+            font-size: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        #trigger:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+        }
+        #note {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            z-index: 1000;
+            line-height: 1.6;
+        }
+        #note h1 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 0;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        #note h2 {
+            color: #0056b3;
+            margin-top: 30px;
+            border-left: 5px solid #007bff;
+            padding-left: 15px;
+        }
+        #note p {
+            text-align: justify;
+            margin: 15px 0;
+        }
+        #close {
+            display: block;
+            margin: 30px auto 10px;
+            padding: 12px 30px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        #close:hover {
+            background-color: #c82333;
+        }
+        @media (max-width: 600px) {
+            #note {
+                padding: 20px;
+            }
+            #trigger {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+    
+    <button id="trigger">Open Article: Medication Management</button>
+
+    <div id="overlay"></div>
+    <div id="note">
+        <h1>Medication Management</h1>
+
+        <h2>Introduction</h2>
+        <p>Medication management is a core component of psychiatric care. It refers to the systematic process by which psychotropic medications are selected, prescribed, monitored, adjusted, and discontinued to achieve optimal therapeutic outcomes while minimizing adverse effects. Effective medication management requires clinical expertise, patient collaboration, ethical judgment, and continuous evaluation.</p>
+
+        <h2>Purpose of Medication Management</h2>
+        <p>The primary goals of medication management are to reduce psychiatric symptoms, prevent relapse, improve daily functioning, and enhance quality of life. Medications are not intended to replace psychotherapy or psychosocial interventions but to work alongside them as part of a structured treatment plan.</p>
+
+        <h2>Assessment Before Prescribing</h2>
+        <p>Medication management begins with a thorough psychiatric assessment. This includes a detailed history of presenting symptoms, past psychiatric diagnoses, previous medication trials and responses, medical history, substance use history, and family history of mental illness. Mental status examination and risk assessment are essential. Where appropriate, physical examination and baseline laboratory investigations are conducted to rule out medical causes of symptoms and to establish safe prescribing parameters.</p>
+
+        <h2>Medication Selection</h2>
+        <p>The choice of medication is guided by the clinical diagnosis, symptom profile, severity of illness, patient age, comorbid medical conditions, and potential drug interactions. Evidence-based treatment guidelines inform decision making, but individual patient factors remain central. Patient preferences, cultural beliefs, and prior experiences with medication should be considered to promote adherence and trust.</p>
+
+        <h2>Informed Consent and Psychoeducation</h2>
+        <p>Before initiating treatment, the patient should receive clear education about the medication. This includes the purpose of the drug, expected benefits, time course for improvement, common side effects, serious but rare risks, and alternatives to medication. Informed consent is an ethical and clinical requirement. When patients understand their treatment, they are more likely to participate actively and adhere to recommendations.</p>
+
+        <h2>Initiation and Dosing</h2>
+        <p>Psychiatric medications are typically started at the lowest effective dose and titrated gradually. This approach reduces the risk of side effects and allows the clinician to assess tolerability. Special caution is required in children, older adults, and patients with medical comorbidities. Polypharmacy should be avoided unless clinically justified.</p>
+
+        <h2>Monitoring and Follow-Up</h2>
+        <p>Ongoing monitoring is a defining feature of medication management. Follow-up visits assess symptom improvement, side effects, adherence, and functional outcomes. Standardized rating scales may be used to objectively track progress. Laboratory monitoring is required for certain medications to ensure safety. Adjustments are made based on clinical response and patient feedback.</p>
+
+        <h2>Managing Side Effects and Non-Adherence</h2>
+        <p>Side effects are a common reason for medication discontinuation. Early identification and prompt management are essential. Strategies include dose adjustment, timing changes, switching medications, or adding supportive treatments. Non-adherence should be explored without judgment, focusing on barriers such as side effects, stigma, cost, or misunderstanding.</p>
+
+        <h2>Long-Term Management and Discontinuation</h2>
+        <p>For chronic psychiatric conditions, long-term medication management may be required. Periodic reassessment ensures that ongoing treatment remains necessary and beneficial. When discontinuation is appropriate, medications should be tapered gradually under medical supervision to reduce withdrawal symptoms and relapse risk.</p>
+
+        <h2>Collaboration and Ethical Considerations</h2>
+        <p>Effective medication management is collaborative. It involves coordination with psychologists, nurses, primary care providers, and family members when appropriate. Ethical practice requires respect for patient autonomy, confidentiality, beneficence, and nonmaleficence.</p>
+
+        <h2>Conclusion</h2>
+        <p>Medication management is a dynamic and patient-centered process. It extends beyond prescribing to include assessment, education, monitoring, and ongoing clinical judgment. When carried out carefully and collaboratively, it plays a critical role in stabilizing symptoms, supporting recovery, and improving long-term mental health outcomes.</p>
+
+        <button id="close">Close</button>
+    </div>
+    <footer>
+        <p>Maxgio Health LLC</p>
+    </footer>
+
+    <script>
+        const trigger = document.getElementById('trigger');
+        const note = document.getElementById('note');
+        const overlay = document.getElementById('overlay');
+        const close = document.getElementById('close');
+
+        trigger.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            note.style.display = 'block';
+        });
+
+        close.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            note.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            note.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

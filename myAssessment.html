@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mental Health Assessment — Maxgio Healthcare LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a2463;--blue:#1565c0;--sky:#4fc3f7;--red:#c62828;--soft-red:#ef5350;
+  --off-white:#f0f4ff;--text:#14213d;--muted:#5a6f8a;--border:#dde5f0;
+  /* Category colors */
+  --dep:#c62828;--dep-l:#fce8e8;--dep-mid:#ef5350;
+  --anx:#e65100;--anx-l:#fff3e0;--anx-mid:#ff8f00;
+  --adhd:#1565c0;--adhd-l:#e3f2fd;--adhd-mid:#42a5f5;
+  --ptsd:#4527a0;--ptsd-l:#ede7f6;--ptsd-mid:#7c4dff;
+  --func:#00695c;--func-l:#e0f2f1;--func-mid:#26a69a;
+  --cs:0 8px 40px rgba(10,36,99,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:#f0f4ff;color:var(--text);overflow-x:hidden;min-height:100vh}
+
+/* ══ TOP HEADER ══ */
+.site-header{background:var(--navy);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;max-width:100%}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--sky);object-fit:cover}
+.b1{font-family:'Cormorant Garamond',serif;font-size:20px;color:#ef5350;line-height:1}
+.b2{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sky);line-height:1}
+.back-btn{display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;transition:color .2s}
+.back-btn:hover{color:#fff}
+
+/* ══ HERO BANNER ══ */
+.assessment-hero{background:linear-gradient(135deg,var(--navy) 0%,#0d47a1 55%,#1a3a2a 100%);padding:60px 28px 50px;text-align:center;position:relative;overflow:hidden}
+.assessment-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E")}
+.assessment-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);color:#fff;margin-bottom:12px;position:relative;z-index:1}
+.assessment-hero h1 em{font-style:italic;color:var(--sky)}
+.assessment-hero p{font-size:16px;color:rgba(255,255,255,.68);max-width:580px;margin:0 auto 30px;line-height:1.8;position:relative;z-index:1}
+.hero-pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+.hp{padding:6px 16px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+
+/* ══ DISCLAIMER ══ */
+.disclaimer{background:#fff3cd;border:1px solid #ffc107;border-radius:12px;padding:14px 20px;display:flex;align-items:flex-start;gap:12px;max-width:860px;margin:0 auto;margin-top:-20px;position:relative;z-index:5;box-shadow:var(--cs)}
+.disclaimer i{color:#e65100;font-size:18px;margin-top:2px;flex-shrink:0}
+.disclaimer p{font-size:13.5px;color:#7a4b00;line-height:1.6}
+.disclaimer strong{color:#5d3600}
+
+/* ══ MAIN LAYOUT ══ */
+.page-body{max-width:1100px;margin:0 auto;padding:40px 28px 80px;display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+
+/* ══ SIDEBAR NAV ══ */
+.sidebar{position:sticky;top:20px}
+.sidebar-card{background:#fff;border-radius:18px;box-shadow:var(--cs);overflow:hidden}
+.sb-title{padding:18px 20px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.cat-nav{list-style:none}
+.cat-nav li a{display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;color:var(--text);font-size:14px;font-weight:500;transition:background .2s;border-bottom:1px solid var(--border);position:relative}
+.cat-nav li a:hover,.cat-nav li a.active{background:var(--off-white)}
+.cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.cat-nav li a .cat-count{margin-left:auto;font-size:11px;font-weight:700;padding:2px 8px;border-radius:50px;background:var(--off-white);color:var(--muted)}
+.cat-nav li a.active .cat-count{background:var(--navy);color:#fff}
+/* progress sidebar */
+.sb-prog{padding:18px 20px;border-top:1px solid var(--border)}
+.sp-label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.sp-bar{height:8px;background:var(--border);border-radius:50px;overflow:hidden;margin-bottom:6px}
+.sp-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--blue),var(--sky));width:0;transition:width .5s ease}
+.sp-text{font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+.sb-score-btn{display:block;background:var(--navy);color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;margin-top:16px;cursor:pointer;border:none;width:100%;font-family:'Outfit',sans-serif;transition:background .2s}
+.sb-score-btn:hover{background:var(--blue)}
+.sb-score-btn:disabled{background:var(--muted);cursor:default}
+
+/* ══ ASSESSMENT PANEL ══ */
+.assessment-panel{}
+/* Category block */
+.cat-block{background:#fff;border-radius:20px;box-shadow:var(--cs);overflow:hidden;margin-bottom:28px;display:none}
+.cat-block.active{display:block}
+.cat-header{padding:28px 32px;display:flex;align-items:center;gap:16px}
+.ch-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0}
+.ch-text h2{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--navy);margin-bottom:4px}
+.ch-text p{font-size:14px;color:var(--muted);line-height:1.6;max-width:500px}
+.ch-badge{margin-left:auto;font-size:12px;font-weight:700;padding:5px 14px;border-radius:50px;white-space:nowrap}
+/* Scale legend */
+.scale-legend{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sl-item{flex:1;text-align:center;padding:10px 6px;font-size:12px;font-weight:600;color:var(--muted);border-right:1px solid var(--border)}
+.sl-item:last-child{border:none}
+.sl-item .sl-n{font-size:18px;font-weight:800;margin-bottom:2px}
+/* Questions */
+.questions-list{padding:16px 32px 32px}
+.q-item{padding:18px 0;border-bottom:1px solid var(--border)}
+.q-item:last-child{border:none}
+.q-row{display:flex;align-items:center;gap:16px}
+.q-num{font-size:11px;font-weight:800;color:var(--muted);min-width:28px;text-align:right}
+.q-text{font-size:15px;color:var(--text);flex:1;line-height:1.5}
+.q-scale{display:flex;gap:8px;flex-shrink:0}
+.q-btn{width:38px;height:38px;border-radius:8px;border:2px solid var(--border);background:#f8faff;font-size:13px;font-weight:800;color:var(--muted);cursor:pointer;transition:all .18s;font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center}
+.q-btn:hover{border-color:currentColor;background:var(--off-white)}
+.q-btn.sel{color:#fff;border-color:transparent}
+/* Category-specific selected colors */
+.dep-sel.sel{background:var(--dep)}
+.anx-sel.sel{background:var(--anx)}
+.adhd-sel.sel{background:var(--adhd)}
+.ptsd-sel.sel{background:var(--ptsd)}
+.func-sel.sel{background:var(--func)}
+/* Unanswered highlight */
+.q-item.unanswered .q-text{color:var(--red)}
+.q-item.unanswered .q-num{color:var(--red)}
+
+/* ══ NAV BUTTONS ══ */
+.nav-btns{display:flex;justify-content:space-between;align-items:center;padding:0 32px 32px}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-size:14px;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;border:none;transition:all .2s}
+.btn-prev{background:var(--off-white);color:var(--navy)}
+.btn-prev:hover{background:var(--border)}
+.btn-next{background:var(--navy);color:#fff}
+.btn-next:hover{background:var(--blue)}
+.btn-next.finish{background:linear-gradient(135deg,var(--func),#004d40);color:#fff}
+.q-counter{font-size:13px;color:var(--muted);font-weight:600}
+
+/* ══ RESULTS PANEL ══ */
+#resultsPanel{display:none;background:#fff;border-radius:20px;box-shadow:var(--cs);overflow:hidden}
+.rp-header{background:linear-gradient(135deg,var(--navy),#0d47a1);padding:36px 36px 32px;text-align:center}
+.rp-header h2{font-family:'Cormorant Garamond',serif;font-size:34px;color:#fff;margin-bottom:8px}
+.rp-header p{font-size:15px;color:rgba(255,255,255,.68);max-width:460px;margin:0 auto}
+.rp-body{padding:36px}
+/* Score cards grid */
+.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px}
+.score-card{border-radius:16px;padding:20px 14px;text-align:center;position:relative;overflow:hidden}
+.score-card::after{content:'';position:absolute;bottom:-20px;right:-20px;width:70px;height:70px;border-radius:50%;opacity:.1;background:currentColor}
+.sc-icon{font-size:24px;margin-bottom:10px;display:block}
+.sc-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;opacity:.75}
+.sc-score{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;line-height:1;margin-bottom:4px}
+.sc-max{font-size:11px;opacity:.6;margin-bottom:10px}
+.sc-level{font-size:11px;font-weight:800;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,.3)}
+/* Gauge bars */
+.gauge-section{margin-bottom:32px}
+.gs-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:18px}
+.gauge-row{margin-bottom:18px}
+.gr-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.gr-label{font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px}
+.gr-label .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.gr-right{display:flex;align-items:center;gap:12px}
+.gr-pct{font-size:15px;font-weight:800;color:var(--navy)}
+.gr-sev{font-size:11px;font-weight:800;padding:3px 10px;border-radius:50px;color:#fff}
+.gr-bar{height:12px;background:var(--border);border-radius:50px;overflow:hidden}
+.gr-fill{height:100%;border-radius:50px;transition:width 1.2s cubic-bezier(.23,1,.32,1)}
+/* Severity descriptions */
+.sev-descriptions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.sd-card{border-radius:14px;padding:20px;border-left:4px solid}
+.sd-card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.sd-card p{font-size:13.5px;line-height:1.7;opacity:.85}
+/* Recommendation */
+.rec-box{background:var(--off-white);border-radius:16px;padding:28px;border:1px solid var(--border);margin-bottom:32px}
+.rec-box h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.rec-items{display:flex;flex-direction:column;gap:12px}
+.rec-item{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--text);line-height:1.6}
+.rec-item i{color:var(--blue);margin-top:3px;flex-shrink:0;width:16px}
+/* Action buttons */
+.action-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:0 0 8px}
+.ab{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
+.ab-primary{background:var(--navy);color:#fff}
+.ab-primary:hover{background:var(--blue)}
+.ab-secondary{background:var(--off-white);color:var(--navy)}
+.ab-secondary:hover{background:var(--border)}
+/* Disclaimer result */
+.result-disclaimer{margin-top:24px;background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 18px;font-size:13px;color:#7a5800;line-height:1.7}
+.result-disclaimer strong{color:#5d4200}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  .page-body{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .score-grid{grid-template-columns:repeat(3,1fr)}
+  .sev-descriptions{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .q-scale{gap:4px}
+  .q-btn{width:32px;height:32px;font-size:12px;border-radius:6px}
+  .q-text{font-size:14px}
+  .score-grid{grid-template-columns:1fr 1fr}
+  .questions-list{padding:12px 16px 24px}
+  .nav-btns{padding:0 16px 24px}
+  .cat-header{padding:20px 16px}
+  .ch-badge{display:none}
+}
+@media print{
+  .site-header,.back-btn,.nav-btns,.action-btns,.sidebar,.assessment-hero,.disclaimer{display:none!important}
+  .page-body{grid-template-columns:1fr;padding:0}
+  #resultsPanel{display:block!important;box-shadow:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="site-header">
+  <a href="index.html" class="brand">
+    <img src="maxgio img/mxgLogo.jpeg" alt="Maxgio" onerror="this.style.display='none'">
+    <div><div class="b1">MAXGIO</div><div class="b2">Healthcare</div></div>
+  </a>
+  <a href="service.html" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Services</a>
+</div>
+
+<!-- HERO -->
+<div class="assessment-hero">
+  <h1>Mental Health <em>Self-Assessment</em></h1>
+  <p>A comprehensive 200-item screening tool across five clinical domains. This is not a diagnosis — it is a structured self-reflection tool to guide your conversation with our provider.</p>
+  <div class="hero-pills">
+    <span class="hp" style="background:var(--dep-l);color:var(--dep)">😔 Depression · 40 items</span>
+    <span class="hp" style="background:var(--anx-l);color:var(--anx)">⚡ Anxiety · 40 items</span>
+    <span class="hp" style="background:var(--adhd-l);color:var(--adhd)">🎯 ADHD · 40 items</span>
+    <span class="hp" style="background:var(--ptsd-l);color:var(--ptsd)">🛡️ Trauma/PTSD · 40 items</span>
+    <span class="hp" style="background:var(--func-l);color:var(--func)">🌱 Functioning · 40 items</span>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div style="padding:0 28px;max-width:1100px;margin:0 auto">
+  <div class="disclaimer" style="margin-top:24px">
+    <i class="fa fa-circle-exclamation"></i>
+    <p><strong>Important Notice:</strong> This self-assessment is for <strong>informational and screening purposes only</strong>. It is not a clinical diagnosis and does not replace evaluation by a qualified mental health professional. If you are experiencing a mental health crisis or thoughts of self-harm, please call <strong>988 (Suicide & Crisis Lifeline)</strong> or <strong>911</strong> immediately. To discuss your results with our provider, <a href="appointment.html" style="color:var(--blue);font-weight:700">book an appointment</a>.</p>
+  </div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sb-title">Assessment Sections</div>
+      <ul class="cat-nav" id="catNav">
+        <li><a href="#" class="active" data-cat="0" onclick="switchCat(0,event)"><span class="cat-dot" style="background:var(--dep)"></span>Depression<span class="cat-count">40</span></a></li>
+        <li><a href="#" data-cat="1" onclick="switchCat(1,event)"><span class="cat-dot" style="background:var(--anx)"></span>Anxiety<span class="cat-count">40</span></a></li>
+        <li><a href="#" data-cat="2" onclick="switchCat(2,event)"><span class="cat-dot" style="background:var(--adhd)"></span>ADHD<span class="cat-count">40</span></a></li>
+        <li><a href="#" data-cat="3" onclick="switchCat(3,event)"><span class="cat-dot" style="background:var(--ptsd)"></span>Trauma / PTSD<span class="cat-count">40</span></a></li>
+        <li><a href="#" data-cat="4" onclick="switchCat(4,event)"><span class="cat-dot" style="background:var(--func)"></span>Functioning<span class="cat-count">40</span></a></li>
+      </ul>
+      <div class="sb-prog">
+        <div class="sp-label">Overall Progress</div>
+        <div class="sp-bar"><div class="sp-fill" id="progFill"></div></div>
+        <div class="sp-text"><span id="progAnswered">0 answered</span><span id="progTotal">of 200</span></div>
+        <button class="sb-score-btn" id="scoreBtn" onclick="showResults()" disabled>
+          <i class="fa fa-chart-bar" style="margin-right:6px"></i>View My Results
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ASSESSMENT PANEL -->
+  <main id="mainPanel">
+
+    <!-- DEPRESSION -->
+    <div class="cat-block active" id="cat-0">
+      <div class="cat-header">
+        <div class="ch-icon" style="background:var(--dep)"><i class="fa fa-cloud-rain"></i></div>
+        <div class="ch-text">
+          <h2>Depression Screening</h2>
+          <p>Rate how often you have experienced each symptom over the <strong>past two weeks</strong>.</p>
+        </div>
+        <span class="ch-badge" style="background:var(--dep-l);color:var(--dep)">40 Items · Section 1</span>
+      </div>
+      <div class="scale-legend">
+        <div class="sl-item"><div class="sl-n" style="color:var(--func)">0</div>Not at all</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx-mid)">1</div>Several days</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx)">2</div>More than half</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--dep)">3</div>Nearly every day</div>
+      </div>
+      <div class="questions-list" id="q-dep"></div>
+      <div class="nav-btns">
+        <span class="q-counter" id="depCounter">0 / 40 answered</span>
+        <button class="nav-btn btn-next" onclick="nextCat(0)">Anxiety Section <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- ANXIETY -->
+    <div class="cat-block" id="cat-1">
+      <div class="cat-header">
+        <div class="ch-icon" style="background:var(--anx)"><i class="fa fa-bolt"></i></div>
+        <div class="ch-text">
+          <h2>Anxiety Screening</h2>
+          <p>Rate how often you have experienced each symptom over the <strong>past two weeks</strong>.</p>
+        </div>
+        <span class="ch-badge" style="background:var(--anx-l);color:var(--anx)">40 Items · Section 2</span>
+      </div>
+      <div class="scale-legend">
+        <div class="sl-item"><div class="sl-n" style="color:var(--func)">0</div>Not at all</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx-mid)">1</div>Several days</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx)">2</div>More than half</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--dep)">3</div>Nearly every day</div>
+      </div>
+      <div class="questions-list" id="q-anx"></div>
+      <div class="nav-btns">
+        <button class="nav-btn btn-prev" onclick="switchCat(0,null)"><i class="fa fa-arrow-left"></i> Depression</button>
+        <span class="q-counter" id="anxCounter">0 / 40 answered</span>
+        <button class="nav-btn btn-next" onclick="nextCat(1)">ADHD Section <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- ADHD -->
+    <div class="cat-block" id="cat-2">
+      <div class="cat-header">
+        <div class="ch-icon" style="background:var(--adhd)"><i class="fa fa-brain"></i></div>
+        <div class="ch-text">
+          <h2>ADHD Symptom Screening</h2>
+          <p>Rate how often you have experienced each symptom over the <strong>past six months</strong>.</p>
+        </div>
+        <span class="ch-badge" style="background:var(--adhd-l);color:var(--adhd)">40 Items · Section 3</span>
+      </div>
+      <div class="scale-legend">
+        <div class="sl-item"><div class="sl-n" style="color:var(--func)">0</div>Not at all</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx-mid)">1</div>Several days</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx)">2</div>More than half</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--dep)">3</div>Nearly every day</div>
+      </div>
+      <div class="questions-list" id="q-adhd"></div>
+      <div class="nav-btns">
+        <button class="nav-btn btn-prev" onclick="switchCat(1,null)"><i class="fa fa-arrow-left"></i> Anxiety</button>
+        <span class="q-counter" id="adhdCounter">0 / 40 answered</span>
+        <button class="nav-btn btn-next" onclick="nextCat(2)">Trauma / PTSD <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- PTSD -->
+    <div class="cat-block" id="cat-3">
+      <div class="cat-header">
+        <div class="ch-icon" style="background:var(--ptsd)"><i class="fa fa-shield-halved"></i></div>
+        <div class="ch-text">
+          <h2>Trauma / PTSD Screening</h2>
+          <p>Rate how often you have experienced each symptom over the <strong>past month</strong>.</p>
+        </div>
+        <span class="ch-badge" style="background:var(--ptsd-l);color:var(--ptsd)">40 Items · Section 4</span>
+      </div>
+      <div class="scale-legend">
+        <div class="sl-item"><div class="sl-n" style="color:var(--func)">0</div>Not at all</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx-mid)">1</div>Several days</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx)">2</div>More than half</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--dep)">3</div>Nearly every day</div>
+      </div>
+      <div class="questions-list" id="q-ptsd"></div>
+      <div class="nav-btns">
+        <button class="nav-btn btn-prev" onclick="switchCat(2,null)"><i class="fa fa-arrow-left"></i> ADHD</button>
+        <span class="q-counter" id="ptsdCounter">0 / 40 answered</span>
+        <button class="nav-btn btn-next" onclick="nextCat(3)">Functioning <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- FUNCTIONING -->
+    <div class="cat-block" id="cat-4">
+      <div class="cat-header">
+        <div class="ch-icon" style="background:var(--func)"><i class="fa fa-seedling"></i></div>
+        <div class="ch-text">
+          <h2>Functioning &amp; Wellbeing</h2>
+          <p>Rate how often each statement applies to you over the <strong>past two weeks</strong>.</p>
+        </div>
+        <span class="ch-badge" style="background:var(--func-l);color:var(--func)">40 Items · Section 5</span>
+      </div>
+      <div class="scale-legend">
+        <div class="sl-item"><div class="sl-n" style="color:var(--dep)">0</div>Not at all</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx)">1</div>Several days</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--anx-mid)">2</div>More than half</div>
+        <div class="sl-item"><div class="sl-n" style="color:var(--func)">3</div>Nearly every day</div>
+      </div>
+      <div class="questions-list" id="q-func"></div>
+      <div class="nav-btns">
+        <button class="nav-btn btn-prev" onclick="switchCat(3,null)"><i class="fa fa-arrow-left"></i> Trauma / PTSD</button>
+        <span class="q-counter" id="funcCounter">0 / 40 answered</span>
+        <button class="nav-btn btn-next finish" onclick="finishAssessment()"><i class="fa fa-chart-bar"></i> View My Results</button>
+      </div>
+    </div>
+
+    <!-- RESULTS PANEL -->
+    <div id="resultsPanel">
+      <div class="rp-header">
+        <h2>Your Assessment Results</h2>
+        <p>Based on your responses to all 200 items. Share this with your Maxgio Healthcare provider for a complete clinical evaluation.</p>
+      </div>
+      <div class="rp-body">
+        <!-- Score cards -->
+        <div class="score-grid" id="scoreGrid"></div>
+        <!-- Gauge bars -->
+        <div class="gauge-section">
+          <div class="gs-title">Symptom Severity by Domain</div>
+          <div id="gaugeRows"></div>
+        </div>
+        <!-- Severity descriptions -->
+        <div class="sev-descriptions" id="sevDescs"></div>
+        <!-- Recommendations -->
+        <div class="rec-box" id="recBox"></div>
+        <!-- Action buttons -->
+        <div class="action-btns">
+          <a href="appointment.html" class="ab ab-primary"><i class="fa fa-calendar-check"></i>Book an Appointment</a>
+          <button class="ab ab-secondary" onclick="window.print()"><i class="fa fa-print"></i>Print Results</button>
+          <button class="ab ab-secondary" onclick="resetAssessment()"><i class="fa fa-rotate-left"></i>Retake Assessment</button>
+        </div>
+        <div class="result-disclaimer">
+          <strong>Clinical Reminder:</strong> These results are a self-screening tool only and do not constitute a clinical diagnosis. Scores are intended to facilitate — not replace — a conversation with a qualified mental health professional. Maxgio Healthcare LLC · Rose Idemili, PMHNP-BC · +1 (804) 901-0053 · <a href="mailto:maxgiohealth@gmail.com" style="color:var(--blue)">maxgiohealth@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- end page-body -->
+
+<script>
+// ══════════════════════════════════════════════
+//  QUESTION DATA
+// ══════════════════════════════════════════════
+const CATS = [
+  {
+    id:'dep', key:0, label:'Depression', icon:'fa-cloud-rain', color:'--dep', colorVal:'#c62828', light:'--dep-l', lightVal:'#fce8e8',
+    counter:'depCounter', emoji:'😔',
+    questions:[
+      "I feel sad or down most of the day.",
+      "I have lost interest in activities I usually enjoy.",
+      "I feel hopeless about the future.",
+      "I have difficulty getting motivated to do daily tasks.",
+      "I feel worthless or like a failure.",
+      "I experience frequent crying spells.",
+      "I feel emotionally numb.",
+      "I feel tired even after resting.",
+      "I have trouble concentrating on tasks.",
+      "I feel guilty about things I should not feel guilty about.",
+      "I find it difficult to make decisions.",
+      "I feel slowed down physically or mentally.",
+      "I feel empty inside.",
+      "I have thoughts that life is not worth living.",
+      "I feel disconnected from others.",
+      "I feel like a burden to others.",
+      "I have lost interest in social interactions.",
+      "I experience persistent negative thoughts.",
+      "I feel like nothing will improve in my life.",
+      "I struggle to experience happiness.",
+      "I wake up feeling sad.",
+      "I feel discouraged about my abilities.",
+      "I feel emotionally exhausted.",
+      "I feel like I am letting people down.",
+      "I have difficulty completing responsibilities.",
+      "I feel withdrawn from family or friends.",
+      "I feel overly self-critical.",
+      "I experience a lack of pleasure in most activities.",
+      "I feel pessimistic about my future.",
+      "I struggle to feel motivated.",
+      "I have difficulty enjoying positive events.",
+      "I feel overwhelmed by small problems.",
+      "I feel disconnected from my surroundings.",
+      "I find it hard to feel hopeful.",
+      "I feel like my life lacks meaning.",
+      "I feel discouraged about my goals.",
+      "I feel emotionally drained most days.",
+      "I feel like I cannot cope with life.",
+      "I struggle to maintain energy throughout the day.",
+      "I feel stuck in negative thinking."
+    ]
+  },
+  {
+    id:'anx', key:1, label:'Anxiety', icon:'fa-bolt', color:'--anx', colorVal:'#e65100', light:'--anx-l', lightVal:'#fff3e0',
+    counter:'anxCounter', emoji:'⚡',
+    questions:[
+      "I feel nervous or anxious most days.",
+      "I worry excessively about different things.",
+      "I find it hard to control my worries.",
+      "I feel restless or on edge.",
+      "I have difficulty relaxing.",
+      "I worry about things that might happen in the future.",
+      "I feel tense in my body.",
+      "I experience racing thoughts.",
+      "I worry about situations even when there is little reason.",
+      "I avoid situations that make me anxious.",
+      "I feel overwhelmed by responsibilities.",
+      "I worry about making mistakes.",
+      "I overthink past conversations or events.",
+      "I feel uneasy in unfamiliar situations.",
+      "I experience sudden feelings of fear.",
+      "I feel easily startled.",
+      "I struggle to calm myself when stressed.",
+      "I feel anxious in social settings.",
+      "I worry about being judged by others.",
+      "I experience muscle tension when stressed.",
+      "I feel restless when sitting still.",
+      "I anticipate worst-case scenarios.",
+      "I find it difficult to stop worrying once I start.",
+      "I feel overwhelmed by uncertainty.",
+      "I worry about my health excessively.",
+      "I experience anxiety without a clear reason.",
+      "I struggle to stay present in the moment.",
+      "I feel like something bad might happen.",
+      "I avoid situations that trigger anxiety.",
+      "I experience irritability when anxious.",
+      "I feel overwhelmed by daily stress.",
+      "I feel uneasy when plans change unexpectedly.",
+      "I feel like I cannot control my anxiety.",
+      "I feel mentally exhausted from worrying.",
+      "I feel uncomfortable in crowded places.",
+      "I worry about things outside my control.",
+      "I feel anxious before important events.",
+      "I experience difficulty concentrating due to worry.",
+      "I feel like my mind never stops worrying.",
+      "I feel overwhelmed by minor problems."
+    ]
+  },
+  {
+    id:'adhd', key:2, label:'ADHD', icon:'fa-brain', color:'--adhd', colorVal:'#1565c0', light:'--adhd-l', lightVal:'#e3f2fd',
+    counter:'adhdCounter', emoji:'🎯',
+    questions:[
+      "I have difficulty staying focused on tasks.",
+      "I get easily distracted by unrelated thoughts.",
+      "I struggle to complete tasks I start.",
+      "I often forget appointments or responsibilities.",
+      "I lose things necessary for tasks.",
+      "I find it difficult to organize tasks.",
+      "I procrastinate on important responsibilities.",
+      "I struggle to follow detailed instructions.",
+      "I feel restless when sitting for long periods.",
+      "I interrupt others during conversations.",
+      "I talk excessively in conversations.",
+      "I struggle to wait my turn.",
+      "I make careless mistakes in work or school tasks.",
+      "I avoid tasks that require sustained mental effort.",
+      "I frequently shift from one activity to another.",
+      "I have difficulty managing time effectively.",
+      "I feel impatient in slow situations.",
+      "I struggle to stay focused during conversations.",
+      "I have trouble remembering instructions.",
+      "I feel mentally scattered.",
+      "I struggle with task prioritization.",
+      "I feel easily bored.",
+      "I forget to complete routine tasks.",
+      "I start projects without finishing them.",
+      "I find it difficult to remain seated when required.",
+      "I act without thinking about consequences.",
+      "I struggle to maintain attention while reading.",
+      "I frequently misplace items.",
+      "I have difficulty managing multiple tasks.",
+      "I feel overwhelmed by complex tasks.",
+      "I rush through tasks quickly.",
+      "I feel impatient when waiting.",
+      "I find it difficult to maintain routines.",
+      "I struggle with planning ahead.",
+      "I feel like my thoughts move too quickly.",
+      "I lose focus during meetings or lectures.",
+      "I feel disorganized in daily life.",
+      "I forget things shortly after hearing them.",
+      "I jump from idea to idea quickly.",
+      "I struggle to stay engaged in long tasks."
+    ]
+  },
+  {
+    id:'ptsd', key:3, label:'Trauma / PTSD', icon:'fa-shield-halved', color:'--ptsd', colorVal:'#4527a0', light:'--ptsd-l', lightVal:'#ede7f6',
+    counter:'ptsdCounter', emoji:'🛡️',
+    questions:[
+      "I have intrusive memories of past traumatic events.",
+      "I experience distressing dreams related to past events.",
+      "I feel emotionally distressed when reminded of a traumatic event.",
+      "I avoid reminders of stressful experiences.",
+      "I experience sudden flashbacks.",
+      "I feel emotionally numb when thinking about past trauma.",
+      "I avoid talking about traumatic experiences.",
+      "I feel detached from people around me.",
+      "I have difficulty experiencing positive emotions.",
+      "I feel constantly on guard.",
+      "I experience exaggerated startle responses.",
+      "I feel unsafe even in safe environments.",
+      "I experience strong emotional reactions to reminders.",
+      "I avoid certain places or situations due to past events.",
+      "I feel persistent fear related to past experiences.",
+      "I blame myself for past traumatic events.",
+      "I experience difficulty trusting others.",
+      "I feel hyperaware of potential threats.",
+      "I have trouble sleeping due to distressing memories.",
+      "I feel emotionally disconnected from loved ones.",
+      "I struggle with persistent negative beliefs about myself.",
+      "I feel shame about past experiences.",
+      "I experience sudden emotional outbursts.",
+      "I feel easily startled by noises.",
+      "I feel anxious when recalling past events.",
+      "I struggle to feel safe in relationships.",
+      "I experience intense fear without clear triggers.",
+      "I avoid discussing difficult memories.",
+      "I experience emotional shutdown when stressed.",
+      "I have difficulty controlling anger.",
+      "I feel isolated due to past experiences.",
+      "I feel guilty about surviving past events.",
+      "I feel overwhelmed by traumatic memories.",
+      "I feel emotionally distant from others.",
+      "I struggle with trust due to past experiences.",
+      "I feel constantly tense or alert.",
+      "I have difficulty relaxing due to past trauma.",
+      "I feel unsafe in certain environments.",
+      "I feel overwhelmed when thinking about the past.",
+      "I feel emotionally triggered by reminders."
+    ]
+  },
+  {
+    id:'func', key:4, label:'Functioning & Wellbeing', icon:'fa-seedling', color:'--func', colorVal:'#00695c', light:'--func-l', lightVal:'#e0f2f1',
+    counter:'funcCounter', emoji:'🌱',
+    reversed: true,
+    questions:[
+      "I feel satisfied with my daily life.",
+      "I feel able to cope with daily stress.",
+      "I feel supported by people around me.",
+      "I feel capable of managing responsibilities.",
+      "I feel confident in my decisions.",
+      "I feel hopeful about my future.",
+      "I feel emotionally balanced.",
+      "I feel connected to others.",
+      "I feel motivated to pursue my goals.",
+      "I feel able to manage difficult emotions.",
+      "I feel satisfied with my relationships.",
+      "I feel comfortable expressing my feelings.",
+      "I feel confident handling challenges.",
+      "I feel able to maintain healthy routines.",
+      "I feel mentally clear most days.",
+      "I feel resilient after setbacks.",
+      "I feel capable of solving problems.",
+      "I feel engaged in meaningful activities.",
+      "I feel comfortable asking for help when needed.",
+      "I feel emotionally stable.",
+      "I feel productive during the day.",
+      "I feel satisfied with my work or responsibilities.",
+      "I feel able to maintain focus on goals.",
+      "I feel supported during difficult times.",
+      "I feel confident in my coping skills.",
+      "I feel positive about my personal growth.",
+      "I feel able to balance work and personal life.",
+      "I feel emotionally connected to family or friends.",
+      "I feel motivated to maintain healthy habits.",
+      "I feel capable of adapting to change.",
+      "I feel mentally strong during stress.",
+      "I feel able to manage conflicts constructively.",
+      "I feel hopeful even during difficult times.",
+      "I feel confident about my abilities.",
+      "I feel capable of maintaining emotional wellbeing.",
+      "I feel stable in my mood.",
+      "I feel satisfied with my progress in life.",
+      "I feel mentally healthy most days.",
+      "I feel able to enjoy life.",
+      "I feel optimistic about the future."
+    ]
+  }
+];
+
+// answers[catIndex][qIndex] = 0-3 or null
+const answers = [
+  new Array(40).fill(null),
+  new Array(40).fill(null),
+  new Array(40).fill(null),
+  new Array(40).fill(null),
+  new Array(40).fill(null)
+];
+let currentCat = 0;
+
+// ══════════════════════════════════════════════
+//  BUILD QUESTIONS
+// ══════════════════════════════════════════════
+function buildQuestions(){
+  CATS.forEach((cat,ci)=>{
+    const container = document.getElementById('q-'+cat.id);
+    cat.questions.forEach((q,qi)=>{
+      const div = document.createElement('div');
+      div.className = 'q-item';
+      div.id = `qi-${ci}-${qi}`;
+      div.innerHTML = `
+        <div class="q-row">
+          <span class="q-num">${(ci===0?1:ci===1?41:ci===2?81:ci===3?121:161)+qi}</span>
+          <span class="q-text">${q}</span>
+          <div class="q-scale">
+            ${[0,1,2,3].map(v=>`<button class="q-btn ${cat.id}-sel" data-ci="${ci}" data-qi="${qi}" data-val="${v}" onclick="setAnswer(${ci},${qi},${v},this)">${v}</button>`).join('')}
+          </div>
+        </div>`;
+      container.appendChild(div);
+    });
+  });
+}
+
+// ══════════════════════════════════════════════
+//  SET ANSWER
+// ══════════════════════════════════════════════
+function setAnswer(ci,qi,val,btn){
+  answers[ci][qi] = val;
+  // Update button visuals
+  const btns = btn.closest('.q-scale').querySelectorAll('.q-btn');
+  btns.forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  // Remove unanswered highlight
+  document.getElementById(`qi-${ci}-${qi}`).classList.remove('unanswered');
+  updateCounters();
+}
+
+// ══════════════════════════════════════════════
+//  UPDATE PROGRESS
+// ══════════════════════════════════════════════
+function updateCounters(){
+  let total = 0;
+  CATS.forEach((cat,ci)=>{
+    const cnt = answers[ci].filter(v=>v!==null).length;
+    document.getElementById(cat.counter).textContent = `${cnt} / 40 answered`;
+    total += cnt;
+  });
+  const pct = Math.round(total/200*100);
+  document.getElementById('progFill').style.width = pct+'%';
+  document.getElementById('progAnswered').textContent = total + ' answered';
+  const btn = document.getElementById('scoreBtn');
+  if(total===200){btn.disabled=false;btn.textContent='✓ View My Results';}
+  else{btn.disabled=false;btn.innerHTML='<i class="fa fa-chart-bar" style="margin-right:6px"></i>View Results ('+(200-total)+' unanswered)';}
+}
+
+// ══════════════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════════════
+function switchCat(idx, e){
+  if(e) e.preventDefault();
+  document.querySelectorAll('.cat-block').forEach(b=>b.classList.remove('active'));
+  document.getElementById('cat-'+idx).classList.add('active');
+  document.querySelectorAll('#catNav a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('#catNav a')[idx].classList.add('active');
+  currentCat = idx;
+  document.getElementById('resultsPanel').style.display='none';
+  document.getElementById('mainPanel').querySelectorAll('.cat-block').forEach(b=>b.style.display='');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function nextCat(current){
+  switchCat(current+1, null);
+}
+
+// ══════════════════════════════════════════════
+//  FINISH & SHOW RESULTS
+// ══════════════════════════════════════════════
+function finishAssessment(){
+  // Check for unanswered in current section
+  const unanswered = answers[4].map((v,i)=>v===null?i:null).filter(v=>v!==null);
+  if(unanswered.length > 0){
+    unanswered.forEach(qi=>document.getElementById(`qi-4-${qi}`).classList.add('unanswered'));
+    document.getElementById(`qi-4-${unanswered[0]}`).scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  showResults();
+}
+
+function showResults(){
+  // Hide all cat blocks
+  document.querySelectorAll('.cat-block').forEach(b=>b.style.display='none');
+  // Compute scores
+  const scores = CATS.map((cat,ci)=>{
+    const filled = answers[ci].map(v=>v===null?0:v);
+    const raw = filled.reduce((a,b)=>a+b,0);
+    const max = 120;
+    if(cat.reversed){
+      // Higher score = better functioning — invert for severity
+      return {raw, max, pct: Math.round((max-raw)/max*100), rawPct: Math.round(raw/max*100)};
+    }
+    return {raw, max, pct: Math.round(raw/max*100)};
+  });
+  // Severity levels
+  function getSev(pct,reversed){
+    if(reversed){
+      if(pct<=25) return {label:'Severe Impairment',color:'#c62828'};
+      if(pct<=50) return {label:'Moderate Impairment',color:'#e65100'};
+      if(pct<=75) return {label:'Mild Impairment',color:'#f59e0b'};
+      return {label:'Well Functioning',color:'#00695c'};
+    }
+    if(pct<=20) return {label:'Minimal',color:'#00695c'};
+    if(pct<=40) return {label:'Mild',color:'#f59e0b'};
+    if(pct<=60) return {label:'Moderate',color:'#e65100'};
+    if(pct<=80) return {label:'Moderately Severe',color:'#c62828'};
+    return {label:'Severe',color:'#7b0000'};
+  }
+  const sevs = CATS.map((cat,ci)=>{
+    const s = scores[ci];
+    return getSev(cat.reversed ? s.rawPct : s.pct, cat.reversed);
+  });
+
+  // Build score cards
+  const colors = ['--dep','--anx','--adhd','--ptsd','--func'];
+  const lightColors = ['--dep-l','--anx-l','--adhd-l','--ptsd-l','--func-l'];
+  const colorVals = ['#c62828','#e65100','#1565c0','#4527a0','#00695c'];
+  const lightVals = ['#fce8e8','#fff3e0','#e3f2fd','#ede7f6','#e0f2f1'];
+  const icons = ['fa-cloud-rain','fa-bolt','fa-brain','fa-shield-halved','fa-seedling'];
+
+  let sgHtml = '';
+  CATS.forEach((cat,ci)=>{
+    const s = scores[ci];
+    const sev = sevs[ci];
+    const displayPct = cat.reversed ? s.rawPct : s.pct;
+    sgHtml += `<div class="score-card" style="background:${lightVals[ci]};color:${colorVals[ci]}">
+      <span class="sc-icon"><i class="fa ${icons[ci]}"></i></span>
+      <div class="sc-label">${cat.label}</div>
+      <div class="sc-score">${s.raw}</div>
+      <div class="sc-max">out of ${s.max}</div>
+      <span class="sc-level" style="background:${colorVals[ci]};color:#fff;font-size:10px">${sev.label}</span>
+    </div>`;
+  });
+  document.getElementById('scoreGrid').innerHTML = sgHtml;
+
+  // Gauge rows
+  let grHtml = '';
+  const barColors = [
+    'linear-gradient(90deg,#c62828,#ef5350)',
+    'linear-gradient(90deg,#e65100,#ff8f00)',
+    'linear-gradient(90deg,#1565c0,#42a5f5)',
+    'linear-gradient(90deg,#4527a0,#7c4dff)',
+    'linear-gradient(90deg,#00695c,#26a69a)'
+  ];
+  CATS.forEach((cat,ci)=>{
+    const s = scores[ci];
+    const sev = sevs[ci];
+    const displayPct = cat.reversed ? s.rawPct : s.pct;
+    const barWidth = cat.reversed ? s.rawPct : s.pct;
+    grHtml += `<div class="gauge-row">
+      <div class="gr-header">
+        <div class="gr-label"><span class="dot" style="background:${colorVals[ci]}"></span>${cat.emoji} ${cat.label}</div>
+        <div class="gr-right">
+          <span class="gr-pct">${s.raw}/${s.max}</span>
+          <span class="gr-sev" style="background:${sev.color}">${sev.label}</span>
+        </div>
+      </div>
+      <div class="gr-bar"><div class="gr-fill" style="width:0;background:${barColors[ci]}" data-target="${barWidth}"></div></div>
+    </div>`;
+  });
+  document.getElementById('gaugeRows').innerHTML = grHtml;
+
+  // Severity desc cards
+  const sevDescData = [
+    {
+      ci:0,cat:'Depression',
+      getDesc:(pct)=>{
+        if(pct<=20) return "Your responses indicate minimal or no depressive symptoms at this time.";
+        if(pct<=40) return "Mild depressive symptoms present. Watchful monitoring and self-care strategies are recommended.";
+        if(pct<=60) return "Moderate depression indicated. A clinical evaluation is recommended to explore therapeutic and/or medication support.";
+        return "Significant depressive symptoms indicated. Professional evaluation is strongly recommended.";
+      }
+    },
+    {
+      ci:1,cat:'Anxiety',
+      getDesc:(pct)=>{
+        if(pct<=20) return "Minimal anxiety symptoms. Normal stress responses appear well managed.";
+        if(pct<=40) return "Mild anxiety present. Coping skill development and mindfulness approaches may be beneficial.";
+        if(pct<=60) return "Moderate anxiety indicated. A clinical evaluation to explore CBT, therapy, or medication options is recommended.";
+        return "Significant anxiety symptoms. Professional evaluation is strongly recommended.";
+      }
+    },
+    {
+      ci:2,cat:'ADHD',
+      getDesc:(pct)=>{
+        if(pct<=20) return "Minimal ADHD symptoms. Attention and executive function appear within typical range.";
+        if(pct<=40) return "Mild attentional difficulties present. Organizational strategies and behavioral techniques may help.";
+        if(pct<=60) return "Moderate ADHD symptoms indicated. A formal clinical ADHD evaluation is recommended.";
+        return "Significant ADHD symptom burden. A comprehensive evaluation by a psychiatric professional is strongly recommended.";
+      }
+    },
+    {
+      ci:3,cat:'Trauma / PTSD',
+      getDesc:(pct)=>{
+        if(pct<=20) return "Minimal trauma-related symptoms at this time.";
+        if(pct<=40) return "Mild trauma symptoms present. Trauma-informed supportive therapy may be beneficial.";
+        if(pct<=60) return "Moderate trauma/PTSD symptoms. A clinical trauma evaluation is recommended.";
+        return "Significant trauma and PTSD symptom burden. Professional trauma-focused evaluation and care is strongly recommended.";
+      }
+    },
+    {
+      ci:4,cat:'Functioning & Wellbeing',
+      getDesc:(pct)=>{
+        if(pct>=75) return "Strong overall functioning and wellbeing indicated across daily life domains.";
+        if(pct>=50) return "Good functioning with some areas that may benefit from additional support.";
+        if(pct>=25) return "Moderate functioning difficulties present. Supportive therapy may improve daily coping and wellbeing.";
+        return "Significant impairment in daily functioning and wellbeing. Comprehensive psychiatric evaluation and support is recommended.";
+      }
+    }
+  ];
+  let sdHtml = '';
+  sevDescData.forEach(d=>{
+    const s = scores[d.ci];
+    const cat = CATS[d.ci];
+    const displayPct = cat.reversed ? s.rawPct : s.pct;
+    const sev = sevs[d.ci];
+    sdHtml += `<div class="sd-card" style="background:${lightVals[d.ci]};border-color:${colorVals[d.ci]};color:${colorVals[d.ci]}">
+      <h4>${CATS[d.ci].emoji} ${d.cat}</h4>
+      <p style="color:#333">${d.getDesc(displayPct)}</p>
+    </div>`;
+  });
+  document.getElementById('sevDescs').innerHTML = sdHtml;
+
+  // Recommendations
+  const recs = [];
+  if((scores[0].pct>=40)) recs.push({icon:'fa-heart',text:'Consider a <strong>depression evaluation</strong> with our PMHNP to explore therapy and/or medication options tailored to your symptoms.'});
+  if((scores[1].pct>=40)) recs.push({icon:'fa-bolt',text:'An <strong>anxiety assessment</strong> is recommended. CBT, medication management, and mindfulness-based approaches can be highly effective.'});
+  if((scores[2].pct>=40)) recs.push({icon:'fa-brain',text:'Your ADHD symptom scores suggest a <strong>formal ADHD evaluation</strong> may be worthwhile. Both stimulant and non-stimulant treatment options are available.'});
+  if((scores[3].pct>=40)) recs.push({icon:'fa-shield-halved',text:'Trauma/PTSD symptoms are elevated. A <strong>trauma-focused evaluation</strong> with our provider can open a path toward targeted, compassionate care.'});
+  if((scores[4].reversed && scores[4].rawPct<=50)) recs.push({icon:'fa-seedling',text:'Your functioning scores suggest you may benefit from <strong>supportive therapy</strong> to strengthen coping skills and daily wellbeing.'});
+  if(recs.length===0) recs.push({icon:'fa-circle-check',text:'Your scores indicate minimal symptom burden across all domains. Continue healthy habits and do not hesitate to reach out if your wellbeing changes.'});
+  recs.push({icon:'fa-calendar-check',text:'We recommend <strong>sharing these results with a Maxgio Healthcare provider</strong> for a comprehensive clinical evaluation. Self-assessments are a starting point, not a diagnosis.'});
+
+  document.getElementById('recBox').innerHTML = `<h3><i class="fa fa-lightbulb" style="color:var(--anx)"></i>Our Recommendations</h3><div class="rec-items">${recs.map(r=>`<div class="rec-item"><i class="fa ${r.icon}"></i><span>${r.text}</span></div>`).join('')}</div>`;
+
+  document.getElementById('resultsPanel').style.display='block';
+  // Animate bars
+  setTimeout(()=>{
+    document.querySelectorAll('.gr-fill').forEach(el=>{
+      el.style.width = el.dataset.target+'%';
+    });
+  },200);
+  document.getElementById('resultsPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ══════════════════════════════════════════════
+//  RESET
+// ══════════════════════════════════════════════
+function resetAssessment(){
+  CATS.forEach((cat,ci)=>{answers[ci].fill(null)});
+  document.querySelectorAll('.q-btn').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('.q-item').forEach(b=>b.classList.remove('unanswered'));
+  document.getElementById('resultsPanel').style.display='none';
+  document.querySelectorAll('.cat-block').forEach(b=>b.style.display='');
+  updateCounters();
+  switchCat(0,null);
+}
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+buildQuestions();
+updateCounters();
+</script>
+</body>
+</html>

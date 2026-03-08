@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Obsessive-Compulsive Disorder (OCD): A Comprehensive Guide for the Public</title>
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --primary-dark: #7c3aed;
+      --accent: #c084fc;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --shadow: 0 8px 24px rgba(139,92,246,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(139,92,246,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #f3e8ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #f5f3ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(139,92,246,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+  <h1>Obsessive-Compulsive Disorder (OCD)</h1>
+  <div class="subtitle">A Comprehensive Guide for the Public</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="definition" class="active">1. Definition & Overview</button></li>
+      <li><button data-target="symptoms">2. Common Symptoms</button></li>
+      <li><button data-target="causes">3. Causes & Risk Factors</button></li>
+      <li><button data-target="diagnosis">4. Diagnosis</button></li>
+      <li><button data-target="treatment">5. Treatment Options</button></li>
+      <li><button data-target="coping">6. Coping & Support</button></li>
+      <li><button data-target="complications">7. Complications & Risks</button></li>
+      <li><button data-target="prognosis">8. Prognosis</button></li>
+      <li><button data-target="seek-help">9. When to Seek Help</button></li>
+      <li><button data-target="conclusion">Conclusion</button></li>
+    </ul>
+  </nav>
+
+  <section id="definition">
+    <h2>1. Definition and Overview</h2>
+    <p>OCD is an anxiety-related disorder where obsessions (unwanted, intrusive thoughts) lead to significant distress, and compulsions (repetitive behaviors or mental acts) are performed to temporarily reduce that anxiety.</p>
+    <p>Unlike everyday worries or habits, OCD thoughts and rituals are persistent, time-consuming (often >1 hour/day), and interfere with normal functioning. It affects children, adolescents, and adults, with symptoms ranging from mild to severe and fluctuating over time.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/6k2fK3oq9m4k4o8k4o8k4o8k4o8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ocd-cycle-5b9b9b9b46e0fb0050c5c5c5.png" alt="OCD cycle of obsessions and compulsions diagram">
+        <div class="card-content">
+          <h4>The OCD Cycle</h4>
+          <p>Obsessions → Anxiety → Compulsions → Temporary Relief → Return of Obsessions</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.ocduk.org/wp-content/uploads/2023/05/OCD-Cycle.png" alt="Visual representation of the OCD vicious cycle">
+        <div class="card-content">
+          <h4>OCD Vicious Cycle</h4>
+          <p>How obsessions and compulsions reinforce each other</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="symptoms">
+    <h2>2. Common Symptoms</h2>
+
+    <h3>Obsessions (Intrusive Thoughts)</h3>
+    <ul class="check-list">
+      <li>Fear of contamination or germs</li>
+      <li>Fear of causing harm to self or others</li>
+      <li>Intrusive sexual, violent, or taboo thoughts</li>
+      <li>Excessive need for symmetry, order, or perfection</li>
+      <li>Religious or moral scrupulosity</li>
+    </ul>
+
+    <h3>Compulsions (Repetitive Behaviors/Mental Acts)</h3>
+    <ul class="check-list">
+      <li>Excessive handwashing, cleaning, or bathing</li>
+      <li>Repeated checking (locks, appliances, safety)</li>
+      <li>Counting, tapping, repeating words/silent prayers</li>
+      <li>Arranging objects precisely</li>
+      <li>Seeking constant reassurance or confessing</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/OCD-Symptoms-Infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="Common OCD obsessions and compulsions infographic">
+        <div class="card-content">
+          <h4>Common Obsessions & Compulsions</h4>
+          <p>Visual breakdown of typical patterns</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://iocdf.org/wp-content/uploads/2014/10/OCD-Cycle-Image.png" alt="OCD symptom cycle illustration">
+        <div class="card-content">
+          <h4>OCD Symptom Loop</h4>
+          <p>Why the cycle continues without intervention</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="causes">
+    <h2>3. Causes and Risk Factors</h2>
+    <p>OCD results from a combination of:</p>
+    <ul class="check-list">
+      <li><strong>Genetic:</strong> Family history significantly raises risk.</li>
+      <li><strong>Neurobiological:</strong> Serotonin imbalance; overactivity in brain circuits (e.g., cortico-striato-thalamo-cortical loop).</li>
+      <li><strong>Environmental:</strong> Trauma, major stress, or infections (e.g., PANDAS in children) can trigger onset/worsening.</li>
+      <li><strong>Other:</strong> Onset often childhood, adolescence, or early adulthood.</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ncbi.nlm.nih.gov/books/NBK553162/figure/article-20330.image.f1/?report=objectonly" alt="Brain circuits involved in OCD">
+        <div class="card-content">
+          <h4>Brain Circuits in OCD</h4>
+          <p>Key neural pathways implicated in the disorder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="treatment">
+    <h2>5. Treatment Options</h2>
+
+    <h3>Medication</h3>
+    <ul class="check-list">
+      <li>SSRIs (first-line): fluoxetine, sertraline, fluvoxamine, paroxetine, citalopram</li>
+      <li>Clomipramine (tricyclic antidepressant – often very effective)</li>
+      <li>Augmentation with antipsychotics in treatment-resistant cases</li>
+    </ul>
+
+    <h3>Psychotherapy</h3>
+    <ul class="check-list">
+      <li><strong>Exposure and Response Prevention (ERP):</strong> Gold-standard CBT technique – facing fears without rituals</li>
+      <li>Acceptance and Commitment Therapy (ACT)</li>
+      <li>Family therapy to reduce accommodation</li>
+      <li>Psychoeducation groups</li>
+    </ul>
+
+    <h3>Lifestyle & Self-Care</h3>
+    <ul class="check-list">
+      <li>Structured routines</li>
+      <li>Mindfulness & stress reduction</li>
+      <li>Regular exercise & sleep</li>
+      <li>Avoiding caffeine/alcohol/drugs that worsen anxiety</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ocduk.org/wp-content/uploads/2021/06/ERP-Explained.png" alt="Exposure and Response Prevention (ERP) diagram">
+        <div class="card-content">
+          <h4>How ERP Works</h4>
+          <p>Breaking the obsession-compulsion cycle</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://iocdf.org/wp-content/uploads/2015/03/ERP-for-OCD.png" alt="ERP therapy process illustration">
+        <div class="card-content">
+          <h4>ERP Process Step-by-Step</h4>
+          <p>Gradual exposure without compulsive response</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>OCD is a highly treatable condition. With proper understanding, early diagnosis, evidence-based treatment (especially ERP + SSRIs), and strong support, most people can dramatically reduce symptoms, break the cycle, and reclaim control over their lives.</p>
+    <p>Recovery is possible — many individuals with OCD lead successful, meaningful lives with the right help.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/OCD-Recovery-Infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="OCD recovery and hope illustration">
+        <div class="card-content">
+          <h4>Hope & Recovery in OCD</h4>
+          <p>Many people thrive with effective treatment</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://iocdf.org/wp-content/uploads/2020/05/living-with-OCD.jpg" alt="Person living well with managed OCD">
+        <div class="card-content">
+          <h4>Living Well with OCD</h4>
+          <p>Stability, purpose, and fulfillment are achievable</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational guide only • Not a substitute for professional mental health advice • Seek help if in distress</p>
+  <p>OCD Comprehensive Guide • Public Mental Health Education • January 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #6d28d9, #8b5cf6)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

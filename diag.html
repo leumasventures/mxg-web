@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding Psychiatric Diagnosis • Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #8b5cf6;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --shadow: 0 8px 24px rgba(99,102,241,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.8px;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #eef2ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #f3f4ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(99,102,241,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+  <h1>Understanding Psychiatric Diagnosis</h1>
+  <div class="subtitle">A Comprehensive Guide from Psychiatry & Counselling Perspectives</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="intro" class="active">What Is a Psychiatric Diagnosis?</button></li>
+      <li><button data-target="steps">Steps in the Diagnostic Process</button></li>
+      <li><button data-target="types">Types of Diagnoses</button></li>
+      <li><button data-target="why">Why Diagnosis Matters</button></li>
+      <li><button data-target="considerations">Important Considerations</button></li>
+      <li><button data-target="counseling">Role of Counseling in Diagnosis</button></li>
+      <li><button data-target="misconceptions">Common Misconceptions</button></li>
+      <li><button data-target="conclusion">Conclusion</button></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <h2>What Is a Psychiatric Diagnosis?</h2>
+    <p>A psychiatric diagnosis is a process in which a mental health professional identifies and classifies a person’s emotional, cognitive, or behavioral symptoms according to recognized criteria.</p>
+    <p>Unlike a simple label, a diagnosis provides a framework to understand experiences, guide treatment, and support recovery.</p>
+
+    <ul class="check-list">
+      <li><strong>Medical Perspective (Psychiatry):</strong> Focuses on symptoms, medical history, biological factors (brain chemistry, genetics, physical conditions).</li>
+      <li><strong>Counseling Perspective:</strong> Emphasizes psychological, social, environmental factors, stress, trauma, relationships, coping strategies.</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://c8.alamy.com/comp/2GPGBRW/psychotherapist-with-check-list-mental-health-examination-doctor-and-treatment-document-vector-illustration-2GPGBRW.jpg" alt="Psychotherapist conducting mental health examination">
+        <div class="card-content">
+          <h4>Mental Health Assessment in Progress</h4>
+          <p>Structured evaluation with empathy</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/previews/068/062/409/non_2x/therapist-engaging-in-supportive-conversation-with-a-client-in-a-warm-inviting-setting-during-a-counseling-session-photo.jpg" alt="Therapist in supportive conversation with client">
+        <div class="card-content">
+          <h4>Collaborative Counseling Dialogue</h4>
+          <p>Understanding the person's story</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://psychscenehub.com/wp-content/uploads/2020/11/10-Point-guide-to-Mental-state-Examination.jpeg" alt="10-Point Guide to Mental State Examination">
+        <div class="card-content">
+          <h4>Mental Status Examination Overview</h4>
+          <p>Key tool in psychiatric assessment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <h2>Steps in the Diagnostic Process</h2>
+
+    <ol>
+      <li><strong>Initial Assessment</strong>
+        <ul class="check-list">
+          <li>Clinical Interview: Detailed questions on symptoms, duration, severity, impact</li>
+          <li>History Taking: Personal, medical, psychiatric, family history</li>
+          <li>Observation: Non-verbal cues, speech, emotional expression</li>
+        </ul>
+      </li>
+      <li><strong>Mental Status Examination (MSE)</strong>
+        <ul class="check-list">
+          <li>Appearance and behavior</li>
+          <li>Mood and affect</li>
+          <li>Thought process and content</li>
+          <li>Perception (e.g., hallucinations)</li>
+          <li>Cognition (memory, attention)</li>
+          <li>Insight and judgment</li>
+        </ul>
+      </li>
+      <li><strong>Screening Tools</strong>: PHQ-9 (depression), GAD-7 (anxiety), etc.</li>
+      <li><strong>Medical Tests</strong>: To rule out physical causes (thyroid, imaging, etc.)</li>
+      <li><strong>Diagnostic Criteria</strong>: DSM-5 or ICD-11</li>
+      <li><strong>Formulating the Diagnosis</strong>: Integrates all data for treatment planning</li>
+    </ol>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.slideteam.net/wp/wp-content/uploads/2025/03/Action-Plans-Following-Assessment.png" alt="Mental health assessment action plan flowchart">
+        <div class="card-content">
+          <h4>Assessment to Action Flow</h4>
+          <p>From evaluation to personalized plan</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.slideteam.net/wp/wp-content/uploads/2025/03/Best-Practices-in-Mental-Health-Assessment.png" alt="Best practices in mental health assessment infographic">
+        <div class="card-content">
+          <h4>Best Practices in Assessment</h4>
+          <p>Holistic and evidence-based approach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="types">
+    <h2>Types of Diagnoses</h2>
+    <ul class="check-list">
+      <li>Mood Disorders: Depression, bipolar disorder, dysthymia</li>
+      <li>Anxiety Disorders: Generalized anxiety, panic, social anxiety</li>
+      <li>Psychotic Disorders: Schizophrenia, schizoaffective disorder</li>
+      <li>Neurodevelopmental Disorders: ADHD, autism spectrum</li>
+      <li>Personality Disorders: Borderline, narcissistic, avoidant</li>
+      <li>Trauma-Related: PTSD, adjustment disorder</li>
+      <li>Substance-Related: Alcohol/drug use disorders</li>
+    </ul>
+  </section>
+
+  <section id="why">
+    <h2>Why Diagnosis Matters</h2>
+    <ul class="check-list">
+      <li>Guides targeted treatment (therapy types, medications)</li>
+      <li>Clarifies symptoms for the person and family</li>
+      <li>Enables access to services, insurance, support programs</li>
+      <li>Allows progress monitoring and treatment adjustments</li>
+    </ul>
+  </section>
+
+  <section id="considerations">
+    <h2>Important Considerations</h2>
+    <ul class="check-list">
+      <li>Diagnosis is a tool — not a permanent label or judgment</li>
+      <li>It can evolve with new information or symptom changes</li>
+      <li>Holistic care: medication + therapy + lifestyle + support</li>
+      <li>Often collaborative across professionals</li>
+    </ul>
+  </section>
+
+  <section id="counseling">
+    <h2>Role of Counseling in Diagnosis</h2>
+    <p>Counselors focus on the narrative, strengths, and coping. They offer:</p>
+    <ul class="check-list">
+      <li>Emotional support & psychoeducation</li>
+      <li>Help understanding what a diagnosis means personally</li>
+      <li>Guidance on daily adjustments and resilience-building</li>
+      <li>Referral to psychiatry for medication evaluation when appropriate</li>
+    </ul>
+  </section>
+
+  <section id="misconceptions">
+    <h2>Common Misconceptions</h2>
+    <ul class="check-list">
+      <li>“A diagnosis is permanent.” → It can change over time.</li>
+      <li>“Diagnosis defines you.” → It describes patterns, not your identity.</li>
+      <li>“Only for severe cases.” → Even milder symptoms benefit from assessment.</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Psychiatric diagnosis is a careful, structured process that helps professionals understand mental health challenges and develop effective, personalized treatment plans.</p>
+    <p>It is not a label of limitation but a tool for guidance, empowerment, and recovery. With proper assessment, collaboration, and support, individuals can manage symptoms, improve functioning, and lead fuller lives.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://shelteringarmsinstitute.com/wp-content/uploads/2023/11/Mental-Health-01-scaled-1.jpg" alt="Person finding hope and recovery in mental health support">
+        <div class="card-content">
+          <h4>Hope and Recovery Ahead</h4>
+          <p>Mental health journey toward well-being</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="http://static1.squarespace.com/static/63526fbc4d67332bf3fd8675/6352733c843357770fe767d2/64be121e4e524004b0053463/1722417318312/Recovery+intro.jpg?format=1500w" alt="Mental health recovery model illustration">
+        <div class="card-content">
+          <h4>Path to Recovery</h4>
+          <p>Strength, growth, and renewed purpose</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational guide only • Seek professional help for personal concerns</p>
+  <p>Understanding Psychiatric Diagnosis • Psychiatry & Counselling Perspective • 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #4f46e5, #6366f1)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding Depression: A Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #60a5fa;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --shadow: 0 8px 24px rgba(37,99,235,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #60a5fa 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(37,99,235,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #eff6ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #eff6ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(37,99,235,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+
+
+  <h1>Understanding Depression</h1>
+  <div class="subtitle">A Comprehensive Guide from Psychiatric & Counselling Perspectives</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="what" class="active">What is Depression?</button></li>
+      <li><button data-target="causes">Causes of Depression</button></li>
+      <li><button data-target="symptoms">Symptoms of Depression</button></li>
+      <li><button data-target="types">Types of Depression</button></li>
+      <li><button data-target="diagnosis">Diagnosis of Depression</button></li>
+      <li><button data-target="treatment">Treatment of Depression</button></li>
+      <li><button data-target="support">Supporting Someone with Depression</button></li>
+      <li><button data-target="prevention">Prevention & Early Intervention</button></li>
+      <li><button data-target="seek-help">When to Seek Help</button></li>
+      <li><button data-target="conclusion">Conclusion</button></li>
+    </ul>
+  </nav>
+
+  <section id="what">
+    <h2>What is Depression?</h2>
+    <p>Depression (Major Depressive Disorder) is a serious but treatable medical condition involving persistent sadness, loss of interest, and reduced ability to function. It affects mood, thinking, behavior, and physical health far beyond temporary sadness or grief.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/depression/depression-infographic.png" alt="Depression overview infographic">
+        <div class="card-content">
+          <h4>Depression at a Glance</h4>
+          <p>Prevalence, impact, and treatability</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/depression-brain-changes-illustration-5b9b9b9b46e0fb0050c5c5c5.png" alt="How depression affects the brain">
+        <div class="card-content">
+          <h4>Brain Changes in Depression</h4>
+          <p>Neurotransmitter and structural differences</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="causes">
+    <h2>Causes of Depression</h2>
+    <p>Depression typically arises from interacting factors:</p>
+    <ul class="check-list">
+      <li><strong>Biological:</strong> Neurotransmitter imbalances (serotonin, dopamine, norepinephrine), genetics, chronic illness, hormonal shifts</li>
+      <li><strong>Psychological:</strong> Negative thinking patterns, low self-esteem, unresolved trauma or grief</li>
+      <li><strong>Social/Environmental:</strong> Isolation, major life stressors (loss, financial strain), lack of support</li>
+    </ul>
+  </section>
+
+  <section id="symptoms">
+    <h2>Symptoms of Depression</h2>
+
+    <h3>Emotional & Cognitive</h3>
+    <ul class="check-list">
+      <li>Persistent sadness, emptiness, or irritability</li>
+      <li>Hopelessness, worthlessness, excessive guilt</li>
+      <li>Loss of interest/pleasure (anhedonia)</li>
+      <li>Difficulty concentrating or deciding</li>
+      <li>Thoughts of death or suicide</li>
+    </ul>
+
+    <h3>Physical & Behavioral</h3>
+    <ul class="check-list">
+      <li>Sleep changes (insomnia or hypersomnia)</li>
+      <li>Appetite/weight changes</li>
+      <li>Fatigue or low energy</li>
+      <li>Unexplained aches or digestive issues</li>
+      <li>Social withdrawal, reduced activity</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/depression/depression-symptoms.png" alt="Depression symptoms visual breakdown">
+        <div class="card-content">
+          <h4>Recognizing Depression Signs</h4>
+          <p>Emotional, cognitive, physical, and behavioral indicators</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/depression-symptoms-infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="Common depression symptoms chart">
+        <div class="card-content">
+          <h4>Depression Symptoms Overview</h4>
+          <p>Full spectrum of how depression manifests</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="types">
+    <h2>Types of Depression</h2>
+    <ul class="check-list">
+      <li><strong>Major Depressive Disorder (MDD):</strong> Intense episodes lasting ≥2 weeks</li>
+      <li><strong>Persistent Depressive Disorder (Dysthymia):</strong> Chronic, milder depression ≥2 years</li>
+      <li><strong>Seasonal Affective Disorder (SAD):</strong> Seasonal pattern, often winter worsening</li>
+      <li><strong>Postpartum Depression:</strong> After childbirth – intense mood, fatigue, anxiety</li>
+      <li><strong>Situational/Adjustment Depression:</strong> Triggered by specific stressors or losses</li>
+    </ul>
+  </section>
+
+  <section id="treatment">
+    <h2>Treatment of Depression</h2>
+
+    <h3>Psychotherapy</h3>
+    <ul class="check-list">
+      <li>Cognitive Behavioral Therapy (CBT) – restructuring negative thoughts</li>
+      <li>Interpersonal Therapy (IPT) – improving relationships</li>
+      <li>Mindfulness-Based Cognitive Therapy (MBCT)</li>
+      <li>Supportive & psychodynamic approaches</li>
+    </ul>
+
+    <h3>Medication</h3>
+    <ul class="check-list">
+      <li>SSRIs (sertraline, escitalopram, fluoxetine) – most common first-line</li>
+      <li>SNRIs (venlafaxine, duloxetine)</li>
+      <li>Atypical antidepressants (bupropion, mirtazapine)</li>
+      <li>Augmentation strategies when needed</li>
+    </ul>
+
+    <h3>Other Treatments</h3>
+    <ul class="check-list">
+      <li>Electroconvulsive Therapy (ECT) – for severe, treatment-resistant cases</li>
+      <li>Transcranial Magnetic Stimulation (TMS)</li>
+      <li>Ketamine/esketamine (rapid-acting for severe cases)</li>
+    </ul>
+
+    <h3>Lifestyle</h3>
+    <ul class="check-list">
+      <li>Aerobic exercise (30 min most days)</li>
+      <li>Consistent sleep & nutrition</li>
+      <li>Social connection & meaningful activity</li>
+      <li>Stress reduction (mindfulness, yoga)</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/depression/depression-treatment.png" alt="Evidence-based depression treatments">
+        <div class="card-content">
+          <h4>Proven Depression Treatments</h4>
+          <p>Therapy, medication, brain stimulation options</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/depression-treatment-pathways-5b9b9b9b46e0fb0050c5c5c5.png" alt="Depression recovery roadmap">
+        <div class="card-content">
+          <h4>Path to Recovery from Depression</h4>
+          <p>Combining professional care and self-management</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Depression is common, serious, and highly treatable. With the right combination of therapy (especially CBT), medication when appropriate, lifestyle support, and human connection, most people experience meaningful improvement — often full or near-full recovery.</p>
+    <p>Reaching out is not weakness; it is strength. Help is effective, recovery is real, and you are not alone.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/depression/depression-recovery.jpg" alt="Person finding hope after depression treatment">
+        <div class="card-content">
+          <h4>Hope & Recovery from Depression</h4>
+          <p>Many people regain joy, energy, and purpose</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/depression-hope-illustration-5b9b9b9b46e0fb0050c5c5c5.png" alt="Living well after overcoming depression">
+        <div class="card-content">
+          <h4>Thriving Beyond Depression</h4>
+          <p>Renewed life, connection, and meaning</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational guide only • Not a substitute for professional mental health care • Reach out if you need support</p>
+  <p>Understanding Depression • Public Mental Health Education • January 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #1d4ed8, #2563eb)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

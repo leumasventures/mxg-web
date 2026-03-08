@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Behavioural Well-Being • Mental Health Guide</title>
+  <style>
+    :root {
+      --primary:    #4c6ef5;
+      --primary-dk: #3b5bdb;
+      --teal:       #20c997;
+      --coral:      #ff6b6b;
+      --gray-1:     #f8f9fa;
+      --gray-2:     #e9ecef;
+      --gray-3:     #495057;
+      --text:       #212529;
+      --shadow-sm:  0 3px 10px rgba(0,0,0,0.08);
+      --shadow-md:  0 8px 25px rgba(0,0,0,0.11);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--gray-1);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #5a72fc 100%);
+      color: white;
+      text-align: center;
+      padding: 4.5rem 1.5rem 3.5rem;
+      border-radius: 0 0 24px 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    header h1 {
+      font-size: 3.1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    header .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.92;
+      font-weight: 400;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    nav.toc h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.6rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+    }
+
+    nav.toc li button {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      background: white;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    nav.toc li button:hover,
+    nav.toc li button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(76,110,245,0.25);
+    }
+
+    section {
+      background: white;
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e9ecef;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.1rem;
+      margin-bottom: 1.3rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 4px solid #e3edff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 90px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    h3 {
+      color: #343a40;
+      font-size: 1.55rem;
+      margin: 2rem 0 1.1rem;
+    }
+
+    .key-points {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.3rem 0;
+    }
+
+    .key-points li {
+      padding: 0.9rem 1.3rem;
+      background: #f1f5ff;
+      margin-bottom: 0.75rem;
+      border-radius: 10px;
+      border-left: 5px solid var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 3.5rem 0 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.8rem;
+      margin: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary);   color: white; }
+    .btn-teal      { background: var(--teal);      color: white; }
+    .btn-coral     { background: var(--coral);     color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover   { background: var(--primary-dk); }
+    .btn-outline:hover    { background: var(--primary); color: white; }
+
+    .resources-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1.4rem;
+    }
+
+    .card h4 {
+      margin: 0 0 0.8rem;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: #6c757d;
+      font-size: 0.95rem;
+      border-top: 1px solid #dee2e6;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 2.4rem; }
+      header { padding: 3.5rem 1rem 2.5rem; }
+      .container { padding: 1.2rem; }
+      section { padding: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+
+  <h1>Behavioural Well-Being</h1>
+  <div class="subtitle">A public mental health note — Psychiatrist & Counsellor perspective</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Jump to Section</h2>
+    <ul>
+      <li><button data-target="intro" class="active">Introduction</button></li>
+      <li><button data-target="core">Core Components</button></li>
+      <li><button data-target="factors">Influencing Factors</button></li>
+      <li><button data-target="challenges">Common Challenges</button></li>
+      <li><button data-target="lifespan">Life Span</button></li>
+      <li><button data-target="prevention">Prevention & Early Support</button></li>
+      <li><button data-target="promotion">How to Promote It</button></li>
+      <li><button data-target="seekhelp">When to Seek Help</button></li>
+      <li><button data-target="public">Public Health Importance</button></li>
+      <li><button data-target="closing">Closing Perspective</button></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <h2>Introduction</h2>
+    <p>Behavioural well-being refers to the way a person thinks, feels, acts, and relates with others in daily life. It reflects how individuals manage emotions, handle stress, make decisions, and maintain healthy relationships.</p>
+    <p>From a psychiatric and counselling perspective, behavioural well-being is <strong>not</strong> simply the absence of mental illness. It is the presence of adaptive behaviours, emotional stability, self-awareness, and functional coping skills that allow a person to live productively and with meaning.</p>
+    <p>Behavioural well-being matters to everyone — it influences academic performance, work productivity, family life, physical health, and even community safety.</p>
+  </section>
+
+  <section id="core">
+    <h2>Core Components of Behavioural Well-Being</h2>
+
+    <h3>1. Emotional Regulation</h3>
+    <p>The ability to recognize, understand, and manage emotions in healthy ways.</p>
+    <ul class="key-points">
+      <li>Awareness of personal emotions</li>
+      <li>Ability to calm oneself during stress</li>
+      <li>Appropriate (non-destructive) expression of feelings</li>
+    </ul>
+
+    <h3>2. Cognitive Functioning & Thought Patterns</h3>
+    <ul class="key-points">
+      <li>Balanced rather than extreme or rigid thinking</li>
+      <li>Good concentration, planning and problem-solving</li>
+      <li>Learning from experience instead of repeating harmful patterns</li>
+    </ul>
+
+    <h3>3. Behavioural Control & Self-Discipline</h3>
+    <ul class="key-points">
+      <li>Managing impulses and urges</li>
+      <li>Following rules and responsibilities</li>
+      <li>Adjusting behaviour when it harms self or others</li>
+    </ul>
+
+    <h3>4. Social Functioning & Relationships</h3>
+    <ul class="key-points">
+      <li>Effective & respectful communication</li>
+      <li>Empathy and genuine respect for others</li>
+      <li>Constructive conflict resolution</li>
+    </ul>
+  </section>
+
+  <section id="factors">
+    <h2>Factors That Influence Behavioural Well-Being</h2>
+    <h3>Biological</h3>
+    <ul><li>Brain chemistry & genetics</li><li>Hormonal balance</li><li>Sleep & nutrition</li><li>Chronic illness</li></ul>
+
+    <h3>Psychological</h3>
+    <ul><li>Personality traits</li><li>Past trauma & experiences</li><li>Childhood coping patterns</li><li>Self-esteem</li></ul>
+
+    <h3>Social & Environmental</h3>
+    <ul><li>Family & parenting style</li><li>Peer group</li><li>Cultural / religious values</li><li>Economic stress, violence, neglect</li></ul>
+  </section>
+
+  <section id="challenges">
+    <h2>Common Behavioural Challenges</h2>
+    <ul class="key-points">
+      <li>Persistent anger / irritability</li>
+      <li>Social withdrawal</li>
+      <li>Risk-taking or reckless behaviour</li>
+      <li>Substance misuse</li>
+      <li>Poor stress tolerance</li>
+      <li>Non-compliance / authority conflicts</li>
+      <li>Significant drop in performance (school / work)</li>
+    </ul>
+    <p>When intense, long-lasting or very disruptive → professional help is strongly recommended.</p>
+  </section>
+
+  <section id="lifespan">
+    <h2>Behavioural Well-Being Across the Life Span</h2>
+    <h3>Children</h3>
+    <p>Curiosity, emotional expression, learning boundaries are healthy. Red flags: aggression, excessive fear, attention problems, skill regression.</p>
+
+    <h3>Adolescents</h3>
+    <p>Identity formation + emotional sensitivity. Normal mood swings occur, but persistent risk-taking, withdrawal or defiance often needs support.</p>
+
+    <h3>Adults</h3>
+    <p>Supports productivity, parenting, stable relationships. Chronic stress, trauma or poor coping often become visible here.</p>
+
+    <h3>Older Adults</h3>
+    <p>Transitions, illness, loss can affect behaviour. Sudden personality change or emotional withdrawal should never be dismissed.</p>
+  </section>
+
+  <section id="prevention">
+    <h2>Role of Prevention and Early Support</h2>
+    <p>Early recognition prevents escalation into more serious conditions.</p>
+    <ul class="key-points">
+      <li>Mental health education in schools & communities</li>
+      <li>Parenting programs & positive discipline training</li>
+      <li>Stress management & emotional regulation skills</li>
+      <li>Accessible school / workplace counselling</li>
+      <li>Community awareness & stigma reduction</li>
+    </ul>
+  </section>
+
+  <section id="promotion">
+    <h2>Promoting Healthy Behavioural Well-Being</h2>
+    <ul class="key-points">
+      <li>Regular sleep & balanced nutrition</li>
+      <li>Regular physical activity</li>
+      <li>Learning healthy coping & problem-solving skills</li>
+      <li>Building & maintaining supportive relationships</li>
+      <li>Practicing emotional awareness / mindfulness</li>
+      <li>Seeking help early — before crisis</li>
+    </ul>
+
+    <div class="resources-gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518644961665-5d9f8b82d0e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calm breathing exercise">
+        <div class="card-content">
+          <h4>Deep Breathing & Relaxation</h4>
+          <p>Simple yet powerful daily practice</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="People walking in nature">
+        <div class="card-content">
+          <h4>Time in Nature</h4>
+          <p>One of the most evidence-based mood regulators</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Journaling">
+        <div class="card-content">
+          <h4>Journaling & Reflection</h4>
+          <p>Helps process emotions and thoughts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="seekhelp">
+    <h2>When to Seek Professional Help</h2>
+    <ul class="key-points">
+      <li>Behaviour seriously interferes with daily life</li>
+      <li>Risk of harm to self or others</li>
+      <li>Intense emotional pain lasting weeks/months</li>
+      <li>Current coping strategies no longer work</li>
+      <li>Relationships (family, school, work) deteriorating</li>
+    </ul>
+    <p style="font-weight:600; color:var(--coral); margin-top:1.5rem;">
+      → Asking for mental health support is a sign of strength and responsibility — not weakness.
+    </p>
+  </section>
+
+  <section id="public">
+    <h2>Public Health Importance</h2>
+    <p>Good behavioural well-being at population level reduces:</p>
+    <ul>
+      <li>Violence & aggression</li>
+      <li>Substance misuse</li>
+      <li>School dropout</li>
+      <li>Workplace burnout & presenteeism</li>
+    </ul>
+    <p>Key ingredients: public education • accessible services • stigma reduction</p>
+  </section>
+
+  <section id="closing">
+    <h2>Closing Perspective</h2>
+    <p>Behavioural well-being is a dynamic balance between thoughts, emotions, actions and relationships.</p>
+    <p>It is shaped by biology, life experience and environment — and it can be strengthened at any age.</p>
+    <p style="font-size:1.15rem; font-weight:600; color:var(--primary); margin-top:1.8rem;">
+      Awareness + early support + compassionate care = healthier individuals and stronger communities.
+    </p>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-teal"    onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Dark / Light Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Not medical advice — consult a qualified professional for personal concerns</p>
+  <p>Behavioural Well-Being • Public Mental Health Note • 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  // Smooth scroll + active TOC button
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const targetId = btn.getAttribute('data-target');
+      const section = document.getElementById(targetId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+
+    if (document.body.classList.contains('dark')) {
+      document.body.style.backgroundColor = '#121212';
+      document.body.style.color = '#e0e0e0';
+
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e1e1e';
+        el.style.borderColor = '#333';
+        el.style.color = '#e0e0e0';
+      });
+
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #2b3dd4, #1e40af)';
+    } else {
+      location.reload(); // easiest reset
+    }
+  }
+</script>
+
+</body>
+</html>

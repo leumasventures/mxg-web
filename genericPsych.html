@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generic Psychiatry – Public Education Note</title>
+  <style>
+    :root {
+      --primary: #2c5282;
+      --primary-dark: #1a365d;
+      --light-bg: #f7fafc;
+      --gray: #4a5568;
+      --light-gray: #edf2f7;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: #1a202c;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .section-header {
+      background: var(--light-gray);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .section-header:hover {
+      background: #e2e8f0;
+    }
+
+    .section-header h2 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .toggle {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      transition: transform 0.3s;
+    }
+
+    .section-header.active .toggle {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      padding: 1.5rem;
+      display: none;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    ul {
+      padding-left: 1.8rem;
+      margin: 1rem 0;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    .highlight {
+      background-color: #fefcbf;
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+    }
+
+    .final-note {
+      background: #ebf8ff;
+      border-left: 5px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #718096;
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .section-header h2 { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+    <h1>GENERIC PSYCHIATRY</h1>
+    <p>A Public Education Note and Article<br>Written from the perspective of a Psychiatrist and a Counsellor</p>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <div class="section-header" data-target="sec1">
+        <h2>1. Introduction to Psychiatry</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content" id="sec1">
+        <p>Psychiatry is a medical and helping profession concerned with the understanding, prevention, diagnosis, and treatment of mental, emotional, and behavioural conditions. It recognizes that mental health is inseparable from physical health, personal history, social environment, culture, and life experiences.</p>
+        <p>From a psychiatric standpoint, mental disorders are legitimate health conditions that can affect thinking, mood, perception, behaviour, relationships, and daily functioning. From a counselling standpoint, psychiatry works best when medical care is paired with psychological support, education, and human connection.</p>
+        <p>Psychiatry is not only about severe mental illness. It also addresses everyday struggles that become overwhelming, persistent, or disabling.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" data-target="sec2">
+        <h2>2. Goals of Psychiatry</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content" id="sec2">
+        <p>The central goals of psychiatry include:</p>
+        <ul>
+          <li>Relief of emotional and psychological distress</li>
+          <li>Restoration of functional ability at home, school, work, and in relationships</li>
+          <li>Prevention of relapse and worsening of symptoms</li>
+          <li>Promotion of emotional resilience and coping skills</li>
+          <li>Improvement of quality of life</li>
+          <li>Support for families and caregivers</li>
+        </ul>
+        <p class="highlight">Psychiatry aims to treat the person, not just the diagnosis.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" data-target="sec3">
+        <h2>3. What Psychiatry Is and What It Is Not</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content" id="sec3">
+        <p><strong>Psychiatry Is:</strong></p>
+        <ul>
+          <li>A recognized medical specialty</li>
+          <li>Evidence-based and ethically regulated</li>
+          <li>Concerned with both brain function and lived experience</li>
+          <li>Focused on care, dignity, and recovery</li>
+        </ul>
+        <p><strong>Psychiatry Is Not:</strong></p>
+        <ul>
+          <li>Mind control</li>
+          <li>Punishment or confinement</li>
+          <li>A sign of weakness</li>
+          <li>Only for “madness” or loss of reality</li>
+        </ul>
+        <p class="highlight">Seeking psychiatric help is a sign of insight and responsibility toward one’s health.</p>
+      </div>
+    </div>
+
+    <!-- Add remaining sections similarly -->
+
+    <div class="section">
+      <div class="section-header" data-target="sec4">
+        <h2>4. Common Conditions Managed in Psychiatry</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content" id="sec4">
+        <p>Psychiatry addresses a wide range of conditions, including but not limited to:</p>
+        <p><strong>Mood-Related Conditions</strong></p>
+        <ul>
+          <li>Depression</li>
+          <li>Bipolar disorder</li>
+          <li>Persistent mood instability</li>
+        </ul>
+        <p><strong>Anxiety-Related Conditions</strong></p>
+        <ul>
+          <li>Generalized anxiety</li>
+          <li>Panic disorder</li>
+          <li>Phobias</li>
+          <li>Stress-related disorders</li>
+        </ul>
+        <!-- You can continue adding the other subcategories -->
+      </div>
+    </div>
+
+    <!-- ... Add sections 5 through 15 in the same pattern ... -->
+
+    <div class="section">
+      <div class="section-header" data-target="sec16">
+        <h2>16. Final Perspective from a Psychiatrist and Counsellor</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content" id="sec16" style="display: block;">
+        <div class="final-note">
+          <p>Mental health care is a partnership. Psychiatry provides medical understanding and clinical structure, while counselling offers emotional depth and human connection.</p>
+          <p>Seeking help is not the end of independence. It is often the beginning of clarity, balance, and renewed strength.</p>
+          <p><strong>Mental health is health. Caring for it is a responsibility, not a weakness.</strong></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Maxgio Health LLC 2026</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.section-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = document.getElementById(header.dataset.target);
+        const isActive = content.classList.contains('active');
+
+        // Close all others (accordion behavior)
+        document.querySelectorAll('.section-content').forEach(el => {
+          el.classList.remove('active');
+        });
+        document.querySelectorAll('.section-header').forEach(el => {
+          el.classList.remove('active');
+        });
+
+        // Toggle clicked one
+        if (!isActive) {
+          content.classList.add('active');
+          header.classList.add('active');
+        }
+      });
+    });
+
+    // Optional: open first section by default
+    // document.querySelector('.section-header').click();
+  </script>
+
+</body>
+</html>

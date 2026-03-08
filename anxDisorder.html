@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding Anxiety Disorders: A Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #818cf8;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --shadow: 0 8px 24px rgba(99,102,241,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.8px;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #eef2ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #f3f4ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(99,102,241,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+
+  <h1>Understanding Anxiety Disorders</h1>
+  <div class="subtitle">A Comprehensive Guide from Psychiatric & Counselling Perspectives</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="what" class="active">What is Anxiety Disorder?</button></li>
+      <li><button data-target="causes">Causes of Anxiety Disorders</button></li>
+      <li><button data-target="symptoms">Symptoms of Anxiety Disorders</button></li>
+      <li><button data-target="diagnosis">Diagnosis of Anxiety Disorders</button></li>
+      <li><button data-target="treatment">Treatment Options</button></li>
+      <li><button data-target="coping">Coping Strategies & Self-Help</button></li>
+      <li><button data-target="seek-help">When to Seek Help</button></li>
+      <li><button data-target="misconceptions">Misconceptions About Anxiety</button></li>
+      <li><button data-target="role">Role of Psychiatric & Counseling Support</button></li>
+      <li><button data-target="conclusion">Conclusion</button></li>
+    </ul>
+  </nav>
+
+  <section id="what">
+    <h2>What is Anxiety Disorder?</h2>
+    <p>Anxiety is a normal response to stress, but when it becomes excessive, persistent, and interferes with daily life, it may indicate an anxiety disorder — one of the most common mental health conditions worldwide.</p>
+    <p>Common types include:</p>
+    <ul class="check-list">
+      <li>Generalized Anxiety Disorder (GAD) – chronic worry about everyday matters</li>
+      <li>Panic Disorder – recurrent, unexpected panic attacks</li>
+      <li>Social Anxiety Disorder – intense fear of social judgment</li>
+      <li>Specific Phobias – extreme fear of particular objects/situations</li>
+      <li>Obsessive-Compulsive Disorder (OCD) – intrusive thoughts + repetitive behaviors</li>
+      <li>Post-Traumatic Stress Disorder (PTSD) – trauma-related anxiety & re-experiencing</li>
+      <li>Separation Anxiety Disorder – excessive fear of separation from attachment figures</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/anxiety-disorders-types-infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="Types of anxiety disorders infographic">
+        <div class="card-content">
+          <h4>Main Types of Anxiety Disorders</h4>
+          <p>Overview of GAD, panic, social anxiety, phobias, and more</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/anxiety-disorders/anxiety-disorders-infographic.png" alt="Anxiety disorders prevalence and impact illustration">
+        <div class="card-content">
+          <h4>Anxiety Disorders at a Glance</h4>
+          <p>Prevalence, impact, and treatability</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="causes">
+    <h2>Causes of Anxiety Disorders</h2>
+    <p>Anxiety disorders arise from a mix of:</p>
+    <ul class="check-list">
+      <li><strong>Biological:</strong> Neurotransmitter imbalances (serotonin, GABA), genetic predisposition</li>
+      <li><strong>Psychological:</strong> Early experiences, trauma, personality traits, learned coping patterns</li>
+      <li><strong>Environmental:</strong> Chronic stress, major life changes, social isolation</li>
+      <li><strong>Medical:</strong> Thyroid issues, heart conditions, or other illnesses mimicking anxiety</li>
+    </ul>
+  </section>
+
+  <section id="symptoms">
+    <h2>Symptoms of Anxiety Disorders</h2>
+
+    <h3>Emotional/Cognitive</h3>
+    <ul class="check-list">
+      <li>Persistent worry or fear</li>
+      <li>Irritability, restlessness</li>
+      <li>Difficulty concentrating</li>
+      <li>Feeling of impending doom</li>
+    </ul>
+
+    <h3>Physical</h3>
+    <ul class="check-list">
+      <li>Rapid heartbeat, sweating, trembling</li>
+      <li>Shortness of breath, chest tightness</li>
+      <li>Nausea, headaches, muscle tension</li>
+      <li>Sleep disturbances, fatigue</li>
+    </ul>
+
+    <h3>Behavioral</h3>
+    <ul class="check-list">
+      <li>Avoidance of triggers</li>
+      <li>Social withdrawal</li>
+      <li>Excessive reassurance-seeking</li>
+      <li>Compulsive behaviors (in OCD)</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/anxiety-symptoms-infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="Common physical and emotional symptoms of anxiety">
+        <div class="card-content">
+          <h4>Signs of Anxiety – Body & Mind</h4>
+          <p>Physical sensations and emotional experiences</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/anxiety-disorders/anxiety-symptoms.png" alt="Anxiety symptoms illustration">
+        <div class="card-content">
+          <h4>Anxiety Symptoms Overview</h4>
+          <p>Recognizing the full range of signs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="treatment">
+    <h2>Treatment Options</h2>
+
+    <h3>Psychotherapy</h3>
+    <ul class="check-list">
+      <li>Cognitive Behavioral Therapy (CBT) – gold standard for restructuring thoughts</li>
+      <li>Exposure Therapy – gradual facing of fears</li>
+      <li>Acceptance and Commitment Therapy (ACT)</li>
+      <li>Mindfulness-Based Therapies</li>
+    </ul>
+
+    <h3>Medications</h3>
+    <ul class="check-list">
+      <li>SSRIs (e.g., sertraline, escitalopram) – first-line</li>
+      <li>SNRIs (e.g., venlafaxine)</li>
+      <li>Benzodiazepines – short-term for acute symptoms</li>
+      <li>Beta-blockers – for performance/situational anxiety</li>
+    </ul>
+
+    <h3>Lifestyle</h3>
+    <ul class="check-list">
+      <li>Regular aerobic exercise</li>
+      <li>Consistent sleep & nutrition</li>
+      <li>Limit caffeine/alcohol</li>
+      <li>Relaxation practices (deep breathing, yoga)</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/anxiety-treatment-options-infographic-5b9b9b9b46e0fb0050c5c5c5.png" alt="Treatment pathways for anxiety disorders">
+        <div class="card-content">
+          <h4>Anxiety Treatment Roadmap</h4>
+          <p>Therapy + medication + lifestyle</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/anxiety-disorders/anxiety-treatment.png" alt="Evidence-based anxiety treatments">
+        <div class="card-content">
+          <h4>Proven Approaches to Anxiety</h4>
+          <p>CBT, exposure, mindfulness, and medication</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Anxiety disorders are common, treatable, and respond well to a combination of therapy (especially CBT), medication when needed, and healthy lifestyle habits. Early recognition and professional support lead to better outcomes, reduced suffering, and restored quality of life.</p>
+    <p>Seeking help is a sign of strength — effective treatment can help you feel more in control, calmer, and more able to enjoy life again.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.verywellmind.com/thmb/anxiety-recovery-hope-5b9b9b9b46e0fb0050c5c5c5.png" alt="Person finding calm after anxiety treatment">
+        <div class="card-content">
+          <h4>Hope & Recovery from Anxiety</h4>
+          <p>Many people regain peace and confidence</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/anxiety-disorders/anxiety-recovery.jpg" alt="Living well after managing anxiety">
+        <div class="card-content">
+          <h4>Thriving Beyond Anxiety</h4>
+          <p>Balanced, fulfilling life is achievable</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational guide only • Not a substitute for professional mental health advice • Seek help if needed</p>
+  <p>Understanding Anxiety Disorders • Public Mental Health Education • January 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #4f46e5, #6366f1)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

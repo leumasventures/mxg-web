@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post Editor - Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --text-light: #94a3b8;
+      --border: #334155;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    h1 { font-size: 28px; font-weight: 700; margin: 0; }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+    .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-success { background: var(--success); color: white; }
+    .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-light); }
+    .btn-secondary:hover { background: var(--border); }
+
+    .theme-toggle { background: none; border: none; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .theme-toggle:hover { background: var(--border); }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 16px;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    input:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) { .editor-layout { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(248,250,252,0.6);
+    }
+
+    .toolbar button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      transition: all 0.2s;
+    }
+
+    .toolbar button:hover, .toolbar button.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    #editor {
+      flex: 1;
+      padding: 24px;
+      border: none;
+      font-family: 'Georgia', serif;
+      font-size: 17px;
+      line-height: 1.8;
+      resize: none;
+      background: transparent;
+      color: var(--text);
+    }
+
+    #preview {
+      padding: 32px;
+      overflow-y: auto;
+      line-height: 1.8;
+    }
+
+    .preview h1, .preview h2, .preview h3 { margin: 1.5em 0 0.8em; }
+    .preview pre { background: #1e1e1e; color: #f8f8f2; padding: 20px; border-radius: 10px; overflow-x: auto; }
+    .preview img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+
+    .upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.2s;
+    }
+
+    .upload-area:hover { border-color: var(--primary); background: rgba(59,130,246,0.05); }
+
+    .image-preview { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .image-preview img { max-width: 120px; border-radius: 8px; }
+
+    .status { font-size: 14px; color: var(--text-light); margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Blog Post Editor - Pro</h1>
+      <div class="actions">
+        <button class="btn btn-secondary" id="exportHtml"><i class="fas fa-file-code"></i> HTML</button>
+        <button class="btn btn-secondary" id="exportMd"><i class="fas fa-download"></i> Markdown</button>
+        <button class="btn btn-success" id="publishGitHub"><i class="fab fa-github"></i> Publish to GitHub</button>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      </div>
+    </header>
+
+    <div class="meta-grid">
+      <div>
+        <label for="postTitle">Post Title</label>
+        <input type="text" id="postTitle" placeholder="My Amazing Blog Post" />
+      </div>
+      <div>
+        <label for="postSlug">URL Slug</label>
+        <input type="text" id="postSlug" placeholder="my-amazing-post" />
+      </div>
+      <div>
+        <label for="postCategory">Category</label>
+        <select id="postCategory">
+          <option value="">Select category</option>
+          <option value="technology">Technology</option>
+          <option value="health">Health</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="travel">Travel</option>
+          <option value="personal">Personal</option>
+          <option value="custom">Custom...</option>
+        </select>
+      </div>
+      <div>
+        <label for="postTags">Tags (comma separated)</label>
+        <input type="text" id="postTags" placeholder="markdown, blogging, productivity" />
+      </div>
+      <div>
+        <label for="postDate">Publish Date</label>
+        <input type="date" id="postDate" />
+      </div>
+    </div>
+
+    <div class="upload-area" id="uploadArea">
+      <i class="fas fa-cloud-upload-alt" style="font-size: 40px; color: var(--primary); margin-bottom: 12px;"></i>
+      <p><strong>Click or drag images here</strong><br>Images will be embedded or linked</p>
+      <input type="file" id="imageUpload" accept="image/*" multiple style="display:none;" />
+      <div class="image-preview" id="imagePreview"></div>
+      <div class="status" id="uploadStatus"></div>
+    </div>
+
+    <div class="editor-layout">
+      <div class="panel">
+        <div class="panel-header">
+          <span>Write in Markdown</span>
+          <span class="auto-save" id="autoSave">Draft saved</span>
+        </div>
+        <div class="toolbar">
+          <button data-cmd="bold"><i class="fas fa-bold"></i></button>
+          <button data-cmd="italic"><i class="fas fa-italic"></i></button>
+          <button data-cmd="h1"><i class="fas fa-heading"></i>1</button>
+          <button data-cmd="h2"><i class="fas fa-heading"></i>2</button>
+          <button data-cmd="quote"><i class="fas fa-quote-left"></i></button>
+          <button data-cmd="code"><i class="fas fa-code"></i></button>
+          <button data-cmd="link"><i class="fas fa-link"></i></button>
+          <button data-cmd="image"><i class="fas fa-image"></i></button>
+          <button data-cmd="ul"><i class="fas fa-list-ul"></i></button>
+          <button data-cmd="ol"><i class="fas fa-list-ol"></i></button>
+          <button data-cmd="hr"><i class="fas fa-minus"></i></button>
+        </div>
+        <textarea id="editor" placeholder="Start writing your amazing post..."></textarea>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Live Preview</div>
+        <div id="preview" class="preview"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const autoSave = document.getElementById('autoSave');
+    const uploadArea = document.getElementById('uploadArea');
+    const imageUpload = document.getElementById('imageUpload');
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadStatus = document.getElementById('uploadStatus');
+
+    let uploadedImages = [];
+
+    // Load saved draft
+    window.addEventListener('load', () => {
+      const saved = localStorage.getItem('proBlogDraft');
+      const meta = JSON.parse(localStorage.getItem('proBlogMeta') || '{}');
+      
+      if (saved) {
+        editor.value = saved;
+        updatePreview();
+      }
+      document.getElementById('postTitle').value = meta.title || '';
+      document.getElementById('postSlug').value = meta.slug || '';
+      document.getElementById('postCategory').value = meta.category || '';
+      document.getElementById('postTags').value = meta.tags || '';
+      document.getElementById('postDate').value = meta.date || new Date().toISOString().split('T')[0];
+      uploadedImages = meta.images || [];
+      renderUploadedImages();
+    });
+
+    // Auto-save
+    let saveTimer;
+    function saveDraft() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        localStorage.setItem('proBlogDraft', editor.value);
+        localStorage.setItem('proBlogMeta', JSON.stringify({
+          title: document.getElementById('postTitle').value,
+          slug: document.getElementById('postSlug').value,
+          category: document.getElementById('postCategory').value,
+          tags: document.getElementById('postTags').value,
+          date: document.getElementById('postDate').value,
+          images: uploadedImages
+        }));
+        autoSave.textContent = 'Saved just now';
+        setTimeout(() => autoSave.textContent = 'Draft saved', 2000);
+      }, 800);
+      updatePreview();
+    }
+
+    editor.addEventListener('input', saveDraft);
+    document.querySelectorAll('.meta-grid input, .meta-grid select').forEach(el => el.addEventListener('input', saveDraft));
+
+    // Live preview
+    function updatePreview() {
+      const html = marked.parse(editor.value);
+      preview.innerHTML = html;
+    }
+
+    // Toolbar commands
+    document.querySelectorAll('.toolbar button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cmd = btn.dataset.cmd;
+        insertMarkdown(cmd);
+      });
+    });
+
+    function insertMarkdown(type) {
+      const start = editor.selectionStart;
+      const end = editor.selectionEnd;
+      const text = editor.value;
+      const selected = text.substring(start, end);
+      let insert = '';
+
+      switch(type) {
+        case 'bold': insert = `**${selected || 'bold'}**`; break;
+        case 'italic': insert = `*${selected || 'italic'}*`; break;
+        case 'h1': insert = `# ${selected || 'Heading 1'}\n`; break;
+        case 'h2': insert = `## ${selected || 'Heading 2'}\n`; break;
+        case 'quote': insert = `> ${selected || 'Quote'}\n`; break;
+        case 'code': insert = `\`\`\`\n${selected || 'code'}\n\`\`\`\n`; break;
+        case 'link':
+          const url = prompt('Enter URL:');
+          if (url) insert = `[${selected || 'link'}](${url})`;
+          break;
+        case 'image':
+          const imgUrl = prompt('Enter image URL or use uploaded images below:');
+          if (imgUrl) insert = `![${prompt('Alt text:') || 'image'}](${imgUrl})\n`;
+          break;
+        case 'ul': insert = `- ${selected || 'Item'}\n- \n`; break;
+        case 'ol': insert = `1. ${selected || 'Item'}\n2. \n`; break;
+        case 'hr': insert = '\n---\n'; break;
+      }
+
+      if (insert) {
+        editor.setRangeText(insert, start, end, 'end');
+        saveDraft();
+        editor.focus();
+      }
+    }
+
+    // Image upload
+    uploadArea.addEventListener('click', () => imageUpload.click());
+    imageUpload.addEventListener('change', handleFiles);
+
+    function handleFiles(e) {
+      const files = e.target.files;
+      for (let file of files) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const base64 = ev.target.result;
+          uploadedImages.push({ name: file.name, data: base64 });
+          renderUploadedImages();
+          saveDraft();
+          uploadStatus.textContent = `${file.name} added!`;
+          setTimeout(() => uploadStatus.textContent = '', 3000);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function renderUploadedImages() {
+      imagePreview.innerHTML = '';
+      uploadedImages.forEach((img, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `<img src="${img.data}" alt="${img.name}" />
+                         <button style="position:absolute;top:4px;right:4px;background:red;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;" onclick="removeImage(${i})">×</button>`;
+        div.style.position = 'relative';
+        imagePreview.appendChild(div);
+      });
+    }
+
+    window.removeImage = function(index) {
+      uploadedImages.splice(index, 1);
+      renderUploadedImages();
+      saveDraft();
+    };
+
+    // Export HTML
+    document.getElementById('exportHtml').addEventListener('click', () => {
+      const title = document.getElementById('postTitle').value || 'Untitled';
+      const slug = document.getElementById('postSlug').value || title.toLowerCase().replace(/\s+/g, '-');
+      const date = document.getElementById('postDate').value;
+      const category = document.getElementById('postCategory').value;
+      const tags = document.getElementById('postTags').value.split(',').map(t => t.trim());
+
+      let content = editor.value;
+      uploadedImages.forEach(img => {
+        content = content.replace(new RegExp(`\\!\\[${img.name}\\]\\([^)]+\\)`, 'g'), `![${img.name}](${img.data})`);
+      });
+
+      const fullHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title}</title>
+  <meta name="description" content="${title}">
+  <style>
+    body { font-family: Georgia, serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.8; color: #333; }
+    h1 { font-size: 2.8em; margin-bottom: 0.5em; }
+    .meta { color: #666; margin-bottom: 2em; }
+    pre { background: #f4f4f4; padding: 20px; border-radius: 8px; overflow-x: auto; }
+    img { max-width: 100%; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>${title}</h1>
+  <div class="meta">
+    Published on ${date} • Category: ${category} • Tags: ${tags.join(', ')}
+  </div>
+  ${marked.parse(content)}
+</body>
+</html>`;
+
+      downloadFile(fullHtml, `${slug}.html`, 'text/html');
+    });
+
+    // Export Markdown
+    document.getElementById('exportMd').addEventListener('click', () => {
+      const title = document.getElementById('postTitle').value;
+      const content = `# ${title}\n\n${editor.value}`;
+      downloadFile(content, `${document.getElementById('postSlug').value || 'post'}.md`, 'text/markdown');
+    });
+
+    function downloadFile(content, filename, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Publish to GitHub (simple version - requires personal access token)
+    document.getElementById('publishGitHub').addEventListener('click', () => {
+      const token = prompt('Enter your GitHub Personal Access Token (with repo scope):');
+      if (!token) return;
+
+      const repo = prompt('Repository name (e.g. username.github.io):', 'yourname.github.io');
+      const slug = document.getElementById('postSlug').value || 'untitled';
+      const filename = `_posts/${new Date().toISOString().split('T')[0]}-${slug}.md`;
+
+      const frontMatter = `---
+title: "${document.getElementById('postTitle').value}"
+date: ${document.getElementById('postDate').value}
+categories: [${document.getElementById('postCategory').value}]
+tags: [${document.getElementById('postTags').value.split(',').map(t=>t.trim())}]
+---
+
+${editor.value}`;
+
+      fetch(`https://api.github.com/repos/${repo}/contents/${filename}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+          message: `Add blog post: ${document.getElementById('postTitle').value}`,
+          content: btoa(unescape(encodeURIComponent(frontMatter))),
+          branch: 'main'
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.commit) {
+          alert(`Published! View at: https://${repo}/${slug}`);
+        } else {
+          alert('Error: ' + (data.message || 'Unknown error'));
+        }
+      })
+      .catch(err => alert('Failed to publish: ' + err.message));
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Initial preview
+    updatePreview();
+  </script>
+</body>
+</html>

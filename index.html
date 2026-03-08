@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maxgio Healthcare LLC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --navy: #0a2463;
+            --blue: #1565c0;
+            --sky: #4fc3f7;
+            --red: #c62828;
+            --soft-red: #ef5350;
+            --white: #ffffff;
+            --off-white: #f0f4ff;
+            --text: #1a1a2e;
+            --muted: #607d9b;
+            --card-shadow: 0 8px 32px rgba(10,36,99,0.10);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            background: var(--navy);
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            padding: 8px 0;
+        }
+        .topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .topbar a { color: var(--sky); text-decoration: none; }
+        .topbar span { margin: 0 18px; opacity: .4; }
+
+        /* ── MARQUEE ── */
+        .marquee-bar {
+            background: linear-gradient(90deg, var(--red), var(--soft-red));
+            color: #fff;
+            font-size: 13.5px;
+            padding: 7px 0;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: marqueeScroll 28s linear infinite;
+        }
+        .marquee-track p { margin: 0; padding-right: 80px; }
+        @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── NAVBAR ── */
+        nav {
+            background: #fff;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(10,36,99,0.08);
+            transition: box-shadow .3s;
+        }
+        nav.scrolled { box-shadow: 0 4px 30px rgba(10,36,99,0.14); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-logo { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sky); }
+        .brand-text .line1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--red); line-height: 1; }
+        .brand-text .line2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--blue); line-height: 1; }
+        .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+        .nav-links a {
+            font-size: 14.5px; font-weight: 500; color: var(--text);
+            padding: 8px 14px; border-radius: 6px; text-decoration: none;
+            transition: background .2s, color .2s;
+        }
+        .nav-links a:hover, .nav-links a.active { background: var(--off-white); color: var(--blue); }
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none; position: absolute; top: calc(100% + 8px); left: 0;
+            background: #fff; border-radius: 10px; min-width: 200px;
+            box-shadow: 0 12px 40px rgba(10,36,99,0.14); padding: 8px 0; z-index: 200;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 18px; font-size: 14px; color: var(--text); text-decoration: none; transition: background .2s; }
+        .dropdown-menu a:hover { background: var(--off-white); color: var(--blue); }
+        .btn-appt {
+            background: var(--blue); color: #fff; border: none; border-radius: 8px;
+            padding: 10px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: background .2s, transform .15s;
+        }
+        .btn-appt:hover { background: var(--navy); transform: translateY(-1px); }
+
+        /* Hamburger */
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; height: 88vh; min-height: 560px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('maxgio img/officeRoom.jpeg') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(10,36,99,0.78) 0%, rgba(21,101,192,0.55) 60%, rgba(0,0,0,0.35) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 2;
+            text-align: center; color: #fff; padding: 0 24px; max-width: 760px;
+            animation: heroFadeUp .9s ease both;
+        }
+        @keyframes heroFadeUp { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: none; } }
+        .hero-badge {
+            display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3); border-radius: 50px;
+            font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 6px 18px; margin-bottom: 22px; color: var(--sky);
+        }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.12; margin-bottom: 18px;
+        }
+        .hero h1 em { font-style: italic; color: var(--sky); }
+        .hero p { font-size: 18px; opacity: .88; max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary-hero {
+            background: var(--sky); color: var(--navy); padding: 14px 34px;
+            border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+            box-shadow: 0 4px 20px rgba(79,195,247,0.35);
+        }
+        .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,195,247,0.5); }
+        .btn-outline-hero {
+            background: transparent; color: #fff; padding: 14px 34px; border-radius: 10px;
+            font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
+            transition: border-color .2s, background .2s;
+        }
+        .btn-outline-hero:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+        .hero-scroll {
+            position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.6);
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .hero-scroll .arrow { width: 20px; height: 20px; border-right: 2px solid rgba(255,255,255,0.5); border-bottom: 2px solid rgba(255,255,255,0.5); transform: rotate(45deg); animation: bounce 1.5s infinite; }
+        @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
+
+        /* ── QUICK INFO CARDS ── */
+        .quick-info { max-width: 1200px; margin: -56px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+        .quick-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .q-card {
+            background: #fff; border-radius: 16px; padding: 30px 28px;
+            box-shadow: var(--card-shadow); border-top: 4px solid var(--blue);
+            transition: transform .25s, box-shadow .25s;
+        }
+        .q-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,36,99,0.14); }
+        .q-card:nth-child(2) { border-color: var(--sky); }
+        .q-card:nth-child(3) { border-color: var(--red); }
+        .q-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 18px; }
+        .q-icon.blue { background: #e3f0ff; color: var(--blue); }
+        .q-icon.sky { background: #e0f7fd; color: #0097a7; }
+        .q-icon.red { background: #fce8e8; color: var(--red); }
+        .q-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+        .q-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+        .q-card .hours span { display: block; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+        .q-card .phone-num { font-size: 26px; font-weight: 700; color: var(--red); font-family: 'DM Serif Display', serif; }
+        .btn-book {
+            display: inline-block; background: var(--blue); color: #fff; padding: 9px 22px;
+            border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none;
+            transition: background .2s, transform .15s;
+        }
+        .btn-book:hover { background: var(--navy); transform: translateY(-1px); }
+
+        /* Finder form */
+        .finder-form select, .finder-form input {
+            width: 100%; padding: 10px 12px; border: 1.5px solid #dde5f0; border-radius: 8px;
+            font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+            background: var(--off-white); margin-bottom: 10px;
+            transition: border-color .2s;
+        }
+        .finder-form select:focus, .finder-form input:focus { outline: none; border-color: var(--sky); }
+        .btn-search {
+            width: 100%; background: var(--blue); color: #fff; border: none;
+            border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 600;
+            font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s;
+        }
+        .btn-search:hover { background: var(--navy); }
+
+        /* ── STATS STRIP ── */
+        .stats-strip { background: var(--navy); color: #fff; padding: 52px 0; margin-top: 80px; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center; }
+        .stat-num { font-family: 'DM Serif Display', serif; font-size: 46px; color: var(--sky); line-height: 1; }
+        .stat-label { font-size: 14px; opacity: .75; margin-top: 6px; }
+
+        /* ── WHY US ── */
+        .section { max-width: 1200px; margin: 80px auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 54px; }
+        .section-header .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+        .section-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 44px); color: var(--navy); }
+        .section-header p { font-size: 16px; color: var(--muted); max-width: 520px; margin: 12px auto 0; line-height: 1.7; }
+
+        .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .why-card {
+            background: #fff; border-radius: 16px; padding: 34px 28px;
+            box-shadow: var(--card-shadow);
+            transition: transform .25s, box-shadow .25s;
+            position: relative; overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--blue), var(--sky));
+        }
+        .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,36,99,0.14); }
+        .why-icon { font-size: 32px; margin-bottom: 18px; }
+        .why-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+        .why-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+
+        /* ── SERVICES ── */
+        .services-bg { background: var(--navy); padding: 80px 0; }
+        .services-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .services-inner .section-header .eyebrow { color: var(--sky); }
+        .services-inner .section-header h2 { color: #fff; }
+        .services-inner .section-header p { color: rgba(255,255,255,.65); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+        .svc-card {
+            background: rgba(255,255,255,.07); backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 30px 24px;
+            text-align: center; color: #fff;
+            transition: background .25s, transform .25s, box-shadow .25s;
+            cursor: pointer; text-decoration: none; display: block;
+        }
+        .svc-card:hover {
+            background: rgba(255,255,255,.14); transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+        }
+        .svc-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: rgba(79,195,247,0.18); display: flex; align-items: center; justify-content: center;
+            font-size: 26px; color: var(--sky); margin: 0 auto 18px;
+            transition: background .2s;
+        }
+        .svc-card:hover .svc-icon { background: rgba(79,195,247,0.3); }
+        .svc-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+        .svc-card p { font-size: 13.5px; opacity: .72; line-height: 1.65; }
+
+        /* ── TEAM ── */
+        .team-card {
+            background: #fff; border-radius: 16px; overflow: hidden;
+            box-shadow: var(--card-shadow); text-align: center; padding-bottom: 28px;
+            transition: transform .25s;
+        }
+        .team-card:hover { transform: translateY(-5px); }
+        .team-photo { width: 100%; height: 220px; object-fit: cover; background: var(--off-white); }
+        .team-photo-placeholder {
+            width: 100%; height: 220px; background: linear-gradient(135deg, #e3f0ff, #ddf0fa);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 64px; color: var(--blue);
+        }
+        .team-card h4 { font-size: 18px; font-weight: 700; margin: 18px 0 4px; color: var(--navy); }
+        .team-card .role { font-size: 13.5px; color: var(--blue); font-weight: 600; letter-spacing: .5px; }
+        .team-card p { font-size: 13.5px; color: var(--muted); margin: 10px 18px 0; line-height: 1.6; }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-bg { background: linear-gradient(135deg, #e8f0fe, #f0f8ff); padding: 80px 0; }
+        .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .testimonials-track { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .testi-card {
+            background: #fff; border-radius: 16px; padding: 28px;
+            box-shadow: var(--card-shadow);
+            transition: transform .25s;
+        }
+        .testi-card:hover { transform: translateY(-4px); }
+        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 14px; }
+        .testi-text { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 12px; }
+        .testi-avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--sky));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 16px;
+        }
+        .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+        .testi-since { font-size: 12px; color: var(--muted); }
+
+        /* ── FAQ ── */
+        .faq-item { border-bottom: 1px solid #dde5f0; }
+        .faq-q {
+            width: 100%; background: none; border: none; padding: 18px 0; text-align: left;
+            font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            transition: color .2s;
+        }
+        .faq-q:hover { color: var(--blue); }
+        .faq-q .chevron { transition: transform .3s; font-size: 14px; color: var(--blue); }
+        .faq-q.open .chevron { transform: rotate(180deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; }
+        .faq-a.open { max-height: 300px; padding-bottom: 16px; }
+        .faq-a p { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
+
+        /* ── CONTACT / MAP ── */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .contact-info h3 { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--navy); margin-bottom: 20px; }
+        .contact-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+        .contact-ic { width: 44px; height: 44px; border-radius: 10px; background: #e3f0ff; color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
+        .contact-row h5 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 4px; }
+        .contact-row p { font-size: 15px; color: var(--text); }
+
+        .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: var(--card-shadow); }
+        .contact-form h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 22px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 11px 14px;
+            border: 1.5px solid #dde5f0; border-radius: 8px;
+            font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+            background: var(--off-white); transition: border-color .2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); background: #fff; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .btn-send {
+            width: 100%; background: var(--blue); color: #fff; border: none;
+            border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 700;
+            font-family: 'DM Sans', sans-serif; cursor: pointer;
+            transition: background .2s, transform .15s; margin-top: 6px;
+        }
+        .btn-send:hover { background: var(--navy); transform: translateY(-1px); }
+        .form-success { display: none; text-align: center; padding: 20px; background: #e8f5e9; border-radius: 10px; color: #2e7d32; font-weight: 600; }
+
+        /* ── FOOTER ── */
+        footer { background: var(--navy); color: rgba(255,255,255,.8); }
+        .footer-top { max-width: 1200px; margin: 0 auto; padding: 60px 24px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand .line1 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--soft-red); }
+        .footer-brand .line2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--sky); }
+        .footer-brand p { font-size: 14px; margin-top: 12px; line-height: 1.7; max-width: 260px; }
+        .footer-col h5 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #fff; margin-bottom: 16px; }
+        .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,.65); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+        .footer-col a:hover { color: var(--sky); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 10px; }
+        .footer-bottom a { color: var(--sky); text-decoration: none; }
+
+        /* ── BACK TO TOP ── */
+        #backToTop {
+            position: fixed; bottom: 28px; right: 28px; z-index: 999;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--blue); color: #fff; border: none; cursor: pointer;
+            font-size: 18px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(21,101,192,0.4);
+            opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s;
+        }
+        #backToTop.visible { opacity: 1; transform: none; }
+        #backToTop:hover { background: var(--navy); }
+
+        /* ── CHAT WIDGET ── */
+        #chatWidget {
+            position: fixed; bottom: 28px; left: 28px; z-index: 999;
+            width: 54px; height: 54px; border-radius: 50%;
+            background: var(--red); color: #fff; border: none; cursor: pointer;
+            font-size: 22px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(198,40,40,0.4); transition: background .2s, transform .2s;
+        }
+        #chatWidget:hover { background: #b71c1c; transform: scale(1.08); }
+        #chatBox {
+            position: fixed; bottom: 94px; left: 28px; z-index: 998;
+            width: 310px; background: #fff; border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(10,36,99,0.18);
+            padding: 20px; display: none; animation: slideUp .25s ease;
+        }
+        #chatBox.open { display: block; }
+        @keyframes slideUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: none; } }
+        #chatBox h5 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        #chatBox p { font-size: 13.5px; color: var(--muted); margin-bottom: 14px; }
+        #chatBox a { display: block; background: var(--blue); color: #fff; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+        #chatBox a:last-of-type { background: var(--off-white); color: var(--navy); }
+
+        /* ── MOBILE NAV ── */
+        @media (max-width: 900px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 0; right: 0; background: #fff;
+                padding: 16px 24px 24px; box-shadow: 0 12px 40px rgba(10,36,99,0.1);
+                z-index: 900;
+            }
+            .nav-actions { display: none; }
+            .quick-grid, .why-grid, .services-grid { grid-template-columns: 1fr; }
+            .testimonials-track { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* ── ANIMATE ON SCROLL ── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div><i class="far fa-clock" style="margin-right:6px;"></i> Mon–Fri: 8:00am – 5:00pm &nbsp;|&nbsp; Sat: 9:00am – 1:00pm</div>
+        <div>
+            <a href="mailto:maxgiohealth@gmail.com"><i class="fa fa-envelope" style="margin-right:5px;"></i>maxgiohealth@gmail.com</a>
+            <span>|</span>
+            <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:5px;"></i>+1 (804) 901-0053</a>
+        </div>
+    </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+    <div class="marquee-track">
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <img src="maxgio img/mxgLogo.jpeg" alt="Maxgio Logo" class="brand-logo" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <div class="line1">MAXGIO</div>
+                <div class="line2">Healthcare</div>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
+            <li class="dropdown">
+              <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <div class="dropdown-menu">
+                    <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
+                </div>
+            </li> 
+            <li><a href="contact.html">Contact</a></li>
+            <li class="dropdown">
+                <a href="appointment.html">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <div class="dropdown-menu">
+                    <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="supportive therapy.html"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="telecare.html"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                </div>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+            <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank">Book Appointment</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fa fa-shield-heart" style="margin-right:6px;"></i> Trusted Mental Health Care</div>
+        <h1>Exceptional <em>Mental Health</em> Care for Every Journey</h1>
+        <p>Evidence-based evaluation, diagnosis, medication management and therapy — delivered with care, compassion, and complete confidentiality.</p>
+        <div class="hero-btns">
+            <a href="https://rose-chigbo.clientsecure.me/" class="btn-primary-hero" target="_blank">Book an Appointment</a>
+            <a href="#contact" class="btn-outline-hero">Contact Us</a>
+        </div>
+    </div>
+    <div class="hero-scroll">Scroll <div class="arrow"></div></div>
+</section>
+
+<!-- QUICK INFO -->
+<div class="quick-info">
+    <div class="quick-grid">
+        <div class="q-card reveal">
+            <div class="q-icon blue"><i class="fa fa-clock"></i></div>
+            <h3>Office Hours</h3>
+            <div class="hours">
+                <span><strong>Mon – Fri:</strong> 9:00am – 4:00pm</span>
+                <span><strong>Saturday:</strong> 9:00am – 1:00pm</span>
+                <span style="color:var(--red);font-size:13px;"><strong>Sunday:</strong> Closed</span>
+            </div>
+            <a href="https://rose-chigbo.clientsecure.me/" class="btn-book" style="margin-top:16px;" target="_blank">Book Now</a>
+        </div>
+
+        <div class="q-card reveal" style="transition-delay:.1s">
+            <div class="q-icon sky"><i class="fa fa-user-doctor"></i></div>
+            <h3>Find a Provider</h3>
+            <div class="finder-form">
+                <input type="date" id="apptDate" />
+                <select id="apptService">
+                    <option value="">Select a Service</option>
+                    <option>Diagnosis</option>
+                    <option>Supportive Therapy</option>
+                    <option>Medication Management</option>
+                    <option>TeleCare / Telehealth</option>
+                </select>
+                <button class="btn-search" onclick="handleSearch()">Search Availability</button>
+            </div>
+        </div>
+
+        <div class="q-card reveal" style="transition-delay:.2s;text-align:center;">
+            <div class="q-icon red" style="margin:0 auto 14px;"><i class="fa fa-phone"></i></div>
+            <h3>Call for Support</h3>
+            <div class="phone-num">+1 (804) 901-0053</div>
+            <p style="margin-top:10px;">Available during office hours for questions, guidance, and scheduling.</p>
+            <p style="font-size:13px;color:var(--muted);">Fax: (804) 509-0514</p>
+        </div>
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip" style="margin-top:100px;">
+    <div class="stats-grid">
+        <div>
+            <div class="stat-num" data-target="500">0+</div>
+            <div class="stat-label">Patients Served</div>
+        </div>
+        <div>
+            <div class="stat-num" data-target="10">0+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+        <div>
+            <div class="stat-num" data-target="4">0</div>
+            <div class="stat-label">Specialty Services</div>
+        </div>
+        <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Confidential & Secure</div>
+        </div>
+    </div>
+</div>
+
+<!-- WHY US -->
+<div class="section">
+    <div class="section-header reveal">
+        <div class="eyebrow">Why Choose Us</div>
+        <h2>Why Maxgio Healthcare LLC</h2>
+        <p>We combine clinical excellence with compassionate, patient-centered care for every individual.</p>
+    </div>
+    <div class="why-grid">
+        <div class="why-card reveal">
+            <div class="why-icon">🏥</div>
+            <h4>Health Plans Accepted</h4>
+            <p>We work with a wide range of insurance providers to make quality mental health care accessible and affordable. Contact our office to confirm your coverage.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.1s">
+            <div class="why-icon">⭐</div>
+            <h4>Quality Care You Can Trust</h4>
+            <p>Our mental healthcare professionals are committed to helping you achieve your goals with evidence-based treatments and ongoing support every step of the way.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.2s">
+            <div class="why-icon">👩‍⚕️</div>
+            <h4>Board-Certified Specialists</h4>
+            <p>Our psychiatry team is led by a board-certified Nurse Practitioner with extensive experience in acute care, outpatient, and geriatric psychiatry management.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.3s">
+            <div class="why-icon">💻</div>
+            <h4>Telehealth Available</h4>
+            <p>Receive care from the comfort of your home with our secure, HIPAA-compliant telehealth platform — flexible scheduling to fit your life.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.4s">
+            <div class="why-icon">🔒</div>
+            <h4>Confidential & Private</h4>
+            <p>Your privacy is our priority. All sessions and records are handled with the strictest confidentiality in full compliance with HIPAA regulations.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.5s">
+            <div class="why-icon">🤝</div>
+            <h4>Personalized Treatment Plans</h4>
+            <p>We don't believe in one-size-fits-all. Every patient receives a thoughtfully crafted care plan built around their unique needs and circumstances.</p>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services-bg">
+    <div class="services-inner">
+        <div class="section-header reveal">
+            <div class="eyebrow">What We Offer</div>
+            <h2>Our Services</h2>
+            <p>Comprehensive mental health services tailored to every stage of your journey.</p>
+        </div>
+        <div class="services-grid">
+            <a href="diagnosis.html" class="svc-card reveal">
+                <div class="svc-icon"><i class="fa fa-stethoscope"></i></div>
+                <h4>Diagnosis</h4>
+                <p>Thorough psychiatric evaluations to identify conditions and guide an accurate, personalized treatment path.</p>
+            </a>
+            <a href="supportive therapy.html" class="svc-card reveal" style="transition-delay:.1s">
+                <div class="svc-icon"><i class="fa fa-heart"></i></div>
+                <h4>Supportive Therapy</h4>
+                <p>One-on-one therapy sessions designed to build resilience, coping skills, and emotional wellbeing.</p>
+            </a>
+            <a href="medication management.html" class="svc-card reveal" style="transition-delay:.2s">
+                <div class="svc-icon"><i class="fa fa-pills"></i></div>
+                <h4>Medication Management</h4>
+                <p>Expert medication reviews, prescriptions, and ongoing monitoring to optimize your mental health outcomes.</p>
+            </a>
+            <a href="telecare.html" class="svc-card reveal" style="transition-delay:.3s">
+                <div class="svc-icon"><i class="fa fa-video"></i></div>
+                <h4>TeleCare</h4>
+                <p>Secure, convenient video appointments so you can access quality care from anywhere, anytime.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- MEET THE TEAM -->
+<div class="section">
+    <div class="section-header reveal">
+        <div class="eyebrow">Our Team</div>
+        <h2>Meet Your Care Team</h2>
+        <p>Compassionate professionals dedicated to your mental health and wellness.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        <div class="team-card reveal">
+            <div class="team-photo-placeholder"><i class="fa fa-user-nurse"></i></div>
+            <h4>Rose Chigbo, PMHNP-BC</h4>
+            <div class="role">Psychiatric Mental Health NP</div>
+            <p>Board-certified with extensive experience in outpatient psychiatry, acute care, and geriatric mental health management.</p>
+        </div>
+        <div class="team-card reveal" style="transition-delay:.1s">
+            <div class="team-photo-placeholder"><i class="fa fa-user-doctor"></i></div>
+            <h4>Care Coordination Team</h4>
+            <div class="role">Patient Services & Support</div>
+            <p>Our friendly support staff is here to assist with scheduling, insurance verification, and any questions you may have.</p>
+        </div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-bg">
+    <div class="testimonials-inner">
+        <div class="section-header reveal">
+            <div class="eyebrow">Patient Stories</div>
+            <h2>What Our Patients Say</h2>
+            <p>Real experiences from the people we are honored to serve.</p>
+        </div>
+        <div class="testimonials-track">
+            <div class="testi-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"Maxgio Healthcare has completely changed my life. The care I receive is thoughtful, thorough, and always respectful. I finally feel heard and understood."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">J</div>
+                    <div>
+                        <div class="testi-name">J. Williams</div>
+                        <div class="testi-since">Patient since 2022</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.1s">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"The telehealth option is a game-changer. I can attend appointments from home without any compromise in quality. Highly recommend to anyone seeking mental health support."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">M</div>
+                    <div>
+                        <div class="testi-name">M. Johnson</div>
+                        <div class="testi-since">Patient since 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.2s">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"Professional, compassionate, and genuinely caring. The medication management has made such a difference in my daily life. I'm grateful for this practice."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">T</div>
+                    <div>
+                        <div class="testi-name">T. Roberts</div>
+                        <div class="testi-since">Patient since 2021</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+    <div class="section-header reveal">
+        <div class="eyebrow">FAQs</div>
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers to questions we hear most often from new and returning patients.</p>
+    </div>
+    <div style="max-width:760px;margin:0 auto;" class="reveal">
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+                Do you accept insurance? <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="faq-a">
+                <p>Yes, we accept a wide range of health insurance plans. Please call our office at +1 (804) 901-0053 or email us to confirm your specific coverage before your appointment.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+                How do I schedule a telehealth appointment? <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="faq-a">
+                <p>You can book a telehealth session through our online patient portal at rose-chigbo.clientsecure.me, or by calling our office directly. We use a secure, HIPAA-compliant video platform.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+                What should I bring to my first appointment? <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="faq-a">
+                <p>Please bring a valid photo ID, your insurance card, a list of current medications, and any prior psychiatric or medical records if available. Arriving 10–15 minutes early allows time to complete intake paperwork.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+                Is everything I share confidential? <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="faq-a">
+                <p>Absolutely. All patient information is protected under HIPAA and held in strict confidence. Your privacy and trust are fundamental to our practice.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+                How long are appointments? <i class="fa fa-chevron-down chevron"></i>
+            </button>
+            <div class="faq-a">
+                <p>Initial evaluation appointments typically last 60–90 minutes. Follow-up appointments for medication management or therapy are generally 30–45 minutes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+    <div class="contact-grid">
+        <div class="contact-info reveal">
+            <div class="eyebrow" style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Get In Touch</div>
+            <h3>We're Here to Help</h3>
+            <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:28px;">Have a question or ready to start your mental health journey? Reach out — our team is happy to assist.</p>
+
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-location-dot"></i></div>
+                <div>
+                    <h5>Address</h5>
+                    <p>411 Branchway Rd, North Chesterfield, VA 23236</p>
+                </div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-phone"></i></div>
+                <div>
+                    <h5>Phone & Fax</h5>
+                    <p>+1 (804) 901-0053 &nbsp;|&nbsp; Fax: (804) 509-0514</p>
+                </div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-envelope"></i></div>
+                <div>
+                    <h5>Email</h5>
+                    <p><a href="mailto:maxgiohealth@gmail.com" style="color:var(--blue);">maxgiohealth@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-clock"></i></div>
+                <div>
+                    <h5>Hours</h5>
+                    <p>Mon–Fri: 9:00am–4:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</p>
+                </div>
+            </div>
+
+            <!-- Embedded map placeholder -->
+            <div style="margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
+                <iframe
+                    src="https://www.google.com/maps?q=411+Branchway+Rd,+North+Chesterfield,+VA+23236&output=embed"
+                    width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="contact-form reveal" style="transition-delay:.1s">
+            <h4>Send Us a Message</h4>
+            <div id="contactFormEl">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Jane" id="cfFirst" />
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Doe" id="cfLast" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="jane@email.com" id="cfEmail" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+1 (804) 000-0000" id="cfPhone" />
+                </div>
+                <div class="form-group">
+                    <label>Service of Interest</label>
+                    <select id="cfService">
+                        <option value="">Select a service</option>
+                        <option>Diagnosis</option>
+                        <option>Supportive Therapy</option>
+                        <option>Medication Management</option>
+                        <option>TeleCare</option>
+                        <option>General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="Tell us how we can help you..." id="cfMsg"></textarea>
+                </div>
+                <button class="btn-send" onclick="submitContactForm()">Send Message &nbsp;<i class="fa fa-paper-plane"></i></button>
+            </div>
+            <div class="form-success" id="formSuccess">
+                <i class="fa fa-circle-check" style="font-size:32px;display:block;margin-bottom:10px;"></i>
+                Thank you! Your message has been received. We'll be in touch shortly.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="line1">MAXGIO</div>
+            <div class="line2">Healthcare LLC</div>
+            <p>Providing personalized, evidence-based mental health care to the Richmond, VA community and beyond.</p>
+        </div>
+        <div class="footer-col">
+            <h5>Quick Links</h5>
+            <a href="index.html">Home</a>
+            <a href="About Us.html">About Us</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+            <h5>Services</h5>
+            <a href="diagnosis.html">Diagnosis</a>
+            <a href="supportive therapy.html">Supportive Therapy</a>
+            <a href="medication management.html">Medication Mgmt</a>
+            <a href="telecare.html">TeleCare</a>
+        </div>
+        <div class="footer-col">
+            <h5>Contact</h5>
+            <a href="tel:+18049010053">+1 (804) 901-0053</a>
+            <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
+            <a href="#">411 Branchway Rd, VA</a>
+            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Maxgio Healthcare LLC. All rights reserved.</span>
+        <span>Designed by <a href="mailto:Leumasitnexus@gmail.com">Leumas IT Nexus</a></span>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <i class="fa fa-chevron-up"></i>
+</button>
+
+<!-- CHAT WIDGET -->
+<button id="chatWidget" onclick="toggleChat()" aria-label="Get help">
+    <i class="fa fa-comment-medical"></i>
+</button>
+<div id="chatBox">
+    <h5>👋 How can we help?</h5>
+    <p>Need to reach us quickly? Choose an option below.</p>
+    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
+    <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
+    <a href="mailto:maxgiohealth@gmail.com" style="background:var(--off-white);color:var(--navy);"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
+</div>
+
+<script>
+    // ── Sticky Nav ──
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // ── Hamburger ──
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ── Reveal on Scroll ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── FAQ Accordion ──
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        document.querySelectorAll('.faq-q.open').forEach(q => {
+            q.classList.remove('open');
+            q.nextElementSibling.classList.remove('open');
+        });
+        if (!isOpen) {
+            btn.classList.add('open');
+            answer.classList.add('open');
+        }
+    }
+
+    // ── Provider Search ──
+    function handleSearch() {
+        const date = document.getElementById('apptDate').value;
+        const svc = document.getElementById('apptService').value;
+        if (!date || !svc) {
+            alert('Please select a date and service to check availability.');
+            return;
+        }
+        window.open('https://rose-chigbo.clientsecure.me/', '_blank');
+    }
+
+    // ── Contact Form ──
+    function submitContactForm() {
+        const first = document.getElementById('cfFirst').value.trim();
+        const email = document.getElementById('cfEmail').value.trim();
+        const msg = document.getElementById('cfMsg').value.trim();
+        if (!first || !email || !msg) {
+            alert('Please fill in your name, email, and message.');
+            return;
+        }
+        document.getElementById('contactFormEl').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // ── Chat Widget ──
+    function toggleChat() {
+        document.getElementById('chatBox').classList.toggle('open');
+    }
+
+    // ── Animated Stats ──
+    const statEls = document.querySelectorAll('.stat-num[data-target]');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const el = e.target;
+                const target = parseInt(el.dataset.target);
+                let current = 0;
+                const step = Math.ceil(target / 50);
+                const timer = setInterval(() => {
+                    current = Math.min(current + step, target);
+                    el.textContent = current + '+';
+                    if (current >= target) clearInterval(timer);
+                }, 30);
+                statsObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    statEls.forEach(el => statsObserver.observe(el));
+</script>
+</body>
+</html>

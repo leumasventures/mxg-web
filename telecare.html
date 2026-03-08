@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TeleCare / Telehealth — Maxgio Healthcare LLC</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#0a2463; --blue:#1565c0; --sky:#4fc3f7; --teal:#00838f;
+  --red:#c62828; --soft-red:#ef5350; --green:#1b5e20; --mint:#e8f5e9;
+  --off-white:#f0f4ff; --text:#14213d; --muted:#5a6f8a; --border:#dde5f0;
+  --cs:0 8px 40px rgba(10,36,99,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:#f8faff;color:var(--text);overflow-x:hidden}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy);color:rgba(255,255,255,.78);font-size:13px;padding:9px 0}
+.ti{max-width:1240px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.topbar a{color:var(--sky);text-decoration:none}
+
+/* ── MARQUEE ── */
+.mq{background:linear-gradient(90deg,var(--teal),#005662);color:#fff;font-size:13px;padding:7px 0;overflow:hidden}
+.mq-track{display:inline-flex;white-space:nowrap;animation:mqrun 32s linear infinite}
+.mq-track p{margin:0;padding-right:100px}
+@keyframes mqrun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(10,36,99,.12)}
+.ni{display:flex;align-items:center;justify-content:space-between;max-width:1240px;margin:0 auto;padding:14px 28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-logo{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--sky)}
+.l1{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--red);line-height:1}
+.l2{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--blue);line-height:1}
+.nl{display:flex;align-items:center;gap:2px;list-style:none}
+.nl a{font-size:14px;font-weight:500;color:var(--text);padding:8px 13px;border-radius:7px;text-decoration:none;transition:background .2s,color .2s}
+.nl a:hover,.nl a.active{background:var(--off-white);color:var(--blue)}
+.drop{position:relative}
+.dmn{display:none;position:absolute;top:calc(100%+10px);left:0;background:#fff;border-radius:12px;min-width:215px;box-shadow:0 16px 48px rgba(10,36,99,.14);padding:8px 0;z-index:200}
+.drop:hover .dmn{display:block}
+.dmn a{display:block;padding:10px 18px;font-size:14px;color:var(--text);text-decoration:none;transition:background .2s}
+.dmn a:hover{background:var(--off-white);color:var(--blue)}
+.btn-book{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,transform .15s}
+.btn-book:hover{background:var(--navy);transform:translateY(-1px)}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.ham span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+/* ══════════ HERO — FULL BLEED + FLOATING DEVICE ══════════ */
+.hero{position:relative;min-height:620px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,#0d47a1 55%,var(--teal) 100%)}
+/* Dot pattern */
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='%23ffffff' fill-opacity='0.07'/%3E%3C/svg%3E")}
+/* Signal wave rings */
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(79,195,247,.14);pointer-events:none}
+.r1{width:700px;height:700px;top:-200px;right:-200px;animation:pulse 5s ease-in-out infinite}
+.r2{width:500px;height:500px;top:-100px;right:-100px;animation:pulse 5s ease-in-out 1s infinite}
+.r3{width:300px;height:300px;top:0;right:0;animation:pulse 5s ease-in-out 2s infinite}
+@keyframes pulse{0%,100%{opacity:.14;transform:scale(1)}50%{opacity:.28;transform:scale(1.04)}}
+.hero-content{max-width:1240px;margin:0 auto;padding:90px 28px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-bread{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:20px}
+.hero-bread a{color:var(--sky);text-decoration:none}
+.hero-ey{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sky);margin-bottom:20px}
+.hero-ey::before{content:'';display:block;width:28px;height:2px;background:var(--sky)}
+.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,64px);color:#fff;line-height:1.1;margin-bottom:20px}
+.hero-left h1 em{font-style:italic;color:var(--sky)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.72);line-height:1.8;margin-bottom:36px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-ph{background:var(--sky);color:var(--navy);padding:15px 34px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-ph:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,195,247,.4)}
+.btn-gh{background:transparent;color:rgba(255,255,255,.85);padding:15px 34px;border-radius:8px;font-weight:500;font-size:15px;text-decoration:none;border:1.5px solid rgba(255,255,255,.3);transition:border-color .2s,background .2s}
+.btn-gh:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.hero-nums{display:flex;gap:36px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.hn .n{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--sky);line-height:1}
+.hn .lb{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px}
+
+/* Device mockup */
+.device-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.device{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:28px;box-shadow:0 32px 80px rgba(0,0,0,.4);width:100%;max-width:400px}
+.device-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.device-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--blue));display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;flex-shrink:0}
+.device-name{color:#fff;font-weight:700;font-size:15px}
+.device-status{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.55)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.device-screen{background:rgba(255,255,255,.06);border-radius:16px;padding:20px;min-height:160px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.chat-bubble{padding:10px 14px;border-radius:12px;font-size:13.5px;max-width:75%}
+.cb-them{background:rgba(255,255,255,.15);color:#fff;border-bottom-left-radius:4px}
+.cb-me{background:var(--sky);color:var(--navy);font-weight:500;align-self:flex-end;border-bottom-right-radius:4px}
+.device-footer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.df-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;color:rgba(255,255,255,.7);font-size:11.5px;font-weight:600;transition:background .2s,color .2s;display:flex;flex-direction:column;align-items:center;gap:5px}
+.df-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+.df-btn i{font-size:18px}
+.df-btn.active{background:var(--sky);color:var(--navy);border-color:var(--sky)}
+/* Floating badges on device */
+.float-badge{position:absolute;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--navy)}
+.fb-tl{top:-20px;left:-20px}
+.fb-br{bottom:-20px;right:-20px}
+.float-badge .fb-ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.fb-ic.g{background:var(--mint);color:var(--green)}
+.fb-ic.t{background:#e0f7fd;color:var(--teal)}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:#fff;border-bottom:1px solid var(--border)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(5,1fr)}
+.tbi{padding:24px 20px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--border)}
+.tbi:last-child{border:none}
+.tbi-ic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.tbi-ic.b{background:var(--off-white);color:var(--blue)}
+.tbi-ic.t{background:#e0f7fd;color:var(--teal)}
+.tbi-ic.r{background:#fce8e8;color:var(--red)}
+.tbi-ic.g{background:var(--mint);color:var(--green)}
+.tbi-ic.a{background:#fff8e1;color:#e65100}
+.tbi h5{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.tbi p{font-size:11.5px;color:var(--muted);line-height:1.4}
+
+/* ── SECTIONS ── */
+.sec{max-width:1240px;margin:0 auto;padding:90px 28px}
+.sh{margin-bottom:54px}
+.sh.c{text-align:center}
+.ey{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:10px}
+.sh h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.5vw,46px);color:var(--navy);line-height:1.15}
+.sh p{font-size:15.5px;color:var(--muted);max-width:560px;margin-top:12px;line-height:1.8}
+.sh.c p{margin-left:auto;margin-right:auto}
+
+/* ── WHAT IS TELECARE — editorial ── */
+.editorial{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--cs)}
+.ed-img{position:relative;min-height:480px;background:linear-gradient(135deg,#0d47a1,var(--teal));display:flex;align-items:center;justify-content:center}
+.ed-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.ed-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,36,99,.3),rgba(0,131,143,.4))}
+.ed-tag{position:absolute;top:28px;left:28px;background:var(--teal);color:#fff;border-radius:8px;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;z-index:2}
+.ed-badge{position:absolute;bottom:28px;right:28px;background:rgba(10,36,99,.88);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 22px;color:#fff;z-index:2}
+.ed-badge .bn{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--sky);line-height:1}
+.ed-badge .bl{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.ed-body{padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
+.ed-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.8vw,36px);color:var(--navy);line-height:1.2;margin-bottom:18px}
+.ed-body p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.cklist{list-style:none;margin:22px 0 30px}
+.cklist li{display:flex;gap:12px;font-size:14.5px;color:var(--text);padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.cklist li:last-child{border:none}
+.cklist li .ck{color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0}
+
+/* ── COVERAGE MAP STRIP ── */
+.coverage-strip{background:var(--navy);padding:60px 0;position:relative;overflow:hidden}
+.coverage-strip::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.cv-inner{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.cv-state{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);padding:40px 32px;text-align:center;color:#fff;transition:background .25s}
+.cv-state:hover{background:rgba(255,255,255,.11)}
+.cv-flag{font-size:48px;margin-bottom:16px;display:block}
+.cv-h{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:8px}
+.cv-abbr{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:50px;margin-bottom:12px;text-transform:uppercase}
+.cv-p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.65}
+
+/* ── HOW IT WORKS ── */
+.process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+.process-row::before{content:'';position:absolute;top:38px;left:calc(12.5%+18px);right:calc(12.5%+18px);height:0;border-top:2px dashed var(--border);z-index:0}
+.pstep{text-align:center;position:relative;z-index:1}
+.ps-n{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;font-family:'Cormorant Garamond',serif;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;border:5px solid #f8faff;box-shadow:0 4px 22px rgba(0,131,143,.35);transition:transform .25s}
+.pstep:hover .ps-n{transform:scale(1.08)}
+.ps-h{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.ps-p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ── SERVICE CARDS ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sc{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--cs);transition:transform .28s,box-shadow .28s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.sc:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(10,36,99,.15)}
+.sc-img{position:relative;height:200px;overflow:hidden}
+.sc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.sc:hover .sc-img img{transform:scale(1.07)}
+.sc-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;color:#fff}
+.sc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,36,99,.65) 0%,transparent 55%)}
+.sc-tag{position:absolute;top:16px;left:16px;z-index:2;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:rgba(0,131,143,.85);backdrop-filter:blur(6px);padding:5px 13px;border-radius:50px}
+.sc-body{padding:28px;flex:1;display:flex;flex-direction:column}
+.sc-body h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:10px}
+.sc-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px;flex:1}
+.sc-feats{list-style:none;margin-bottom:22px}
+.sc-feats li{font-size:13.5px;color:var(--text);padding:6px 0;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--border)}
+.sc-feats li:last-child{border:none}
+.sc-feats li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;font-size:12px}
+.btn-sc{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,transform .15s;width:fit-content}
+.btn-sc:hover{background:#005662;transform:translateY(-1px)}
+
+/* ── WHAT TO EXPECT ── */
+.expect-bg{background:linear-gradient(160deg,#e0f7fa 0%,#f8faff 60%);padding:90px 0}
+.eg{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.ei{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--cs);display:flex;gap:20px;align-items:flex-start;transition:transform .25s}
+.ei:hover{transform:translateY(-4px)}
+.ei-ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ib{background:#e0f7fd;color:var(--teal)}
+.is{background:var(--off-white);color:var(--blue)}
+.ig{background:var(--mint);color:var(--green)}
+.ia{background:#fff8e1;color:#e65100}
+.ei h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.ei p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ── TECH / REQUIREMENTS ── */
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tech-card{background:#fff;border-radius:16px;padding:28px 22px;text-align:center;box-shadow:var(--cs);border-top:4px solid var(--teal);transition:transform .25s}
+.tech-card:hover{transform:translateY(-4px)}
+.tech-card .tc-ic{font-size:32px;margin-bottom:14px;display:block}
+.tech-card h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.tech-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+/* ── FAQ ── */
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.fq{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+.fq:hover{color:var(--teal)}
+.fq .ch{font-size:12px;color:var(--teal);transition:transform .3s;flex-shrink:0}
+.fq.open .ch{transform:rotate(180deg)}
+.fa-b{max-height:0;overflow:hidden;transition:max-height .38s ease,padding .3s}
+.fa-b.open{max-height:280px;padding-bottom:18px}
+.fa-b p{font-size:14.5px;color:var(--muted);line-height:1.8}
+
+/* ── TESTIMONIALS ── */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tc{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--cs);display:flex;flex-direction:column;gap:18px;transition:transform .25s}
+.tc:hover{transform:translateY(-4px)}
+.stars{color:#f59e0b;font-size:15px;letter-spacing:2px}
+.qt{font-size:14.5px;color:var(--text);line-height:1.85;font-style:italic;flex:1}
+.ta{display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.an{font-weight:700;font-size:14px;color:var(--navy)}
+.at{font-size:12px;color:var(--muted)}
+.verified{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--green);background:var(--mint);padding:4px 10px;border-radius:50px;margin-top:5px}
+
+/* ── CTA ── */
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,#0d47a1 50%,var(--teal) 100%);padding:90px 28px;text-align:center;position:relative;overflow:hidden}
+.cta-strip::before,.cta-strip::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(79,195,247,.1)}
+.cta-strip::before{width:600px;height:600px;top:-200px;left:-200px}
+.cta-strip::after{width:400px;height:400px;bottom:-150px;right:-100px}
+.cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.cta-strip p{font-size:17px;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 36px;line-height:1.8;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-w{display:inline-block;background:#fff;color:var(--navy);padding:16px 38px;border-radius:9px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,255,255,.18)}
+.btn-sky{display:inline-block;background:transparent;color:var(--sky);padding:16px 38px;border-radius:9px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(79,195,247,.45);transition:border-color .2s,background .2s}
+.btn-sky:hover{border-color:var(--sky);background:rgba(79,195,247,.06)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.75)}
+.ft{max-width:1240px;margin:0 auto;padding:64px 28px 44px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px}
+.fb .f1{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--soft-red)}
+.fb .f2{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sky)}
+.fb p{font-size:14px;margin-top:14px;line-height:1.75;max-width:255px}
+.fc h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.38);margin-bottom:18px}
+.fc a{display:block;font-size:14px;color:rgba(255,255,255,.65);text-decoration:none;margin-bottom:11px;transition:color .2s}
+.fc a:hover{color:var(--sky)}
+.fb-bot{border-top:1px solid rgba(255,255,255,.08);padding:20px 28px;max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:10px}
+.fb-bot a{color:var(--sky);text-decoration:none}
+
+/* ── FIXED ── */
+#btt{position:fixed;bottom:28px;right:28px;z-index:999;width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,131,143,.4);opacity:0;transform:translateY(14px);transition:opacity .3s,transform .3s}
+#btt.v{opacity:1;transform:none}
+#btt:hover{background:#005662}
+#cw{position:fixed;bottom:28px;left:28px;z-index:999;width:54px;height:54px;border-radius:50%;background:var(--teal);color:#fff;border:none;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,131,143,.4);transition:background .2s,transform .2s}
+#cw:hover{background:#005662;transform:scale(1.08)}
+#cb{position:fixed;bottom:94px;left:28px;z-index:998;width:305px;background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(10,36,99,.18);padding:22px;display:none}
+#cb.open{display:block;animation:cbUp .25s ease}
+@keyframes cbUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#cb h5{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+#cb p{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+#cb a{display:block;background:var(--teal);color:#fff;text-align:center;padding:10px;border-radius:9px;text-decoration:none;font-weight:600;font-size:14px;margin-bottom:8px}
+#cb a.alt{background:var(--off-white);color:var(--navy)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero-content{grid-template-columns:1fr}
+  .device-wrap{display:none}
+  .editorial{grid-template-columns:1fr}
+  .ed-img{min-height:320px}
+  .cv-inner{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .tg{grid-template-columns:repeat(2,1fr)}
+  .ft{grid-template-columns:1fr 1fr}
+  .tech-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .ham{display:block}
+  .nl{display:none}
+  .nl.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:16px 28px 24px;box-shadow:0 16px 40px rgba(10,36,99,.1);z-index:900}
+  .tb-inner{grid-template-columns:1fr 1fr}
+  .process-row{grid-template-columns:repeat(2,1fr);gap:24px}
+  .process-row::before{display:none}
+  .eg{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+  .svc-grid{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr}
+  .tech-grid{grid-template-columns:1fr 1fr}
+  .tb-inner{grid-template-columns:1fr 1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="ti">
+    <span><i class="far fa-clock" style="margin-right:6px"></i>Mon–Fri: 9am–4pm &nbsp;|&nbsp; Sat: 9am–1pm</span>
+    <span>
+      <a href="mailto:maxgiohealth@gmail.com"><i class="fa fa-envelope" style="margin-right:5px"></i>maxgiohealth@gmail.com</a>
+      &nbsp;|&nbsp;
+      <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:5px"></i>+1 (804) 901-0053</a>
+    </span>
+  </div>
+</div>
+
+<!-- MARQUEE — teal to match TeleCare brand -->
+<div class="mq">
+  <div class="mq-track">
+    <p>💻 TeleCare now available — See a psychiatric provider from anywhere in Virginia, Washington &amp; North Dakota &nbsp;•&nbsp; Secure HIPAA video &nbsp;•&nbsp; Same-quality care, zero commute &nbsp;•&nbsp; Accepting new telehealth patients</p>
+    <p>💻 TeleCare now available — See a psychiatric provider from anywhere in Virginia, Washington &amp; North Dakota &nbsp;•&nbsp; Secure HIPAA video &nbsp;•&nbsp; Same-quality care, zero commute &nbsp;•&nbsp; Accepting new telehealth patients</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="ni">
+    <a href="index.html" class="brand">
+      <img src="maxgio img/mxgLogo.jpeg" alt="Maxgio Logo" class="brand-logo" onerror="this.style.display='none'">
+      <div><div class="l1">MAXGIO</div><div class="l2">Healthcare</div></div>
+    </a>
+    <ul class="nl" id="nl">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About Us.html">About</a></li>
+      <li class="dropdown">
+        <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <div class="dropdown-menu">
+              <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
+          </div>
+      </li> 
+      <li><a href="contact.html">Contact</a></li>
+      <li class="drop">
+        <a href="appointment.html" class="active">Appointments <i class="fa fa-chevron-down" style="font-size:10px;margin-left:3px"></i></a>
+        <div class="dmn">
+          <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue)"></i>Diagnosis</a>
+          <a href="supportive therapy.html"><i class="fa fa-heart" style="margin-right:8px;color:var(--red)"></i>Supportive Therapy</a>
+          <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue)"></i>Medication Management</a>
+          <a href="telecare.html" style="color:var(--teal);font-weight:700"><i class="fa fa-video" style="margin-right:8px;color:var(--teal)"></i>TeleCare</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <a href="appointment.html" class="btn-book">Book Appointment</a>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="hero-content">
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-bread">
+        <a href="index.html">Home</a>
+        <i class="fa fa-chevron-right" style="font-size:9px"></i>
+        <a href="service.html">Services</a>
+        <i class="fa fa-chevron-right" style="font-size:9px"></i>
+        <span>TeleCare</span>
+      </div>
+      <div class="hero-ey"><i class="fa fa-wifi"></i> Telehealth Services</div>
+      <h1>Mental Health Care,<br><em>Wherever You Are</em></h1>
+      <p class="hero-sub">Connect with our board-certified Psychiatric-Mental Health Nurse Practitioner via secure video — the same quality of care as an in-person visit, from the comfort of your home.</p>
+      <div class="hero-btns">
+        <a href="appointment.html" class="btn-ph">Start TeleCare Visit</a>
+        <a href="#what-is" class="btn-gh">Learn More</a>
+      </div>
+      <div class="hero-nums">
+        <div class="hn"><div class="n">3</div><div class="lb">States Covered</div></div>
+        <div class="hn"><div class="n">17+</div><div class="lb">Years Experience</div></div>
+        <div class="hn"><div class="n">100%</div><div class="lb">HIPAA Secure</div></div>
+      </div>
+    </div>
+    <!-- Right — device mockup -->
+    <div class="device-wrap">
+      <div class="float-badge fb-tl"><div class="fb-ic g"><i class="fa fa-shield-halved"></i></div>HIPAA Secure</div>
+      <div class="device">
+        <div class="device-header">
+          <div class="device-avatar">R</div>
+          <div>
+            <div class="device-name">Rose Idemili, PMHNP-BC</div>
+            <div class="device-status"><span class="status-dot"></span>In session now</div>
+          </div>
+        </div>
+        <div class="device-screen">
+          <div class="chat-bubble cb-them">Good morning! How have you been feeling since our last session?</div>
+          <div class="chat-bubble cb-me">Much better — the new routine is really helping.</div>
+          <div class="chat-bubble cb-them">That's wonderful to hear. Let's review your progress today.</div>
+        </div>
+        <div class="device-footer">
+          <div class="df-btn active"><i class="fa fa-video"></i>Video</div>
+          <div class="df-btn"><i class="fa fa-microphone"></i>Audio</div>
+          <div class="df-btn"><i class="fa fa-comment"></i>Chat</div>
+          <div class="df-btn"><i class="fa fa-file-medical"></i>Notes</div>
+        </div>
+      </div>
+      <div class="float-badge fb-br"><div class="fb-ic t"><i class="fa fa-wifi"></i></div>Encrypted Connection</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="tb-inner">
+    <div class="tbi rv"><div class="tbi-ic b"><i class="fa fa-lock"></i></div><div><h5>HIPAA Compliant</h5><p>Fully encrypted video</p></div></div>
+    <div class="tbi rv" style="transition-delay:.06s"><div class="tbi-ic t"><i class="fa fa-globe"></i></div><div><h5>3 States</h5><p>VA · WA · ND</p></div></div>
+    <div class="tbi rv" style="transition-delay:.12s"><div class="tbi-ic r"><i class="fa fa-calendar-check"></i></div><div><h5>Flexible Scheduling</h5><p>Morning to evening slots</p></div></div>
+    <div class="tbi rv" style="transition-delay:.18s"><div class="tbi-ic g"><i class="fa fa-id-card"></i></div><div><h5>Insurance Accepted</h5><p>Medicaid, Medicare &amp; more</p></div></div>
+    <div class="tbi rv" style="transition-delay:.24s"><div class="tbi-ic a"><i class="fa fa-bolt"></i></div><div><h5>Quick Setup</h5><p>No app download required</p></div></div>
+  </div>
+</div>
+
+<!-- WHAT IS TELECARE -->
+<div id="what-is" style="background:#fff;padding:90px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="editorial rv">
+      <div class="ed-img">
+        <img src="maxgio img/img9.jpeg" alt="TeleCare session" onerror="this.style.display='none'">
+        <div class="ed-img-overlay"></div>
+        <div class="ed-tag">Telehealth · Psychiatric Care</div>
+        <div class="ed-badge">
+          <div class="bn">VA · WA · ND</div>
+          <div class="bl">Licensed to practice<br>in three states</div>
+        </div>
+      </div>
+      <div class="ed-body">
+        <span class="ey">What Is It?</span>
+        <h2>Psychiatric TeleCare — Real Care, No Commute</h2>
+        <p>TeleCare (telehealth) allows you to receive the full range of Maxgio Healthcare psychiatric services via a secure, encrypted video platform — from your home, office, or any private location.</p>
+        <p>Whether you need an initial evaluation, ongoing therapy, medication management, or a follow-up, our licensed PMHNP delivers the same standard of personalized care as an in-person visit.</p>
+        <ul class="cklist">
+          <li><span class="ck"><i class="fa fa-check"></i></span> Secure HIPAA-compliant video platform — no app needed</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Available across Virginia, Washington &amp; North Dakota</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Full psychiatric evaluation, therapy &amp; medication management</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Flexible morning, afternoon &amp; evening time slots</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Electronic prescriptions sent directly to your pharmacy</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Ideal for patients with limited mobility or transportation</li>
+        </ul>
+        <a href="appointment.html" class="btn-book" style="text-decoration:none;background:var(--teal)">Book a TeleCare Visit <i class="fa fa-arrow-right" style="margin-left:7px"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COVERAGE — STATES -->
+<div class="coverage-strip">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px;margin-bottom:40px;text-align:center">
+    <span class="ey rv" style="color:var(--sky)">Service Area</span>
+    <h2 class="rv" style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);color:#fff;margin-top:10px">States Where We're Licensed</h2>
+    <p class="rv" style="color:rgba(255,255,255,.6);font-size:15.5px;max-width:520px;margin:12px auto 0;line-height:1.8">We hold active psychiatric nurse practitioner licenses in three states — bringing expert mental health care to your home wherever you are.</p>
+  </div>
+  <div class="cv-inner">
+    <div class="cv-state rv">
+      <span class="cv-flag">🏛️</span>
+      <div class="cv-h">Virginia</div>
+      <span class="cv-abbr">VA</span>
+      <p class="cv-p">Our home state and primary practice location. TeleCare and in-person services available throughout Virginia, including the greater Richmond metro area.</p>
+    </div>
+    <div class="cv-state rv" style="transition-delay:.1s">
+      <span class="cv-flag">🌲</span>
+      <div class="cv-h">Washington</div>
+      <span class="cv-abbr">WA</span>
+      <p class="cv-p">Fully licensed to provide telehealth psychiatric services to patients across the state of Washington via secure video platform.</p>
+    </div>
+    <div class="cv-state rv" style="transition-delay:.2s">
+      <span class="cv-flag">🌾</span>
+      <div class="cv-h">North Dakota</div>
+      <span class="cv-abbr">ND</span>
+      <p class="cv-p">Telehealth psychiatric services available to all North Dakota residents — no matter how rural or remote your location.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="background:#fff;padding:90px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="sh c rv">
+      <span class="ey">The Process</span>
+      <h2>How a TeleCare Visit Works</h2>
+      <p>Getting started is simple. From booking to session, everything is designed to be effortless.</p>
+    </div>
+    <div class="process-row rv">
+      <div class="pstep"><div class="ps-n">1</div><div class="ps-h">Book Online</div><p class="ps-p">Schedule through our patient portal or call our office. Select "Telehealth" as your visit type.</p></div>
+      <div class="pstep"><div class="ps-n">2</div><div class="ps-h">Get Your Link</div><p class="ps-p">We'll email you a secure session link before your appointment — no app download or account required.</p></div>
+      <div class="pstep"><div class="ps-n">3</div><div class="ps-h">Connect &amp; Be Seen</div><p class="ps-p">Click your link at appointment time. Your provider joins the encrypted video session from our secure platform.</p></div>
+      <div class="pstep"><div class="ps-n">4</div><div class="ps-h">Care Continues</div><p class="ps-p">Receive prescriptions, referrals, and a follow-up plan electronically. Easy scheduling for your next visit.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TELECARE SERVICES -->
+<div class="sec" style="background:#f8faff">
+  <div class="sh c rv">
+    <span class="ey">What We Offer</span>
+    <h2>TeleCare Services Available</h2>
+    <p>Every service we offer in-person is also available via telehealth — with the same depth of care.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="sc rv">
+      <div class="sc-img">
+        <div class="sc-img-ph" style="background:linear-gradient(135deg,#0d47a1,var(--teal))"><i class="fa fa-stethoscope"></i></div>
+        <img src="maxgio img/img9.jpeg" alt="Telehealth Evaluation" onerror="this.style.display='none'">
+        <span class="sc-tag">Evaluation</span>
+      </div>
+      <div class="sc-body">
+        <h3>Psychiatric Evaluation</h3>
+        <p>A comprehensive initial evaluation via video — covering your full psychiatric history, symptom assessment, and diagnosis using DSM-5 criteria.</p>
+        <ul class="sc-feats">
+          <li>Full psychiatric history taking</li>
+          <li>Mental status examination</li>
+          <li>DSM-5 based assessment</li>
+          <li>Written summary provided</li>
+        </ul>
+        <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="sc rv" style="transition-delay:.1s">
+      <div class="sc-img">
+        <div class="sc-img-ph" style="background:linear-gradient(135deg,var(--teal),#004d40)"><i class="fa fa-heart"></i></div>
+        <img src="maxgio img/images.jpeg" alt="Telehealth Therapy" onerror="this.style.display='none'">
+        <span class="sc-tag">Therapy</span>
+      </div>
+      <div class="sc-body">
+        <h3>Supportive Therapy</h3>
+        <p>Evidence-based therapeutic support including CBT, solution-focused, and client-centered approaches — all delivered via secure video session.</p>
+        <ul class="sc-feats">
+          <li>CBT &amp; solution-focused therapy</li>
+          <li>Coping skill development</li>
+          <li>Grief, stress &amp; anxiety support</li>
+          <li>Ongoing session continuity</li>
+        </ul>
+        <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="sc rv" style="transition-delay:.2s">
+      <div class="sc-img">
+        <div class="sc-img-ph" style="background:linear-gradient(135deg,#1565c0,var(--teal))"><i class="fa fa-pills"></i></div>
+        <img src="maxgio img/img1.jpeg" alt="Telehealth Medication" onerror="this.style.display='none'">
+        <span class="sc-tag">Medication</span>
+      </div>
+      <div class="sc-body">
+        <h3>Medication Management</h3>
+        <p>Prescription review, monitoring, and adjustments managed via telehealth. E-prescriptions sent directly to your preferred local pharmacy.</p>
+        <ul class="sc-feats">
+          <li>Medication review &amp; adjustment</li>
+          <li>Side-effect monitoring</li>
+          <li>Electronic prescriptions</li>
+          <li>Coordination with pharmacies</li>
+        </ul>
+        <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT -->
+<div class="expect-bg">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="sh c rv">
+      <span class="ey">Be Prepared</span>
+      <h2>What to Expect for Your TeleCare Visit</h2>
+      <p>Everything you need to know to have a smooth, productive telehealth session.</p>
+    </div>
+    <div class="eg">
+      <div class="ei rv"><div class="ei-ic ib"><i class="fa fa-wifi"></i></div><div><h4>Internet &amp; Device</h4><p>You'll need a stable internet connection and a device with a camera and microphone — a smartphone, tablet, or laptop all work perfectly.</p></div></div>
+      <div class="ei rv" style="transition-delay:.08s"><div class="ei-ic is"><i class="fa fa-door-closed"></i></div><div><h4>Private Space</h4><p>Find a quiet, private location where you feel comfortable speaking openly. Headphones can help with privacy if needed.</p></div></div>
+      <div class="ei rv" style="transition-delay:.16s"><div class="ei-ic ig"><i class="fa fa-file-medical"></i></div><div><h4>Have Ready</h4><p>Your current medication list, any prior records or notes, and your insurance card handy for billing questions during or after the session.</p></div></div>
+      <div class="ei rv" style="transition-delay:.24s"><div class="ei-ic ia"><i class="fa fa-clock"></i></div><div><h4>Log In Early</h4><p>Test your camera and microphone 5–10 minutes before your appointment. Click your session link and wait — your provider will join on time.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH REQUIREMENTS -->
+<div style="background:#fff;padding:90px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="sh c rv">
+      <span class="ey">Technical Setup</span>
+      <h2>What You Need to Get Started</h2>
+      <p>Our platform is browser-based — no downloads required. Just a device, a connection, and your session link.</p>
+    </div>
+    <div class="tech-grid rv">
+      <div class="tech-card"><span class="tc-ic">💻</span><h4>Any Modern Device</h4><p>Laptop, desktop, tablet, or smartphone. Windows, Mac, iOS, or Android all supported.</p></div>
+      <div class="tech-card"><span class="tc-ic">🌐</span><h4>Internet Connection</h4><p>A stable broadband or LTE connection. We recommend 5+ Mbps for smooth HD video.</p></div>
+      <div class="tech-card"><span class="tc-ic">📷</span><h4>Camera &amp; Mic</h4><p>Built-in or external webcam and microphone. Most modern devices include both.</p></div>
+      <div class="tech-card"><span class="tc-ic">🔒</span><h4>No App Needed</h4><p>Our HIPAA-secure platform runs entirely in your web browser — Chrome, Safari, or Firefox.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div style="background:#f8faff;padding:90px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="sh c rv">
+      <span class="ey">FAQ</span>
+      <h2>Common TeleCare Questions</h2>
+      <p>Everything you need to know before your first telehealth visit.</p>
+    </div>
+    <div class="faq-list rv">
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">Is TeleCare as effective as an in-person visit? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>Yes. Research consistently shows that telehealth psychiatric care produces outcomes comparable to in-person care for evaluation, therapy, and medication management. Our providers follow the same clinical protocols regardless of the visit format.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">Which states can I use TeleCare from? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>We are currently licensed to provide telehealth psychiatric services in Virginia (VA), Washington State (WA), and North Dakota (ND). You must be physically located in one of these states at the time of your appointment.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">Do I need to download an app or create an account? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>No. Our telehealth platform is fully browser-based. After booking, you'll receive a secure session link via email. Simply click it at your appointment time — no downloads, installations, or account creation required.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">Is TeleCare covered by my insurance? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>We accept Medicaid, Medicare, Anthem BCBS, Aetna, United Healthcare, Cigna, Optima, and Tricare for telehealth appointments. Coverage for telehealth has expanded significantly in recent years. We recommend confirming your specific telehealth mental health coverage with your insurer.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">Can I get prescriptions through TeleCare? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>Yes. Our provider can prescribe, review, and adjust psychiatric medications via telehealth. Electronic prescriptions are sent directly to your preferred pharmacy, typically the same day as your visit.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="fq" onclick="tfaq(this)">What if my internet drops during a session? <i class="fa fa-chevron-down ch"></i></button>
+        <div class="fa-b"><p>If you lose connection, simply click your session link again to rejoin. Our providers are accustomed to brief disconnections and will wait to continue your session. If reconnection is not possible, we'll reach you by phone to reschedule at no additional charge.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div style="background:#fff;padding:90px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px">
+    <div class="sh c rv">
+      <span class="ey">Patient Stories</span>
+      <h2>What TeleCare Patients Say</h2>
+      <p>Real experiences from patients who chose telehealth — and never looked back.</p>
+    </div>
+    <div class="tg">
+      <div class="tc rv">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"As a single mom with no easy transportation, TeleCare changed everything. I can attend my appointments from home during my kids' nap time. Rose is wonderful and I feel genuinely cared for."</p>
+        <div>
+          <div class="ta"><div class="av">M</div><div><div class="an">M. Harrison</div><div class="at">Virginia · Patient since 2023</div></div></div>
+          <span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span>
+        </div>
+      </div>
+      <div class="tc rv" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"I live in a rural area of North Dakota with very limited local mental health resources. TeleCare with Maxgio gave me access to an outstanding psychiatric provider I never would have found otherwise."</p>
+        <div>
+          <div class="ta"><div class="av">J</div><div><div class="an">J. Carlson</div><div class="at">North Dakota · Patient since 2022</div></div></div>
+          <span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span>
+        </div>
+      </div>
+      <div class="tc rv" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"I was skeptical about telehealth at first. But the video sessions are just as personal and thorough as being in the office. The platform is so easy — I just click a link and I'm in."</p>
+        <div>
+          <div class="ta"><div class="av">T</div><div><div class="an">T. Nguyen</div><div class="at">Washington · Patient since 2024</div></div></div>
+          <span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to Start Your TeleCare Journey?</h2>
+  <p>Book a secure telehealth appointment with Maxgio Healthcare LLC and get the mental health care you deserve — from wherever you are.</p>
+  <div class="cta-btns">
+    <a href="appointment.html" class="btn-w"><i class="fa fa-video" style="margin-right:8px"></i>Book a TeleCare Visit</a>
+    <a href="tel:+18049010053" class="btn-sky"><i class="fa fa-phone" style="margin-right:8px"></i>+1 (804) 901-0053</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <div class="f1">MAXGIO</div>
+      <div class="f2">Healthcare LLC</div>
+      <p>Personalized, evidence-based mental health care for the Richmond, VA community and beyond — in-person and via telehealth.</p>
+    </div>
+    <div class="fc"><h5>Quick Links</h5><a href="index.html">Home</a><a href="About Us.html">About Us</a><a href="service.html">Services</a><a href="blog.html">Blog &amp; News</a><a href="contact.html">Contact</a></div>
+    <div class="fc"><h5>Appointments</h5><a href="diagnosis.html">Diagnosis</a><a href="supportive therapy.html">Supportive Therapy</a><a href="medication management.html">Medication Mgmt</a><a href="telecare.html" style="color:var(--sky)">TeleCare</a></div>
+    <div class="fc"><h5>Contact</h5><a href="tel:+18049010053">+1 (804) 901-0053</a><a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a><a href="#">411 Branchway Rd, VA 23236</a><a href="appointment.html" style="color:var(--sky);font-weight:600">Book Online →</a></div>
+  </div>
+  <div class="fb-bot">
+    <span>&copy; 2025 Maxgio Healthcare LLC. All rights reserved.</span>
+    <span>Designed by <a href="mailto:Leumasitnexus@gmail.com">Leumas IT Nexus</a></span>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-chevron-up"></i></button>
+<button id="cw" onclick="document.getElementById('cb').classList.toggle('open')"><i class="fa fa-video"></i></button>
+<div id="cb">
+  <h5>💻 Ready to start TeleCare?</h5>
+  <p>Connect with our provider from wherever you are.</p>
+  <a href="appointment.html"><i class="fa fa-calendar-check" style="margin-right:7px"></i>Book a TeleCare Visit</a>
+  <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:7px"></i>Call Us Now</a>
+  <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:7px"></i>Send an Email</a>
+</div>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>40);
+  document.getElementById('btt').classList.toggle('v',scrollY>400);
+});
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function tfaq(btn){
+  const a=btn.nextElementSibling,o=btn.classList.contains('open');
+  document.querySelectorAll('.fq.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.classList.remove('open')});
+  if(!o){btn.classList.add('open');a.classList.add('open')}
+}
+</script>
+</body>
+</html>

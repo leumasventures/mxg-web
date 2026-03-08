@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insomnia: A Psychiatric and Counselling Perspective</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --light: #ecf0f1;
+      --gray: #7f8c8d;
+      --border: #bdc3c7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: var(--light);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+
+    h2.subtitle {
+      color: var(--gray);
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      background: var(--primary);
+      color: white;
+      padding: 14px 20px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.25s;
+    }
+
+    .section-header:hover {
+      background: #1a2533;
+    }
+
+    .section-header h2 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .toggle-icon {
+      font-size: 1.4rem;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .section-header.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      padding: 20px;
+      display: none;
+      background: #fafafa;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    ul, ol {
+      padding-left: 1.8rem;
+      margin: 1rem 0;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    strong {
+      color: var(--primary);
+    }
+
+    .highlight {
+      background: #e8f4fd;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      .section-header h2 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+    <h1>INSOMNIA</h1>
+    <div class="subtitle">A Psychiatric and Counselling Perspective</div>
+  </header>
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>Introduction</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <p>Insomnia is one of the most common sleep disorders seen in clinical practice. It affects children, adolescents, adults, and older persons, and it cuts across cultures, professions, and social classes. While many people describe insomnia as “not sleeping well,” the condition is more complex and often linked to mental health, physical health, lifestyle habits, and emotional stress. Untreated insomnia can significantly impair daily functioning, emotional stability, and long-term health.</p>
+      <p>From a psychiatric and counselling standpoint, insomnia is not just a sleep problem. It is often both a symptom and a condition in its own right, requiring careful assessment and thoughtful management.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>What Is Insomnia?</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <p>Insomnia is a sleep disorder characterized by persistent difficulty with one or more of the following:</p>
+      <ul>
+        <li>Falling asleep</li>
+        <li>Staying asleep</li>
+        <li>Waking up too early and being unable to return to sleep</li>
+        <li>Having sleep that is non-restorative or poor in quality</li>
+      </ul>
+      <p>For insomnia to be clinically relevant, these sleep difficulties must occur despite adequate opportunity for sleep and must cause distress or impairment in daytime functioning, such as fatigue, poor concentration, irritability, or reduced performance.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>Types of Insomnia</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <ol>
+        <li><strong>By Duration</strong>
+          <ul>
+            <li><strong>Acute (Short-Term) Insomnia</strong><br>Lasts from a few days to a few weeks. Often triggered by stress, illness, environmental changes, or emotional events.</li>
+            <li><strong>Chronic Insomnia</strong><br>Occurs at least three nights per week for three months or longer. This form often requires structured treatment.</li>
+          </ul>
+        </li>
+        <li><strong>By Timing</strong>
+          <ul>
+            <li><strong>Sleep-Onset Insomnia</strong><br>Difficulty falling asleep at bedtime.</li>
+            <li><strong>Sleep-Maintenance Insomnia</strong><br>Frequent awakenings during the night or difficulty returning to sleep.</li>
+            <li><strong>Early-Morning Awakening</strong><br>Waking earlier than desired, often associated with mood disorders.</li>
+          </ul>
+        </li>
+        <li><strong>By Cause</strong>
+          <ul>
+            <li><strong>Primary Insomnia</strong><br>Not directly caused by another medical or psychiatric condition.</li>
+            <li><strong>Secondary Insomnia</strong><br>Occurs as a result of another condition such as depression, anxiety, chronic pain, substance use, or medication effects.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>Causes and Risk Factors</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <p><strong>Psychological and Emotional Factors</strong></p>
+      <ul>
+        <li>Stress from work, school, finances, or relationships</li>
+        <li>Anxiety disorders</li>
+        <li>Depressive disorders</li>
+        <li>Trauma-related conditions</li>
+        <li>Excessive worry about sleep itself</li>
+      </ul>
+
+      <p><strong>Psychiatric Conditions</strong><br>Insomnia commonly coexists with:</p>
+      <ul>
+        <li>Major depressive disorder</li>
+        <li>Bipolar disorder</li>
+        <li>Generalized anxiety disorder</li>
+        <li>Post-traumatic stress disorder</li>
+        <li>Attention-related disorders</li>
+      </ul>
+      <p class="highlight">In psychiatry, insomnia is often both a symptom and a predictor of mental illness relapse.</p>
+
+      <p><strong>Medical and Physical Conditions</strong></p>
+      <ul>
+        <li>Chronic pain</li>
+        <li>Asthma or breathing disorders</li>
+        <li>Gastrointestinal reflux</li>
+        <li>Hormonal changes</li>
+        <li>Neurological disorders</li>
+      </ul>
+
+      <p><strong>Lifestyle and Behavioral Factors</strong></p>
+      <ul>
+        <li>Irregular sleep schedules</li>
+        <li>Excessive screen use before bedtime</li>
+        <li>Caffeine, nicotine, or alcohol use</li>
+        <li>Shift work or frequent travel</li>
+        <li>Lack of physical activity</li>
+      </ul>
+
+      <p><strong>Medications and Substances</strong><br>Some medications for blood pressure, asthma, mood disorders, or pain may interfere with sleep. Stimulants and some supplements can also worsen insomnia.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>Symptoms of Insomnia</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <p><strong>Night-Time Symptoms</strong></p>
+      <ul>
+        <li>Difficulty falling asleep</li>
+        <li>Restless or fragmented sleep</li>
+        <li>Frequent awakenings</li>
+        <li>Feeling unrefreshed upon waking</li>
+      </ul>
+
+      <p><strong>Daytime Symptoms</strong></p>
+      <ul>
+        <li>Fatigue and low energy</li>
+        <li>Poor concentration and memory</li>
+        <li>Irritability or mood swings</li>
+        <li>Reduced academic or work performance</li>
+        <li>Increased emotional sensitivity</li>
+        <li>Headaches or muscle tension</li>
+      </ul>
+      <p>In counselling settings, clients often report frustration, hopelessness about sleep, and fear of nighttime.</p>
+    </div>
+  </div>
+
+  <!-- Add remaining sections similarly -->
+
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>Treatment of Insomnia</h2>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-content">
+      <p>Effective treatment depends on identifying underlying causes and addressing both sleep behavior and mental health.</p>
+
+      <p><strong>Non-Medication Approaches</strong><br>These are first-line treatments in both psychiatry and counselling.</p>
+      <ul>
+        <li><strong>Cognitive Behavioral Therapy for Insomnia (CBT-I)</strong><br>The gold standard treatment…</li>
+        <li><strong>Sleep Hygiene Education</strong></li>
+        <li><strong>Relaxation and Stress Management</strong></li>
+      </ul>
+
+      <p><strong>Medication Management</strong><br>From a psychiatric perspective, medication may be considered when non-medication approaches are insufficient…</p>
+    </div>
+  </div>
+
+  <!-- You can continue adding the remaining sections in the same pattern:
+       Conclusion, When to Seek Help, Role of Psychiatrist and Counsellor, etc.
+  -->
+
+  <footer>
+    <p>Maxgio Health LLC</p>
+  </footer>
+
+</div>
+
+<script>
+  function toggleSection(header) {
+    const content = header.nextElementSibling;
+    const isActive = content.classList.contains('active');
+
+    // Close all other sections
+    document.querySelectorAll('.section-content.active').forEach(el => {
+      if (el !== content) {
+        el.classList.remove('active');
+        el.previousElementSibling.classList.remove('active');
+      }
+    });
+
+    // Toggle current section
+    content.classList.toggle('active', !isActive);
+    header.classList.toggle('active', !isActive);
+  }
+
+  // Optional: open Introduction by default
+  document.addEventListener('DOMContentLoaded', () => {
+    const introHeader = document.querySelector('.section-header');
+    if (introHeader) toggleSection(introHeader);
+  });
+</script>
+
+</body>
+</html>

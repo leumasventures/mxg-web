@@ -1,0 +1,96 @@
+
+.logo img{
+    width: 70%;
+}
+
+.btns{
+    color: white;
+    background-color: red;
+}
+.background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: changeBackground 20s infinite;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-image: url('maxgio img/officeRoom.jpeg');
+    }
+    20% {
+        background-image: url('maxgio img/officeHall.jpeg');
+    }
+    40% {
+        background-image: url('maxgio img/images (1).jpeg');
+    }
+    60% {
+        background-image: url('maxgio img/images (2).jpeg');
+    }
+    80% {
+        background-image: url('maxgio img/discussionHall.jpeg');
+    }
+    100% {
+        background-image: url('maxgio img/images.jpeg');
+    }
+    
+}
+.wlcm-add{
+    border-radius: 100%;
+}
+.background2{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: changeBackground2 12s infinite;
+}
+
+@keyframes changeBackground2 {
+    0% {
+        background-image: url('maxgio img/officeRoom.jpeg');
+    }
+    50% {
+        background-image: url('maxgio img/officeHall.jpeg');
+    }
+    100% {
+        background-image: url('maxgio img/discussionHall.jpeg');
+    }
+}
+
+.abt-one img{
+    width: 100%;
+}
+footer img{
+    width: 4%;
+}
+
+footer .watsap{
+    justify-content: flex-end;
+    gap: 10px;
+}
+.service img{
+    width: 120%;
+    height: 100%;
+}
+.image1{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.image1 img{
+    width: 100%;
+    height: fit-content;
+}
+.imagelocate img{
+    width: 100%;
+    height: 100%;
+}
+
+@media (maxwidth:467px ) {
+    .image1{
+        border: 1px solid green;
+    }
+}

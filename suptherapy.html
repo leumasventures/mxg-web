@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supported Therapy • A Public Guide from Psychiatry & Counselling</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --accent: #7c3aed;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --success: #10b981;
+      --shadow: 0 8px 24px rgba(79,70,229,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.8px;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #eef2ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #f3f4ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(79,70,229,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+  <h1>Supported Therapy</h1>
+  <div class="subtitle">A Public Guide from Psychiatry and Counselling</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="intro" class="active">Introduction</button></li>
+      <li><button data-target="meaning">What It Means</button></li>
+      <li><button data-target="who">Who It’s For</button></li>
+      <li><button data-target="goals">Core Goals</button></li>
+      <li><button data-target="components">Key Components</button></li>
+      <li><button data-target="types">Types of Supported Therapy</button></li>
+      <li><button data-target="not">What It Is Not</button></li>
+      <li><button data-target="duration">Duration & Frequency</button></li>
+      <li><button data-target="benefits">Benefits</button></li>
+      <li><button data-target="limitations">Limitations & Challenges</button></li>
+      <li><button data-target="ethics">Ethical & Confidentiality Considerations</button></li>
+      <li><button data-target="seek">When to Seek It</button></li>
+      <li><button data-target="final">Final Perspective</button></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <h2>Introduction</h2>
+    <p>Supported therapy refers to a structured form of mental health care in which an individual receives emotional, psychological, and practical assistance through a guided therapeutic relationship, often combined with external support systems.</p>
+    <p>It is commonly used for people facing emotional distress, mental health conditions, life transitions, or functional challenges that make independent coping difficult. The goal is not to “fix” the person, but to strengthen stability, insight, coping capacity, and daily functioning with consistent professional and social support.</p>
+    <p>From both psychiatric and counselling perspectives, supported therapy recognizes that recovery and psychological growth often occur best when treatment is reinforced by human connection, continuity, and appropriate guidance.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516321310769-5f5c0f4b0f3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Person in supportive therapy session">
+        <div class="card-content">
+          <h4>Building Trust in Therapy</h4>
+          <p>Safe space for emotional expression</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Counsellor and client talking">
+        <div class="card-content">
+          <h4>Guided Supportive Conversation</h4>
+          <p>Empathy and structure combined</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Person feeling supported">
+        <div class="card-content">
+          <h4>Restoring Hope & Stability</h4>
+          <p>Step-by-step emotional recovery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="meaning">
+    <h2>What Supported Therapy Means</h2>
+    <p>Supported therapy is not a single technique. It is an approach that emphasizes:</p>
+    <ul class="check-list">
+      <li>Ongoing emotional support</li>
+      <li>Therapeutic guidance tailored to individual needs</li>
+      <li>Collaboration between professionals and support networks</li>
+      <li>Gradual strengthening of coping and independence</li>
+    </ul>
+    <p>It may include talk therapy, medication support when indicated, psychoeducation, skills training, and coordinated care with family or community resources.</p>
+  </section>
+
+  <section id="who">
+    <h2>Who Supported Therapy Is For</h2>
+    <ul class="check-list">
+      <li>People living with depression, anxiety, bipolar disorder, trauma-related conditions, or psychotic disorders</li>
+      <li>Individuals adjusting to loss, illness, disability, or major life changes</li>
+      <li>Adolescents and adults struggling with emotional regulation or social functioning</li>
+      <li>People recovering from substance use disorders</li>
+      <li>Individuals with chronic mental health conditions needing long-term support</li>
+      <li>Those who feel overwhelmed, isolated, or unable to cope alone</li>
+    </ul>
+    <p>It is suitable for both short-term and long-term care, depending on need.</p>
+  </section>
+
+  <section id="goals">
+    <h2>Core Goals of Supported Therapy</h2>
+    <ul class="check-list">
+      <li>Emotional stabilization</li>
+      <li>Reduction of distressing symptoms</li>
+      <li>Improved insight and self-understanding</li>
+      <li>Development of coping and problem-solving skills</li>
+      <li>Strengthening of daily functioning</li>
+      <li>Prevention of relapse or deterioration</li>
+      <li>Promotion of dignity, autonomy, and hope</li>
+    </ul>
+    <p>Support is adjusted over time to build confidence and capacity.</p>
+  </section>
+
+  <section id="components">
+    <h2>Key Components of Supported Therapy</h2>
+
+    <h3>1. Therapeutic Relationship</h3>
+    <p>A safe, respectful, consistent relationship is central — providing empathy, structure, and reliability.</p>
+
+    <h3>2. Emotional Support</h3>
+    <p>Expressing feelings without judgment; normalizing emotions; reassurance in distress.</p>
+
+    <h3>3. Practical Guidance</h3>
+    <p>Help with routines, decision-making, stress management, communication, and planning.</p>
+
+    <h3>4. Psychoeducation</h3>
+    <p>Learning about conditions, patterns, treatments, and warning signs to reduce fear.</p>
+
+    <h3>5. Skills Development</h3>
+    <p>Coping strategies, emotional regulation, social skills, problem-solving, grounding techniques.</p>
+
+    <h3>6. Medication Support (When Indicated)</h3>
+    <p>Psychiatric monitoring of effectiveness, side effects, adherence, and safety.</p>
+
+    <h3>7. Involvement of Support Systems</h3>
+    <p>Family/caregivers involved (with consent) for reinforcement and encouragement.</p>
+  </section>
+
+  <section id="benefits">
+    <h2>Benefits of Supported Therapy</h2>
+    <ul class="check-list">
+      <li>Feeling understood and less alone</li>
+      <li>Improved emotional regulation</li>
+      <li>Better adherence to treatment plans</li>
+      <li>Reduced hospitalizations or crises</li>
+      <li>Stronger coping and resilience</li>
+      <li>Improved relationships and daily functioning</li>
+    </ul>
+    <p>Progress is often gradual — consistency brings meaningful change.</p>
+  </section>
+
+  <section id="final">
+    <h2>Final Perspective from Psychiatry and Counselling</h2>
+    <p>From a psychiatric view, supported therapy helps maintain clinical stability and continuity of care. From a counselling view, it fosters emotional growth, self-awareness, and trust.</p>
+    <p style="font-size:1.3rem; font-weight:600; color:var(--primary); margin-top:2.5rem; text-align:center;">
+      Together, these perspectives recognize that healing is not only about symptom reduction, but also about restoring meaning, connection, and confidence in one’s ability to live well.
+    </p>
+    <p style="text-align:center; font-style:italic; margin-top:1.8rem; color:#4b5563;">
+      Supported therapy is a humane, structured, and effective approach that meets people where they are and walks with them toward better mental health.
+    </p>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational public guide • Not a substitute for professional mental health advice</p>
+  <p>Supported Therapy • Psychiatry & Counselling Perspective • January 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #3730a3, #4f46e5)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

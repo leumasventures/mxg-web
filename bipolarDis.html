@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bipolar Disorder – Psychiatric & Counselling Perspective</title>
+  <style>
+    :root {
+      --primary: #4a6fa5;
+      --primary-dark: #35527a;
+      --light-bg: #f8fafc;
+      --text: #1e293b;
+      --gray: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px 12px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    header .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      font-weight: 300;
+    }
+
+    main {
+      padding: 1.5rem 2rem 2.5rem;
+    }
+
+    .section {
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.8rem;
+    }
+
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 1rem 0;
+      user-select: none;
+      transition: background-color 0.15s;
+    }
+
+    .section-header:hover {
+      background-color: #f1f5f9;
+      border-radius: 6px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .toggle {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      width: 36px;
+      text-align: center;
+    }
+
+    .section-header.active .toggle {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.35s ease;
+      padding: 0 0.5rem;
+    }
+
+    .section-header.active + .section-content {
+      max-height: 4000px; /* large enough for longest section */
+      padding: 1.2rem 0.5rem 0.8rem;
+    }
+
+    ul {
+      padding-left: 1.6rem;
+      margin: 1rem 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight {
+      background-color: #f0f7ff;
+      padding: 1rem;
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      margin: 1.2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem 2rem;
+      color: var(--gray);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.25rem; }
+      main { padding: 1.2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+
+    <h1>Bipolar Disorder</h1>
+    <div class="subtitle">A Psychiatric and Counselling Perspective for Public Understanding</div>
+  </header>
+
+  <main>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Introduction</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <p>Bipolar disorder is a mental health condition that affects mood, energy, thinking, and behavior. It is not simply a matter of being happy one day and sad the next. It is a medical and psychological condition involving clear episodes of mood elevation and mood depression that interfere with daily functioning, relationships, and decision making.</p>
+        <p>With accurate diagnosis, proper treatment, and consistent support, many people with bipolar disorder live stable and productive lives.</p>
+        <p>As mental health professionals, our role is to explain bipolar disorder clearly, reduce stigma, and help individuals and families recognize when professional help is needed.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">What Is Bipolar Disorder</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <p>Bipolar disorder is a mood disorder characterized by recurrent episodes of mania or hypomania and depression. These mood episodes are more intense and persistent than ordinary emotional changes and are not fully explained by life events alone.</p>
+        <p>Mood episodes affect:</p>
+        <ul>
+          <li>Emotions</li>
+          <li>Energy levels</li>
+          <li>Sleep patterns</li>
+          <li>Thinking and judgment</li>
+          <li>Activity and behavior</li>
+        </ul>
+        <p>Between episodes, some individuals return to their usual level of functioning, while others may continue to experience mild symptoms.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Types of Bipolar Disorder</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <h3>Bipolar I Disorder</h3>
+        <p>This involves at least one manic episode. Depressive episodes often occur as well but are not required for diagnosis. Mania in Bipolar I is severe and may require hospitalization.</p>
+
+        <h3>Bipolar II Disorder</h3>
+        <p>This involves at least one major depressive episode and at least one hypomanic episode. Hypomania is a milder form of mania and does not usually involve loss of reality testing.</p>
+
+        <h3>Cyclothymic Disorder</h3>
+        <p>This involves long term mood instability with periods of mild depressive symptoms and mild hypomanic symptoms lasting at least two years in adults. Symptoms do not meet full criteria for major episodes but still cause distress.</p>
+
+        <h3>Other Specified and Unspecified Bipolar Disorders</h3>
+        <p>These categories are used when symptoms are clinically significant but do not fit neatly into the above types.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Understanding Mood Episodes</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <h3>Manic Episode</h3>
+        <p>Mania is a period of abnormally elevated or irritable mood lasting at least one week or requiring hospitalization. Symptoms may include:</p>
+        <ul>
+          <li>Excessive energy and restlessness</li>
+          <li>Decreased need for sleep</li>
+          <li>Rapid or pressured speech</li>
+          <li>Racing thoughts</li>
+          <li>Inflated self confidence or grandiosity</li>
+          <li>Poor judgment and risky decisions</li>
+          <li>Increased goal directed activity</li>
+          <li>Distractibility</li>
+        </ul>
+        <p>In severe cases, mania may involve loss of touch with reality, such as delusional thinking.</p>
+
+        <h3>Hypomanic Episode</h3>
+        <p>Hypomania includes similar symptoms to mania but is less intense and does not cause severe impairment. Individuals may feel unusually productive or confident, which can delay recognition of illness.</p>
+
+        <h3>Depressive Episode</h3>
+        <p>Depression in bipolar disorder is often severe and persistent. Symptoms may include:</p>
+        <ul>
+          <li>Persistent sadness or emptiness</li>
+          <li>Loss of interest in activities</li>
+          <li>Fatigue and low energy</li>
+          <li>Sleep disturbances</li>
+          <li>Appetite changes</li>
+          <li>Difficulty concentrating</li>
+          <li>Feelings of worthlessness or guilt</li>
+          <li>Slowed thinking or movement</li>
+        </ul>
+        <p>Depressive episodes are often the most disabling phase of bipolar disorder.</p>
+      </div>
+    </div>
+
+    <!-- You can continue adding the remaining sections in the same pattern -->
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Causes and Risk Factors</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <p>Bipolar disorder does not have a single cause. It develops due to a combination of factors:</p>
+        <h4>Biological Factors</h4>
+        <ul>
+          <li>Genetic vulnerability</li>
+          <li>Brain chemistry and neurotransmitter regulation</li>
+          <li>Hormonal influences</li>
+        </ul>
+        <h4>Psychological Factors</h4>
+        <ul>
+          <li>Coping style</li>
+          <li>Stress sensitivity</li>
+          <li>Personality traits</li>
+        </ul>
+        <h4>Environmental Factors</h4>
+        <ul>
+          <li>Major life stressors</li>
+          <li>Trauma</li>
+          <li>Substance use</li>
+          <li>Sleep disruption</li>
+        </ul>
+        <p>Having a family member with bipolar disorder increases risk, but it does not guarantee development of the condition.</p>
+      </div>
+    </div>
+
+    <!-- Add remaining sections similarly: Diagnosis, Treatment Approaches, Living With..., etc. -->
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Hope and Recovery</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <p>From both psychiatric and counselling perspectives, recovery is a realistic goal. Recovery does not mean the absence of all symptoms. It means achieving stability, understanding the illness, and building a meaningful life despite challenges.</p>
+        <p>With proper treatment, self awareness, and support, individuals with bipolar disorder can study, work, form healthy relationships, and contribute fully to society.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Final Professional Note</h2>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="section-content">
+        <p class="highlight">Bipolar disorder is a medical and psychological condition that deserves the same seriousness and compassion as any other health condition. Public understanding reduces stigma, promotes early care, and saves lives. Seeking help is a responsible and courageous step, not a failure.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Information provided for educational purposes • Consult Maxgio HealthCare Services for personal advice and more information</p>
+    <p>Maxgio Health LLC</p>
+  </footer>
+</div>
+
+<script>
+  function toggleSection(header) {
+    header.classList.toggle("active");
+    
+    // Optional: close other sections (accordion behavior)
+    // document.querySelectorAll('.section-header').forEach(h => {
+    //   if (h !== header) h.classList.remove("active");
+    // });
+  }
+
+  // Optional: open introduction by default
+  document.addEventListener("DOMContentLoaded", () => {
+    const introHeader = document.querySelector(".section:first-child .section-header");
+    if (introHeader) toggleSection(introHeader);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Supportive Therapy — Maxgio Healthcare LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a2463;--blue:#1565c0;--sky:#4fc3f7;--red:#c62828;--soft-red:#ef5350;
+  --green:#1b5e20;--mint:#e8f5e9;
+  --off-white:#f0f4ff;--text:#14213d;--muted:#5a6f8a;--border:#dde5f0;
+  --cs:0 8px 40px rgba(10,36,99,.10);
+  /* page accent — warm rose-green for therapy */
+  --acc:#00695c;--acc2:#004d40;--acc-light:#e0f2f1;--acc-mid:#26a69a;
+  --warm:#b71c1c;--warm-light:#fce8e8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:#f8faff;color:var(--text);overflow-x:hidden}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy);color:rgba(255,255,255,.78);font-size:13px;padding:9px 0}
+.ti{max-width:1240px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.topbar a{color:var(--sky);text-decoration:none}
+
+/* ── MARQUEE ── */
+.mq{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#fff;font-size:13px;padding:7px 0;overflow:hidden}
+.mq-track{display:inline-flex;white-space:nowrap;animation:mqrun 32s linear infinite}
+.mq-track p{margin:0;padding-right:100px}
+@keyframes mqrun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(10,36,99,.12)}
+.ni{display:flex;align-items:center;justify-content:space-between;max-width:1240px;margin:0 auto;padding:14px 28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-logo{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--sky)}
+.l1{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--red);line-height:1}
+.l2{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--blue);line-height:1}
+.nl{display:flex;align-items:center;gap:2px;list-style:none}
+.nl a{font-size:14px;font-weight:500;color:var(--text);padding:8px 13px;border-radius:7px;text-decoration:none;transition:background .2s,color .2s}
+.nl a:hover,.nl a.active{background:var(--off-white);color:var(--blue)}
+.drop{position:relative}
+.dmn{display:none;position:absolute;top:calc(100%+10px);left:0;background:#fff;border-radius:12px;min-width:215px;box-shadow:0 16px 48px rgba(10,36,99,.14);padding:8px 0;z-index:200}
+.drop:hover .dmn{display:block}
+.dmn a{display:block;padding:10px 18px;font-size:14px;color:var(--text);text-decoration:none;transition:background .2s}
+.dmn a:hover{background:var(--off-white);color:var(--blue)}
+.btn-book{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,transform .15s}
+.btn-book:hover{background:var(--navy);transform:translateY(-1px)}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.ham span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+/* ══ HERO — organic split with session card ══ */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:640px;overflow:hidden;position:relative}
+.hero-left{background:linear-gradient(155deg,#1a3a2a 0%,var(--acc2) 45%,var(--acc) 100%);padding:100px 60px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+/* leaf pattern */
+.hero-left::before{content:'';position:absolute;inset:0;opacity:.08;background:
+  radial-gradient(ellipse 120px 80px at 10% 20%,#4caf50,transparent),
+  radial-gradient(ellipse 160px 120px at 85% 70%,#80cbc4,transparent),
+  radial-gradient(ellipse 90px 60px at 50% 90%,#4caf50,transparent)}
+/* warm glow */
+.hero-left::after{content:'';position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,160,0,.06),transparent 70%);bottom:-80px;right:-60px;pointer-events:none}
+.hero-bread{position:absolute;top:26px;left:60px;z-index:3;display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.45)}
+.hero-bread a{color:#80cbc4;text-decoration:none}
+.hero-ey{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#80cbc4;margin-bottom:20px;position:relative;z-index:1}
+.hero-ey::before{content:'';display:block;width:28px;height:2px;background:#80cbc4}
+.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.5vw,60px);color:#fff;line-height:1.1;margin-bottom:20px;position:relative;z-index:1}
+.hero-left h1 em{font-style:italic;color:#a5d6a7}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.72);line-height:1.8;margin-bottom:36px;max-width:480px;position:relative;z-index:1}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+.btn-ph{background:#fff;color:var(--acc);padding:15px 34px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-ph:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,255,255,.22)}
+.btn-gh{background:transparent;color:rgba(255,255,255,.85);padding:15px 34px;border-radius:8px;font-weight:500;font-size:15px;text-decoration:none;border:1.5px solid rgba(255,255,255,.3);transition:border-color .2s,background .2s}
+.btn-gh:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.hero-nums{display:flex;gap:36px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap;position:relative;z-index:1}
+.hn .n{font-family:'Cormorant Garamond',serif;font-size:40px;color:#a5d6a7;line-height:1}
+.hn .lb{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px}
+
+/* Right — therapy session visual */
+.hero-right{background:linear-gradient(160deg,#e8f5e9 0%,#e0f2f1 50%,#f1f8e9 100%);display:flex;align-items:center;justify-content:center;padding:48px;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(0,105,92,.08);top:-120px;right:-120px}
+.hero-right::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(0,105,92,.06);bottom:-80px;left:-80px}
+/* Session card */
+.sess-card{background:#fff;border-radius:24px;padding:28px;width:100%;max-width:390px;box-shadow:0 32px 80px rgba(0,105,92,.18);position:relative;z-index:2}
+.sess-header{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.sess-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sess-info h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.sess-info p{font-size:12px;color:var(--muted)}
+.sess-dot{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--acc);font-weight:600;margin-left:auto}
+.s-dot{width:8px;height:8px;border-radius:50%;background:var(--acc);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+/* Mood tracker */
+.mood-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px}
+.mood-row{display:flex;justify-content:space-between;margin-bottom:22px;gap:6px}
+.mood-btn{flex:1;padding:10px 4px;border-radius:10px;border:1.5px solid var(--border);background:#f8faff;font-size:18px;cursor:pointer;transition:all .2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.mood-btn span{font-size:10.5px;font-weight:600;color:var(--muted)}
+.mood-btn.sel{border-color:var(--acc);background:var(--acc-light)}
+/* Progress bars */
+.prog-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;margin-top:14px}
+.prog-bar{height:7px;background:var(--border);border-radius:50px;overflow:hidden}
+.prog-fill{height:100%;border-radius:50px;transition:width .8s ease}
+.pf1{background:linear-gradient(90deg,var(--acc2),var(--acc));width:78%}
+.pf2{background:linear-gradient(90deg,#1565c0,#4fc3f7);width:65%}
+.pf3{background:linear-gradient(90deg,#e65100,#ff8f00);width:52%}
+/* Next session */
+.next-sess{margin-top:20px;background:linear-gradient(135deg,var(--acc2),var(--acc));border-radius:12px;padding:15px 18px;display:flex;align-items:center;gap:12px;color:#fff}
+.ns-ic{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ns-txt strong{font-size:14px;display:block;margin-bottom:1px}
+.ns-txt span{font-size:12px;opacity:.75}
+/* Float badges */
+.float-badge{position:absolute;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,105,92,.16);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--navy);z-index:3}
+.fb-tl{top:24px;left:24px}
+.fb-br{bottom:24px;right:24px}
+.fb-ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.fb-ic.g{background:var(--mint);color:var(--green)}
+.fb-ic.t{background:var(--acc-light);color:var(--acc)}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:#fff;border-bottom:1px solid var(--border)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(5,1fr)}
+.tbi{padding:24px 20px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--border)}
+.tbi:last-child{border:none}
+.tbi-ic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.tbi h5{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.tbi p{font-size:11.5px;color:var(--muted);line-height:1.4}
+
+/* ── SECTION HELPERS ── */
+.sec-wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.sh{margin-bottom:54px}
+.sh.c{text-align:center}
+.ey{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:10px}
+.sh h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.5vw,46px);color:var(--navy);line-height:1.15}
+.sh p{font-size:15.5px;color:var(--muted);max-width:560px;margin-top:12px;line-height:1.8}
+.sh.c p{margin-left:auto;margin-right:auto}
+
+/* ── EDITORIAL ── */
+.editorial{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--cs)}
+.ed-img{position:relative;min-height:480px;background:linear-gradient(135deg,var(--acc2),var(--acc))}
+.ed-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.ed-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,77,64,.2),rgba(0,105,92,.45))}
+.ed-tag{position:absolute;top:28px;left:28px;background:var(--acc);color:#fff;border-radius:8px;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;z-index:2}
+.ed-badge{position:absolute;bottom:28px;right:28px;background:rgba(10,36,99,.88);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 22px;color:#fff;z-index:2}
+.ed-badge .bn{font-family:'Cormorant Garamond',serif;font-size:34px;color:#a5d6a7;line-height:1}
+.ed-badge .bl{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.ed-body{padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
+.ed-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.8vw,36px);color:var(--navy);line-height:1.2;margin-bottom:18px}
+.ed-body p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.cklist{list-style:none;margin:22px 0 30px}
+.cklist li{display:flex;gap:12px;font-size:14.5px;color:var(--text);padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.cklist li:last-child{border:none}
+.cklist li .ck{color:var(--acc);font-size:12px;margin-top:3px;flex-shrink:0}
+
+/* ── APPROACH METHODS ── */
+.methods-bg{background:linear-gradient(155deg,#1a3a2a 0%,var(--acc2) 45%,var(--acc) 100%);padding:90px 0;position:relative;overflow:hidden}
+.methods-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.methods-in{max-width:1240px;margin:0 auto;padding:0 28px}
+.methods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:54px}
+.mc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:36px 28px;color:#fff;transition:background .25s,transform .25s;position:relative;overflow:hidden;cursor:default}
+.mc:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
+.mc-em{font-size:40px;margin-bottom:16px;display:block;line-height:1}
+.mc-tag{display:inline-block;background:rgba(165,214,167,.15);border:1px solid rgba(165,214,167,.25);color:#a5d6a7;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:12px;letter-spacing:.8px;text-transform:uppercase}
+.mc-h{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:10px;color:#fff}
+.mc-p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.7}
+
+/* ── CONDITIONS ── */
+.cond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cond-card{background:#fff;border-radius:16px;padding:22px 18px;box-shadow:var(--cs);display:flex;align-items:center;gap:14px;transition:transform .25s,box-shadow .25s;text-decoration:none;color:var(--text);border-left:4px solid var(--acc)}
+.cond-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,105,92,.14)}
+.cond-ic{width:44px;height:44px;border-radius:11px;background:var(--acc-light);color:var(--acc);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cond-card h4{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.cond-card p{font-size:12.5px;color:var(--muted);line-height:1.4}
+
+/* ── PROCESS ── */
+.process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+.process-row::before{content:'';position:absolute;top:38px;left:calc(12.5%+18px);right:calc(12.5%+18px);border-top:2px dashed var(--border);z-index:0}
+.pstep{text-align:center;position:relative;z-index:1}
+.ps-n{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;font-family:'Cormorant Garamond',serif;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;border:5px solid #f8faff;box-shadow:0 4px 22px rgba(0,105,92,.3);transition:transform .25s}
+.pstep:hover .ps-n{transform:scale(1.08)}
+.ps-h{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.ps-p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ── SERVICE CARDS ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sc{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--cs);transition:transform .28s,box-shadow .28s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.sc:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,105,92,.15)}
+.sc-img{position:relative;height:200px;overflow:hidden}
+.sc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.sc:hover .sc-img img{transform:scale(1.07)}
+.sc-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;color:#fff}
+.sc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,77,64,.65) 0%,transparent 55%)}
+.sc-tag{position:absolute;top:16px;left:16px;z-index:2;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:rgba(0,105,92,.85);backdrop-filter:blur(6px);padding:5px 13px;border-radius:50px}
+.sc-body{padding:28px;flex:1;display:flex;flex-direction:column}
+.sc-body h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:10px}
+.sc-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px;flex:1}
+.sc-feats{list-style:none;margin-bottom:22px}
+.sc-feats li{font-size:13.5px;color:var(--text);padding:6px 0;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--border)}
+.sc-feats li:last-child{border:none}
+.sc-feats li::before{content:'✓';color:var(--acc);font-weight:700;flex-shrink:0;font-size:12px}
+.btn-sc{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s,transform .15s;width:fit-content}
+.btn-sc:hover{opacity:.88;transform:translateY(-1px)}
+
+/* ── WHAT TO EXPECT ── */
+.expect-bg{background:linear-gradient(160deg,#e8f5e9 0%,#f8faff 60%);padding:90px 0}
+.eg{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.ei{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--cs);display:flex;gap:20px;align-items:flex-start;transition:transform .25s;border-left:4px solid var(--acc)}
+.ei:hover{transform:translateY(-4px)}
+.ei-ic{width:52px;height:52px;border-radius:13px;background:var(--acc-light);color:var(--acc);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ei h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.ei p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ── FAQ ── */
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.fq{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+.fq:hover{color:var(--acc)}
+.fq .ch{font-size:12px;color:var(--acc);transition:transform .3s;flex-shrink:0}
+.fq.open .ch{transform:rotate(180deg)}
+.fa-b{max-height:0;overflow:hidden;transition:max-height .38s ease,padding .3s}
+.fa-b.open{max-height:300px;padding-bottom:18px}
+.fa-b p{font-size:14.5px;color:var(--muted);line-height:1.8}
+
+/* ── TESTIMONIALS ── */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tc{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--cs);display:flex;flex-direction:column;gap:18px;transition:transform .25s}
+.tc:hover{transform:translateY(-4px)}
+.stars{color:#f59e0b;font-size:15px;letter-spacing:2px}
+.qt{font-size:14.5px;color:var(--text);line-height:1.85;font-style:italic;flex:1}
+.ta{display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.an{font-weight:700;font-size:14px;color:var(--navy)}
+.at{font-size:12px;color:var(--muted)}
+.verified{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--green);background:var(--mint);padding:4px 10px;border-radius:50px;margin-top:5px}
+
+/* ── CTA ── */
+.cta-strip{background:linear-gradient(135deg,#1a3a2a 0%,var(--acc2) 50%,var(--acc) 100%);padding:90px 28px;text-align:center;position:relative;overflow:hidden}
+.cta-strip::before,.cta-strip::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(165,214,167,.1)}
+.cta-strip::before{width:600px;height:600px;top:-200px;left:-200px}
+.cta-strip::after{width:400px;height:400px;bottom:-150px;right:-100px}
+.cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.cta-strip p{font-size:17px;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 36px;line-height:1.8;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-w{display:inline-block;background:#fff;color:var(--acc);padding:16px 38px;border-radius:9px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,255,255,.18)}
+.btn-out{display:inline-block;background:transparent;color:#a5d6a7;padding:16px 38px;border-radius:9px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(165,214,167,.4);transition:border-color .2s,background .2s}
+.btn-out:hover{border-color:#a5d6a7;background:rgba(165,214,167,.06)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.75)}
+.ft{max-width:1240px;margin:0 auto;padding:64px 28px 44px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px}
+.fb .f1{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--soft-red)}
+.fb .f2{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sky)}
+.fb p{font-size:14px;margin-top:14px;line-height:1.75;max-width:255px}
+.fc h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.38);margin-bottom:18px}
+.fc a{display:block;font-size:14px;color:rgba(255,255,255,.65);text-decoration:none;margin-bottom:11px;transition:color .2s}
+.fc a:hover{color:var(--sky)}
+.fb-bot{border-top:1px solid rgba(255,255,255,.08);padding:20px 28px;max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:10px}
+.fb-bot a{color:var(--sky);text-decoration:none}
+
+/* ── FIXED ── */
+#btt{position:fixed;bottom:28px;right:28px;z-index:999;width:46px;height:46px;border-radius:50%;background:var(--acc);color:#fff;border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,105,92,.4);opacity:0;transform:translateY(14px);transition:opacity .3s,transform .3s}
+#btt.v{opacity:1;transform:none}
+#btt:hover{background:var(--acc2)}
+#cw{position:fixed;bottom:28px;left:28px;z-index:999;width:54px;height:54px;border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(198,40,40,.4);transition:background .2s,transform .2s}
+#cw:hover{background:#a00000;transform:scale(1.08)}
+#cb{position:fixed;bottom:94px;left:28px;z-index:998;width:305px;background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(10,36,99,.18);padding:22px;display:none}
+#cb.open{display:block;animation:cbUp .25s ease}
+@keyframes cbUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#cb h5{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+#cb p{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+#cb a{display:block;background:var(--acc);color:#fff;text-align:center;padding:10px;border-radius:9px;text-decoration:none;font-weight:600;font-size:14px;margin-bottom:8px}
+#cb a.alt{background:var(--off-white);color:var(--navy)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-height:440px;padding:60px 40px}
+  .editorial{grid-template-columns:1fr}
+  .ed-img{min-height:320px}
+  .methods-grid{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .tg{grid-template-columns:repeat(2,1fr)}
+  .ft{grid-template-columns:1fr 1fr}
+  .cond-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .ham{display:block}
+  .nl{display:none}
+  .nl.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:16px 28px 24px;box-shadow:0 16px 40px rgba(10,36,99,.1);z-index:900}
+  .tb-inner{grid-template-columns:1fr 1fr}
+  .process-row{grid-template-columns:repeat(2,1fr);gap:24px}
+  .process-row::before{display:none}
+  .eg{grid-template-columns:1fr}
+  .hero-left{padding:70px 32px}
+  .hero-bread{left:32px}
+}
+@media(max-width:540px){
+  .svc-grid{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr}
+  .methods-grid{grid-template-columns:1fr}
+  .cond-grid{grid-template-columns:1fr 1fr}
+  .ft{grid-template-columns:1fr}
+  .tb-inner{grid-template-columns:1fr 1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar"><div class="ti">
+  <span><i class="far fa-clock" style="margin-right:6px"></i>Mon–Fri: 9am–4pm &nbsp;|&nbsp; Sat: 9am–1pm</span>
+  <span>
+    <a href="mailto:maxgiohealth@gmail.com"><i class="fa fa-envelope" style="margin-right:5px"></i>maxgiohealth@gmail.com</a>
+    &nbsp;|&nbsp;
+    <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:5px"></i>+1 (804) 901-0053</a>
+  </span>
+</div></div>
+
+<!-- MARQUEE -->
+<div class="mq"><div class="mq-track">
+  <p>🌿 Supportive Therapy at Maxgio Healthcare LLC — Compassionate, evidence-based emotional support for every stage of your mental health journey &nbsp;•&nbsp; In-person &amp; telehealth &nbsp;•&nbsp; Board-certified Psychiatric NP · 17+ years</p>
+  <p>🌿 Supportive Therapy at Maxgio Healthcare LLC — Compassionate, evidence-based emotional support for every stage of your mental health journey &nbsp;•&nbsp; In-person &amp; telehealth &nbsp;•&nbsp; Board-certified Psychiatric NP · 17+ years</p>
+</div></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="ni">
+    <a href="index.html" class="brand">
+      <img src="maxgio img/mxgLogo.jpeg" alt="Maxgio Logo" class="brand-logo" onerror="this.style.display='none'">
+      <div><div class="l1">MAXGIO</div><div class="l2">Healthcare</div></div>
+    </a>
+    <ul class="nl" id="nl">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About Us.html">About</a></li>
+      <li class="dropdown">
+        <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <div class="dropdown-menu">
+              <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
+          </div>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="drop">
+        <a href="appointment.html" class="active">Appointments <i class="fa fa-chevron-down" style="font-size:10px;margin-left:3px"></i></a>
+        <div class="dmn">
+          <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue)"></i>Diagnosis</a>
+          <a href="supportive therapy.html" style="color:var(--acc);font-weight:700"><i class="fa fa-heart" style="margin-right:8px;color:var(--acc)"></i>Supportive Therapy</a>
+          <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:#4527a0"></i>Medication Management</a>
+          <a href="telecare.html"><i class="fa fa-video" style="margin-right:8px;color:#0097a7"></i>TeleCare</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <a href="appointment.html" class="btn-book">Book Appointment</a>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-bread">
+      <a href="index.html">Home</a><i class="fa fa-chevron-right" style="font-size:9px"></i>
+      <a href="service.html">Services</a><i class="fa fa-chevron-right" style="font-size:9px"></i>
+      <span style="color:rgba(255,255,255,.4)">Supportive Therapy</span>
+    </div>
+    <div class="hero-ey"><i class="fa fa-heart"></i> Therapeutic Services</div>
+    <h1>Supportive Therapy<br>for <em>Lasting Wellbeing</em></h1>
+    <p class="hero-sub">Compassionate, evidence-based therapeutic support that meets you exactly where you are — building emotional resilience, healthy coping skills, and a stronger sense of self, session by session.</p>
+    <div class="hero-btns">
+      <a href="appointment.html" class="btn-ph">Schedule a Session</a>
+      <a href="#what-is" class="btn-gh">Learn More</a>
+    </div>
+    <div class="hero-nums">
+      <div class="hn"><div class="n">17+</div><div class="lb">Years Experience</div></div>
+      <div class="hn"><div class="n">500+</div><div class="lb">Patients Supported</div></div>
+      <div class="hn"><div class="n">100%</div><div class="lb">Confidential</div></div>
+    </div>
+  </div>
+
+  <!-- Right — therapy session card -->
+  <div class="hero-right">
+    <div class="float-badge fb-tl"><div class="fb-ic g"><i class="fa fa-shield-halved"></i></div>HIPAA Secure</div>
+    <div class="sess-card">
+      <div class="sess-header">
+        <div class="sess-av">R</div>
+        <div class="sess-info">
+          <h4>Rose Idemili, PMHNP-BC</h4>
+          <p>Psychiatric-Mental Health NP · 17 yrs</p>
+        </div>
+        <div class="sess-dot"><span class="s-dot"></span>In Session</div>
+      </div>
+      <div class="mood-label">How are you feeling today?</div>
+      <div class="mood-row">
+        <div class="mood-btn"><span>😔</span><span>Low</span></div>
+        <div class="mood-btn"><span>😐</span><span>Okay</span></div>
+        <div class="mood-btn sel"><span>🙂</span><span>Better</span></div>
+        <div class="mood-btn"><span>😊</span><span>Good</span></div>
+        <div class="mood-btn"><span>😄</span><span>Great</span></div>
+      </div>
+      <div class="prog-label"><span>Anxiety</span><span>78%</span></div>
+      <div class="prog-bar"><div class="prog-fill pf1"></div></div>
+      <div class="prog-label"><span>Mood Stability</span><span>65%</span></div>
+      <div class="prog-bar"><div class="prog-fill pf2"></div></div>
+      <div class="prog-label"><span>Sleep Quality</span><span>52%</span></div>
+      <div class="prog-bar"><div class="prog-fill pf3"></div></div>
+      <div class="next-sess">
+        <div class="ns-ic"><i class="fa fa-calendar-check"></i></div>
+        <div class="ns-txt"><strong>Next Session Scheduled</strong><span>Weekly check-in · In-person or Telehealth</span></div>
+      </div>
+    </div>
+    <div class="float-badge fb-br"><div class="fb-ic t"><i class="fa fa-lock"></i></div>100% Confidential</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar"><div class="tb-inner">
+  <div class="tbi rv"><div class="tbi-ic" style="background:var(--acc-light);color:var(--acc)"><i class="fa fa-user-doctor"></i></div><div><h5>Board-Certified PMHNP</h5><p>17+ years of experience</p></div></div>
+  <div class="tbi rv" style="transition-delay:.06s"><div class="tbi-ic" style="background:#e3f2fd;color:var(--blue)"><i class="fa fa-lock"></i></div><div><h5>100% Confidential</h5><p>HIPAA-compliant sessions</p></div></div>
+  <div class="tbi rv" style="transition-delay:.12s"><div class="tbi-ic" style="background:#fce8e8;color:var(--red)"><i class="fa fa-heart"></i></div><div><h5>Compassionate Care</h5><p>Patient-centered approach</p></div></div>
+  <div class="tbi rv" style="transition-delay:.18s"><div class="tbi-ic" style="background:var(--mint);color:var(--green)"><i class="fa fa-id-card"></i></div><div><h5>Insurance Accepted</h5><p>Medicaid, Medicare &amp; more</p></div></div>
+  <div class="tbi rv" style="transition-delay:.24s"><div class="tbi-ic" style="background:#e0f7fd;color:#0097a7"><i class="fa fa-video"></i></div><div><h5>In-Person &amp; Telehealth</h5><p>VA, WA &amp; ND coverage</p></div></div>
+</div></div>
+
+<!-- WHAT IS SUPPORTIVE THERAPY -->
+<div id="what-is" style="background:#fff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="editorial rv">
+      <div class="ed-img">
+        <img src="maxgio img/img5.jpeg" alt="Supportive therapy session" onerror="this.style.display='none'">
+        <div class="ed-overlay"></div>
+        <div class="ed-tag">Evidence-Based Therapeutic Care</div>
+        <div class="ed-badge"><div class="bn">500+</div><div class="bl">Patients supported<br>through therapy</div></div>
+      </div>
+      <div class="ed-body">
+        <span class="ey">What Is It?</span>
+        <h2>What Is Supportive Therapy?</h2>
+        <p>Supportive therapy is a therapeutic approach designed to provide emotional reinforcement, strengthen coping skills, and foster the personal resilience needed to navigate life's mental and emotional challenges.</p>
+        <p>At Maxgio Healthcare LLC, our sessions are built around <em>you</em> — your goals, your pace, and your story. Our board-certified PMHNP creates a safe, non-judgmental space where healing and growth become possible.</p>
+        <ul class="cklist">
+          <li><span class="ck"><i class="fa fa-check"></i></span> Individualized approach tailored to your unique needs</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Emotional support, validation, and active listening</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Building effective coping strategies for daily stressors</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Strengthening self-esteem and emotional regulation</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Working through grief, trauma, anxiety, and life transitions</li>
+          <li><span class="ck"><i class="fa fa-check"></i></span> Available in-person or via secure telehealth video session</li>
+        </ul>
+        <a href="appointment.html" class="btn-book" style="text-decoration:none;background:linear-gradient(135deg,var(--acc2),var(--acc))">Schedule a Session <i class="fa fa-arrow-right" style="margin-left:7px"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THERAPEUTIC APPROACHES -->
+<div class="methods-bg">
+  <div class="methods-in">
+    <div class="sh c rv">
+      <span class="ey" style="color:#a5d6a7">Our Approach</span>
+      <h2 style="color:#fff">Therapeutic Methods We Use</h2>
+      <p style="color:rgba(255,255,255,.62);font-size:15.5px;max-width:560px;margin:12px auto 0;line-height:1.8">We draw from a range of evidence-based modalities to find the approach that works best for <em>you</em>.</p>
+    </div>
+    <div class="methods-grid">
+      <div class="mc rv"><span class="mc-em">🧠</span><span class="mc-tag">CBT</span><div class="mc-h">Cognitive Behavioral Therapy</div><p class="mc-p">Identify and reshape unhelpful thought patterns and behaviors. CBT is highly effective for depression, anxiety, OCD, PTSD, and phobias.</p></div>
+      <div class="mc rv" style="transition-delay:.06s"><span class="mc-em">🌊</span><span class="mc-tag">Solution-Focused</span><div class="mc-h">Solution-Focused Therapy</div><p class="mc-p">A goal-oriented, forward-looking approach that focuses on your strengths and resources rather than dwelling on problems — ideal for life transitions.</p></div>
+      <div class="mc rv" style="transition-delay:.12s"><span class="mc-em">🤝</span><span class="mc-tag">Person-Centered</span><div class="mc-h">Client-Centered Therapy</div><p class="mc-p">Unconditional positive regard, empathy, and genuine understanding. You set the direction — our provider creates the space for insight and growth.</p></div>
+      <div class="mc rv" style="transition-delay:.18s"><span class="mc-em">💭</span><span class="mc-tag">Psychoeducation</span><div class="mc-h">Psychoeducation</div><p class="mc-p">Understanding your diagnosis and the science behind your symptoms is empowering. Education becomes a foundational part of every treatment plan.</p></div>
+      <div class="mc rv" style="transition-delay:.24s"><span class="mc-em">🌱</span><span class="mc-tag">Mindfulness-Based</span><div class="mc-h">Mindfulness-Based Approaches</div><p class="mc-p">Integrate present-moment awareness to reduce rumination, manage stress responses, and build a healthier relationship with your thoughts and feelings.</p></div>
+      <div class="mc rv" style="transition-delay:.3s"><span class="mc-em">🫂</span><span class="mc-tag">Grief &amp; Trauma</span><div class="mc-h">Grief &amp; Trauma Processing</div><p class="mc-p">Gentle, compassionate processing of loss, trauma, and adverse life experiences — at your pace, with a provider who truly listens.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONDITIONS WE SUPPORT -->
+<div style="background:#fff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">Who We Help</span><h2>Conditions &amp; Challenges We Address</h2><p>Supportive therapy is effective across a wide range of mental health conditions and life circumstances.</p></div>
+    <div class="cond-grid rv">
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-cloud-rain"></i></div><div><h4>Depression</h4><p>Low mood, loss of interest, hopelessness</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-bolt"></i></div><div><h4>Anxiety Disorders</h4><p>GAD, panic disorder, social anxiety</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-shield-halved"></i></div><div><h4>Trauma &amp; PTSD</h4><p>Processing past trauma, PTSD symptoms</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-arrows-spin"></i></div><div><h4>Life Transitions</h4><p>Divorce, job loss, relocation, grief</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-heart-crack"></i></div><div><h4>Grief &amp; Loss</h4><p>Bereavement, complicated grief</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-fire"></i></div><div><h4>Stress &amp; Burnout</h4><p>Chronic stress, occupational burnout</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-circle-half-stroke"></i></div><div><h4>Bipolar Disorder</h4><p>Mood management &amp; psychoeducation</p></div></div>
+      <div class="cond-card"><div class="cond-ic"><i class="fa fa-puzzle-piece"></i></div><div><h4>Relationship Issues</h4><p>Communication, boundaries, self-worth</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="background:#f8faff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">The Process</span><h2>What to Expect From Your Therapy Journey</h2><p>Every therapeutic relationship at Maxgio Healthcare begins with respect, privacy, and a clear plan built just for you.</p></div>
+    <div class="process-row rv">
+      <div class="pstep"><div class="ps-n">1</div><div class="ps-h">Initial Assessment</div><p class="ps-p">A private, in-depth conversation to understand your history, current challenges, and goals — the foundation of your personalized therapy plan.</p></div>
+      <div class="pstep"><div class="ps-n">2</div><div class="ps-h">Collaborative Plan</div><p class="ps-p">Together we create a treatment plan that reflects your priorities, preferred pace, and the therapeutic approaches most likely to help you.</p></div>
+      <div class="pstep"><div class="ps-n">3</div><div class="ps-h">Ongoing Sessions</div><p class="ps-p">Regular individual sessions — in-person at our Richmond office or via secure telehealth video — at a frequency that fits your life.</p></div>
+      <div class="pstep"><div class="ps-n">4</div><div class="ps-h">Progress &amp; Growth</div><p class="ps-p">Continuous monitoring of your progress with regular plan adjustments. Your growth guides every step of our therapeutic work together.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE CARDS -->
+<div style="background:#fff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">Our Services</span><h2>Supportive Therapy Services</h2><p>From your first session to long-term therapeutic growth — compassionate care at every stage.</p></div>
+    <div class="svc-grid">
+      <div class="sc rv">
+        <div class="sc-img">
+          <div class="sc-img-ph" style="background:linear-gradient(135deg,var(--acc2),var(--acc))"><i class="fa fa-comments"></i></div>
+          <img src="maxgio img/img5.jpeg" alt="Individual Therapy" onerror="this.style.display='none'">
+          <span class="sc-tag">Individual</span>
+        </div>
+        <div class="sc-body">
+          <h3>Individual Supportive Therapy</h3>
+          <p>One-on-one sessions focused on your unique emotional experience, challenges, and therapeutic goals in a fully confidential environment.</p>
+          <ul class="sc-feats">
+            <li>Personalized to your needs &amp; goals</li>
+            <li>In-person or telehealth</li>
+            <li>Flexible scheduling</li>
+            <li>Consistent provider continuity</li>
+          </ul>
+          <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="sc rv" style="transition-delay:.1s">
+        <div class="sc-img">
+          <div class="sc-img-ph" style="background:linear-gradient(135deg,var(--acc),#1b5e20)"><i class="fa fa-arrows-rotate"></i></div>
+          <img src="maxgio img/img7.jpeg" alt="Continuous Therapy" onerror="this.style.display='none'">
+          <span class="sc-tag">Continuous</span>
+        </div>
+        <div class="sc-body">
+          <h3>Continuous Therapy &amp; Follow-Up</h3>
+          <p>Long-term therapeutic support with consistent follow-up sessions to monitor progress, reinforce coping skills, and navigate new challenges as they arise.</p>
+          <ul class="sc-feats">
+            <li>Regular scheduled sessions</li>
+            <li>Ongoing progress monitoring</li>
+            <li>Plan adjustments over time</li>
+            <li>Crisis support between sessions</li>
+          </ul>
+          <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="sc rv" style="transition-delay:.2s">
+        <div class="sc-img">
+          <div class="sc-img-ph" style="background:linear-gradient(135deg,#0d47a1,var(--acc))"><i class="fa fa-video"></i></div>
+          <img src="maxgio img/img13.jpeg" alt="Telehealth Therapy" onerror="this.style.display='none'">
+          <span class="sc-tag">Telehealth</span>
+        </div>
+        <div class="sc-body">
+          <h3>Telehealth Therapy Sessions</h3>
+          <p>Receive the full depth of supportive therapy via secure HIPAA-compliant video — from wherever you are across Virginia, Washington, or North Dakota.</p>
+          <ul class="sc-feats">
+            <li>Secure, browser-based platform</li>
+            <li>No app download needed</li>
+            <li>Same quality as in-person</li>
+            <li>Available in VA, WA &amp; ND</li>
+          </ul>
+          <a href="appointment.html" class="btn-sc">Book Now <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT -->
+<div class="expect-bg">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">Your First Visit</span><h2>What to Expect in Your First Session</h2><p>Your first therapy session is a conversation — not a test. Here's everything you should know walking in.</p></div>
+    <div class="eg">
+      <div class="ei rv"><div class="ei-ic"><i class="fa fa-door-open"></i></div><div><h4>A Warm, Judgment-Free Welcome</h4><p>Your first session begins with an open, relaxed conversation. There are no wrong answers. You can share as much or as little as you feel comfortable with — your pace is the right pace.</p></div></div>
+      <div class="ei rv" style="transition-delay:.08s"><div class="ei-ic"><i class="fa fa-clipboard-list"></i></div><div><h4>Understanding Your Story</h4><p>Your provider will ask about your history, current symptoms, and what brings you in today. This helps build the clearest picture of where you are and where you'd like to go.</p></div></div>
+      <div class="ei rv" style="transition-delay:.16s"><div class="ei-ic"><i class="fa fa-map-location-dot"></i></div><div><h4>Setting Your Goals</h4><p>Together you'll discuss what you hope to achieve from therapy. Goals can be broad ("I want to feel less anxious") or specific — all are valid starting points.</p></div></div>
+      <div class="ei rv" style="transition-delay:.24s"><div class="ei-ic"><i class="fa fa-calendar-days"></i></div><div><h4>A Clear Path Forward</h4><p>Before you leave, you'll have a clear plan: a suggested session frequency, an initial therapeutic approach, and the next appointment already scheduled.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div style="background:#fff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">FAQ</span><h2>Common Questions About Supportive Therapy</h2><p>Everything you need to know before booking your first session.</p></div>
+    <div class="faq-list rv">
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">How is supportive therapy different from other types of therapy? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>Supportive therapy focuses primarily on emotional reinforcement, coping skill development, and building resilience — rather than deep exploration of the unconscious (like psychoanalysis) or restructuring thought patterns (like pure CBT). It is highly flexible and often integrates multiple evidence-based approaches tailored specifically to each patient.</p></div></div>
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">How long will I need therapy? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>Duration varies widely based on your goals and needs. Some patients find significant benefit in 8–12 sessions; others prefer longer-term ongoing support. We regularly review your progress together and adjust the plan — you are always in control of how long therapy continues.</p></div></div>
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">Can I do therapy via telehealth instead of coming in? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>Absolutely. We offer fully equivalent telehealth therapy sessions via our HIPAA-secure video platform for patients located in Virginia, Washington State, and North Dakota. Research shows telehealth therapy produces outcomes comparable to in-person sessions for most conditions.</p></div></div>
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">Is everything I say in therapy confidential? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>Yes. Everything shared in your sessions is protected under strict HIPAA privacy regulations. The only exceptions — required by law — involve situations where there is an imminent risk of harm to yourself or others, or in cases of suspected child or elder abuse. These are discussed openly during intake.</p></div></div>
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">Do I need a referral to start therapy? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>No referral is required. You can book a therapy appointment directly through our patient portal or by calling our office. Some insurance plans may require prior authorization — we recommend checking with your insurer before your first session.</p></div></div>
+      <div class="faq-item"><button class="fq" onclick="tfaq(this)">Is therapy covered by my insurance? <i class="fa fa-chevron-down ch"></i></button><div class="fa-b"><p>We accept Medicaid, Medicare, Anthem BCBS, Aetna, United Healthcare, Cigna, Optima Health, and Tricare. Coverage for mental health therapy has expanded significantly under parity laws. We recommend confirming your specific outpatient mental health benefits with your insurer prior to your first session. Self-pay options are also available.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div style="background:#f8faff;padding:90px 0">
+  <div class="sec-wrap">
+    <div class="sh c rv"><span class="ey">Patient Stories</span><h2>What Therapy Patients Say</h2><p>Real words from patients whose lives changed through consistent, compassionate therapeutic support.</p></div>
+    <div class="tg">
+      <div class="tc rv"><div class="stars">★★★★★</div><p class="qt">"I was skeptical about therapy at first. But after just a few sessions with Rose, I started understanding why I react the way I do. The coping tools she gave me have genuinely changed my daily life."</p><div><div class="ta"><div class="av">S</div><div><div class="an">S. Mitchell</div><div class="at">Virginia · Patient since 2022</div></div></div><span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span></div></div>
+      <div class="tc rv" style="transition-delay:.1s"><div class="stars">★★★★★</div><p class="qt">"I went through a devastating divorce and wasn't functioning. The supportive therapy helped me grieve, rebuild my confidence, and find myself again. I'm genuinely grateful for this practice."</p><div><div class="ta"><div class="av">D</div><div><div class="an">D. Torres</div><div class="at">Virginia · Patient since 2023</div></div></div><span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span></div></div>
+      <div class="tc rv" style="transition-delay:.2s"><div class="stars">★★★★★</div><p class="qt">"The telehealth sessions are just as meaningful as being in the room. Rose remembers everything, follows up on goals, and makes you feel truly heard. I recommend her to everyone I know."</p><div><div class="ta"><div class="av">K</div><div><div class="an">K. Adeyemi</div><div class="at">North Dakota · Patient since 2023</div></div></div><span class="verified"><i class="fa fa-circle-check"></i> Verified Patient</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to Begin Your Healing Journey?</h2>
+  <p>Compassionate, individualized supportive therapy — in-person in Richmond, VA or via secure telehealth. Book your first session with Maxgio Healthcare LLC today.</p>
+  <div class="cta-btns">
+    <a href="appointment.html" class="btn-w"><i class="fa fa-calendar-heart" style="margin-right:8px"></i>Schedule a Session</a>
+    <a href="tel:+18049010053" class="btn-out"><i class="fa fa-phone" style="margin-right:8px"></i>+1 (804) 901-0053</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fb"><div class="f1">MAXGIO</div><div class="f2">Healthcare LLC</div><p>Personalized, evidence-based mental health care for the Richmond, VA community and beyond.</p></div>
+    <div class="fc"><h5>Quick Links</h5><a href="index.html">Home</a><a href="About Us.html">About Us</a><a href="service.html">Services</a><a href="blog.html">Blog &amp; News</a><a href="contact.html">Contact</a></div>
+    <div class="fc"><h5>Appointments</h5><a href="diagnosis.html">Diagnosis</a><a href="supportive therapy.html" style="color:var(--sky)">Supportive Therapy</a><a href="medication management.html">Medication Mgmt</a><a href="telecare.html">TeleCare</a></div>
+    <div class="fc"><h5>Contact</h5><a href="tel:+18049010053">+1 (804) 901-0053</a><a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a><a href="#">411 Branchway Rd, VA 23236</a><a href="appointment.html" style="color:var(--sky);font-weight:600">Book Online →</a></div>
+  </div>
+  <div class="fb-bot"><span>&copy; 2025 Maxgio Healthcare LLC. All rights reserved.</span><span>Designed by <a href="mailto:Leumasitnexus@gmail.com">Leumas IT Nexus</a></span></div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-chevron-up"></i></button>
+<button id="cw" onclick="document.getElementById('cb').classList.toggle('open')"><i class="fa fa-comment-medical"></i></button>
+<div id="cb">
+  <h5>🌿 Ready to start therapy?</h5>
+  <p>We're here to help you take the first step.</p>
+  <a href="appointment.html"><i class="fa fa-calendar-check" style="margin-right:7px"></i>Book a Session</a>
+  <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:7px"></i>Call Us Now</a>
+  <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:7px"></i>Send an Email</a>
+</div>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);document.getElementById('btt').classList.toggle('v',scrollY>400)});
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function tfaq(btn){const a=btn.nextElementSibling,o=btn.classList.contains('open');document.querySelectorAll('.fq.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.classList.remove('open')});if(!o){btn.classList.add('open');a.classList.add('open')}}
+// Animate mood buttons
+document.querySelectorAll('.mood-btn').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.mood-btn').forEach(x=>x.classList.remove('sel'));this.classList.add('sel')}));
+// Animate progress bars on load
+setTimeout(()=>{document.querySelectorAll('.prog-fill').forEach(el=>{const w=el.style.width;el.style.width='0';setTimeout(()=>{el.style.width=w},300)})},500);
+</script>
+</body>
+</html>

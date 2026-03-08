@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding PTSD: A Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --accent: #6366f1;
+      --light-bg: #f9fafb;
+      --gray: #6b7280;
+      --dark-text: #111827;
+      --shadow: 0 8px 24px rgba(79,70,229,0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem 4.5rem;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    header .subtitle {
+      font-size: 1.45rem;
+      opacity: 0.94;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem;
+    }
+
+    nav.toc {
+      background: white;
+      border-radius: 20px;
+      padding: 2.4rem;
+      margin: 3rem 0 4rem;
+      box-shadow: var(--shadow);
+    }
+
+    nav.toc h2 {
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+
+    nav.toc button {
+      width: 100%;
+      padding: 1.2rem 1.6rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    nav.toc button:hover,
+    nav.toc button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.8rem;
+      margin-bottom: 3.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin: 0 0 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 5px solid #eef2ff;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 120px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    h3 {
+      color: #1f2937;
+      font-size: 1.8rem;
+      margin: 2.6rem 0 1.4rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.check-list li {
+      padding: 1.1rem 1.6rem;
+      background: #f3f4ff;
+      margin-bottom: 1.1rem;
+      border-radius: 12px;
+      border-left: 7px solid var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.35rem;
+    }
+
+    .action-bar {
+      text-align: center;
+      margin: 5rem 0 4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 2.4rem;
+      margin: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.24s;
+      border: none;
+    }
+
+    .btn-primary   { background: var(--primary); color: white; }
+    .btn-accent    { background: var(--accent);  color: white; }
+    .btn-outline   { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(79,70,229,0.35);
+    }
+
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    footer {
+      text-align: center;
+      padding: 4.5rem 1rem 3rem;
+      color: var(--gray);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .container { padding: 2rem 1.2rem; }
+      section { padding: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="border: solid; padding: 5px; position: fixed; top: 0; left: 95%; background-color: red; color: white;"><a href="service.html">Back</a></button>
+  <h1>Understanding PTSD</h1>
+  <div class="subtitle">Post-Traumatic Stress Disorder — A Comprehensive Guide</div>
+</header>
+
+<div class="container">
+
+  <nav class="toc">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><button data-target="what" class="active">What is PTSD?</button></li>
+      <li><button data-target="causes">Causes & Risk Factors</button></li>
+      <li><button data-target="symptoms">Symptoms of PTSD</button></li>
+      <li><button data-target="diagnosis">Diagnosis</button></li>
+      <li><button data-target="impact">Impact of PTSD</button></li>
+      <li><button data-target="treatment">Treatment Approaches</button></li>
+      <li><button data-target="coping">Coping Strategies</button></li>
+      <li><button data-target="support">Support for Families & Caregivers</button></li>
+      <li><button data-target="prevention">Prevention & Early Intervention</button></li>
+      <li><button data-target="seek-help">When to Seek Immediate Help</button></li>
+      <li><button data-target="conclusion">Conclusion</button></li>
+    </ul>
+  </nav>
+
+  <section id="what">
+    <h2>What is PTSD?</h2>
+    <p>Post-Traumatic Stress Disorder (PTSD) is a mental health condition that can develop after experiencing or witnessing a traumatic event — such as combat, assault, accidents, natural disasters, or sudden loss.</p>
+    <p>PTSD changes how the brain processes fear and memory, leading to persistent symptoms that disrupt daily life. It is <strong>not</strong> a sign of weakness — it is a recognized, treatable psychiatric disorder.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ptsd.va.gov/understand/images/ptsd_brain.jpg" alt="Brain changes in PTSD illustration">
+        <div class="card-content">
+          <h4>How Trauma Affects the Brain</h4>
+          <p>Key areas involved in fear, memory, and stress response</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/ptsd/ptsd-infographic.png" alt="PTSD overview infographic">
+        <div class="card-content">
+          <h4>PTSD at a Glance</h4>
+          <p>Symptoms, prevalence, and treatability</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="causes">
+    <h2>Causes & Risk Factors</h2>
+    <p>Not everyone exposed to trauma develops PTSD. Risk is influenced by:</p>
+    <ul class="check-list">
+      <li><strong>Type & Severity:</strong> Direct, life-threatening, or repeated trauma increases likelihood</li>
+      <li><strong>Biological:</strong> Genetics, stress hormone dysregulation, brain changes</li>
+      <li><strong>Personal:</strong> Previous trauma, childhood adversity, difficulty regulating emotions</li>
+      <li><strong>Environmental:</strong> Lack of support after trauma, ongoing stress, isolation</li>
+    </ul>
+  </section>
+
+  <section id="symptoms">
+    <h2>Symptoms of PTSD</h2>
+
+    <h3>1. Intrusive Symptoms</h3>
+    <ul class="check-list">
+      <li>Recurrent distressing memories or flashbacks</li>
+      <li>Trauma-related nightmares</li>
+      <li>Intense distress at reminders (triggers)</li>
+    </ul>
+
+    <h3>2. Avoidance</h3>
+    <ul class="check-list">
+      <li>Avoiding trauma-related places, people, conversations</li>
+      <li>Suppressing thoughts or feelings about the event</li>
+    </ul>
+
+    <h3>3. Negative Changes in Mood & Thinking</h3>
+    <ul class="check-list">
+      <li>Persistent negative emotions (fear, guilt, shame)</li>
+      <li>Emotional numbness or detachment</li>
+      <li>Loss of interest in activities</li>
+      <li>Memory gaps about parts of the trauma</li>
+    </ul>
+
+    <h3>4. Hyperarousal & Reactivity</h3>
+    <ul class="check-list">
+      <li>Irritability or angry outbursts</li>
+      <li>Hypervigilance, easily startled</li>
+      <li>Difficulty sleeping or concentrating</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ptsd.va.gov/understand/images/ptsd_symptoms.jpg" alt="Four clusters of PTSD symptoms diagram">
+        <div class="card-content">
+          <h4>PTSD Symptom Clusters</h4>
+          <p>Intrusive, avoidance, negative cognition, hyperarousal</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/ptsd/ptsd-symptoms.png" alt="PTSD symptoms visual breakdown">
+        <div class="card-content">
+          <h4>Recognizing PTSD Signs</h4>
+          <p>Emotional, physical, and behavioral indicators</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="treatment">
+    <h2>Treatment Approaches</h2>
+
+    <h3>Psychotherapy</h3>
+    <ul class="check-list">
+      <li>Cognitive Behavioral Therapy (CBT) – trauma-focused</li>
+      <li>Prolonged Exposure Therapy</li>
+      <li>Cognitive Processing Therapy (CPT)</li>
+      <li>Eye Movement Desensitization and Reprocessing (EMDR)</li>
+    </ul>
+
+    <h3>Medication</h3>
+    <ul class="check-list">
+      <li>SSRIs (sertraline, paroxetine) – first-line</li>
+      <li>Other antidepressants or adjunctive medications</li>
+      <li>Prazosin for trauma-related nightmares (in some cases)</li>
+    </ul>
+
+    <h3>Lifestyle & Support</h3>
+    <ul class="check-list">
+      <li>Safe social connections</li>
+      <li>Mindfulness, yoga, exercise</li>
+      <li>Consistent routines & sleep hygiene</li>
+      <li>Avoiding alcohol/drugs</li>
+    </ul>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ptsd.va.gov/understand_tx/images/evidence_based_treatments.jpg" alt="Evidence-based PTSD treatments chart">
+        <div class="card-content">
+          <h4>Proven PTSD Treatments</h4>
+          <p>Therapy types with strongest evidence</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/ptsd/ptsd-treatment.png" alt="PTSD treatment pathways illustration">
+        <div class="card-content">
+          <h4>PTSD Recovery Roadmap</h4>
+          <p>Therapy, medication, support integration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>PTSD is serious, but highly treatable. With trauma-focused therapy (especially Prolonged Exposure, CPT, or EMDR), appropriate medication when needed, and supportive environments, most people can reduce symptoms significantly, process what happened, and rebuild a meaningful life.</p>
+    <p>Recovery is real — many individuals with PTSD go on to experience renewed stability, connection, and purpose. Seeking help early makes a profound difference.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.ptsd.va.gov/understand/images/recovery_hope.jpg" alt="Person finding hope and recovery from PTSD">
+        <div class="card-content">
+          <h4>Hope After Trauma</h4>
+          <p>Strength, healing, and renewed life</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.nimh.nih.gov/sites/default/files/images/health/ptsd/ptsd-recovery.jpg" alt="Living well after PTSD treatment">
+        <div class="card-content">
+          <h4>Thriving Beyond PTSD</h4>
+          <p>Stability, relationships, and purpose restored</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-accent" onclick="scrollToTop()">↑ Back to Top</button>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Educational guide only • Not a substitute for professional mental health care • Reach out if you need support</p>
+  <p>Understanding PTSD • Public Mental Health Education • January 2026</p>
+  <p>Maxgio Health LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.toc button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toc button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('section, nav.toc, .card').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.color = '#e2e8f0';
+        el.style.borderColor = '#334155';
+      });
+      document.querySelector('header').style.background = 'linear-gradient(135deg, #3730a3, #4f46e5)';
+    } else {
+      location.reload();
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services — Maxgio Healthcare LLC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --navy:    #0a2463;
+            --blue:    #1565c0;
+            --sky:     #4fc3f7;
+            --red:     #c62828;
+            --soft-red:#ef5350;
+            --white:   #ffffff;
+            --off-white:#f0f4ff;
+            --text:    #1a1a2e;
+            --muted:   #607d9b;
+            --card-shadow: 0 8px 32px rgba(10,36,99,0.10);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
+
+        /* ── TOPBAR ── */
+        .topbar { background: var(--navy); color: rgba(255,255,255,.82); font-size: 13px; padding: 8px 0; }
+        .topbar .inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; }
+        .topbar a { color: var(--sky); text-decoration: none; }
+
+        /* ── MARQUEE ── */
+        .marquee-bar { background: linear-gradient(90deg, var(--red), var(--soft-red)); color:#fff; font-size:13.5px; padding:7px 0; overflow:hidden; }
+        .marquee-track { display:inline-flex; white-space:nowrap; animation:marquee 28s linear infinite; }
+        .marquee-track p { margin:0; padding-right:80px; }
+        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+        /* ── NAVBAR ── */
+        nav { background:#fff; padding:14px 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 20px rgba(10,36,99,0.08); transition:box-shadow .3s; }
+        nav.scrolled { box-shadow:0 4px 30px rgba(10,36,99,0.14); }
+        .nav-inner { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0 24px; }
+        .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+        .brand-logo { width:54px; height:54px; border-radius:50%; object-fit:cover; border:2px solid var(--sky); }
+        .brand-text .line1 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--red); line-height:1; }
+        .brand-text .line2 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--blue); line-height:1; }
+        .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+        .nav-links a { font-size:14.5px; font-weight:500; color:var(--text); padding:8px 14px; border-radius:6px; text-decoration:none; transition:background .2s,color .2s; }
+        .nav-links a:hover, .nav-links a.active { background:var(--off-white); color:var(--blue); }
+        .dropdown { position:relative; }
+        .dropdown-menu-nav { display:none; position:absolute; top:calc(100% + 8px); left:0; background:#fff; border-radius:10px; min-width:210px; box-shadow:0 12px 40px rgba(10,36,99,0.14); padding:8px 0; z-index:200; }
+        .dropdown:hover .dropdown-menu-nav { display:block; }
+        .dropdown-menu-nav a { display:block; padding:10px 18px; font-size:14px; color:var(--text); text-decoration:none; transition:background .2s; }
+        .dropdown-menu-nav a:hover { background:var(--off-white); color:var(--blue); }
+        .btn-appt { background:var(--blue); color:#fff; border:none; border-radius:8px; padding:10px 22px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:background .2s,transform .15s; text-decoration:none; display:inline-block; }
+        .btn-appt:hover { background:var(--navy); transform:translateY(-1px); }
+        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:6px; }
+        .hamburger span { display:block; width:24px; height:2px; background:var(--text); margin:5px 0; border-radius:2px; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            position:relative; background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+            padding:90px 24px 110px; text-align:center; overflow:hidden;
+        }
+        .page-hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+        .page-hero .circle { position:absolute; border-radius:50%; opacity:.08; }
+        .page-hero .c1 { width:340px; height:340px; background:#fff; top:-90px; left:-90px; }
+        .page-hero .c2 { width:220px; height:220px; background:var(--sky); bottom:-60px; right:8%; }
+        .breadcrumb-row { display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:rgba(255,255,255,.6); margin-bottom:18px; position:relative; z-index:1; }
+        .breadcrumb-row a { color:var(--sky); text-decoration:none; }
+        .page-hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(38px,6vw,60px); color:#fff; position:relative; z-index:1; }
+        .page-hero p { font-size:18px; color:rgba(255,255,255,.8); margin-top:14px; max-width:580px; margin-left:auto; margin-right:auto; line-height:1.7; position:relative; z-index:1; }
+
+        /* ── WAVE ── */
+        .wave { display:block; width:100%; overflow:hidden; line-height:0; }
+        .wave svg { display:block; }
+
+        /* ── SECTION ── */
+        .section { max-width:1200px; margin:0 auto; padding:80px 24px; }
+        .section-header { text-align:center; margin-bottom:54px; }
+        .eyebrow { font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:10px; display:block; }
+        .section-header h2 { font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,42px); color:var(--navy); }
+        .section-header p { font-size:16px; color:var(--muted); max-width:560px; margin:12px auto 0; line-height:1.7; }
+
+        /* ── CORE SERVICES ── */
+        .core-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:26px; }
+        .core-card {
+            background:#fff; border-radius:20px; padding:40px 36px;
+            box-shadow:var(--card-shadow); display:flex; gap:28px; align-items:flex-start;
+            transition:transform .25s, box-shadow .25s; text-decoration:none; color:inherit;
+            border-left:5px solid transparent;
+        }
+        .core-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(10,36,99,0.14); border-left-color:var(--blue); }
+        .core-icon {
+            width:70px; height:70px; border-radius:16px; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center; font-size:28px;
+        }
+        .core-icon.blue  { background:#e3f0ff; color:var(--blue); }
+        .core-icon.sky   { background:#e0f7fd; color:#0097a7; }
+        .core-icon.red   { background:#fce8e8; color:var(--red); }
+        .core-icon.green { background:#e8f5e9; color:#2e7d32; }
+        .core-body h3 { font-size:20px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+        .core-body p { font-size:14.5px; color:var(--muted); line-height:1.75; margin-bottom:14px; }
+        .core-link { font-size:13.5px; font-weight:700; color:var(--blue); display:inline-flex; align-items:center; gap:6px; }
+        .core-link i { font-size:11px; transition:transform .2s; }
+        .core-card:hover .core-link i { transform:translateX(4px); }
+
+        /* ── CONDITIONS GRID ── */
+        .conditions-bg { background:var(--navy); padding:80px 0; }
+        .conditions-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+        .conditions-inner .eyebrow { color:var(--sky); }
+        .conditions-inner .section-header h2 { color:#fff; }
+        .conditions-inner .section-header p { color:rgba(255,255,255,.65); }
+
+        .conditions-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+        .cond-card {
+            background:rgba(255,255,255,.07); backdrop-filter:blur(6px);
+            border:1px solid rgba(255,255,255,.12); border-radius:16px;
+            padding:28px 20px; text-align:center; color:#fff;
+            text-decoration:none; display:block;
+            transition:background .25s, transform .25s, box-shadow .25s;
+        }
+        .cond-card:hover { background:rgba(255,255,255,.15); transform:translateY(-5px); box-shadow:0 12px 36px rgba(0,0,0,.3); }
+        .cond-emoji { font-size:36px; margin-bottom:12px; display:block; }
+        .cond-card h4 { font-size:15px; font-weight:700; margin-bottom:8px; }
+        .cond-card p { font-size:13px; opacity:.7; line-height:1.6; }
+
+        /* ── IMAGE GALLERY GRID ── */
+        .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+        .gallery-item {
+            border-radius:16px; overflow:hidden; position:relative;
+            aspect-ratio:1; background:linear-gradient(135deg,#e3f0ff,#ddf0fa);
+            display:flex; align-items:flex-end;
+            box-shadow:var(--card-shadow);
+            transition:transform .25s, box-shadow .25s;
+            text-decoration:none;
+        }
+        .gallery-item:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 16px 40px rgba(10,36,99,.16); }
+        .gallery-item img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+        .gallery-item:hover img { transform:scale(1.07); }
+        .gallery-item::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,36,99,.85) 0%, transparent 55%); }
+        .gallery-label { position:relative; z-index:2; padding:14px 16px; color:#fff; font-size:13.5px; font-weight:700; width:100%; }
+        .gallery-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:48px; color:var(--blue); }
+
+        /* ── CHECKLIST SECTION ── */
+        .checklist-bg { background:#fff; padding:80px 0; }
+        .checklist-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+        .checklist-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+        .check-card {
+            background:var(--off-white); border-radius:14px; padding:26px 20px; text-align:center;
+            border-bottom:3px solid var(--blue); transition:transform .2s, box-shadow .2s;
+            text-decoration:none; color:var(--text);
+        }
+        .check-card:hover { transform:translateY(-4px); box-shadow:var(--card-shadow); }
+        .check-mark { width:44px; height:44px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:18px; }
+        .check-card h5 { font-size:14.5px; font-weight:700; color:var(--navy); }
+
+        /* ── PROCESS STEPS ── */
+        .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+        .process-steps::before { content:''; position:absolute; top:36px; left:12.5%; right:12.5%; height:2px; background:linear-gradient(90deg, var(--blue), var(--sky)); z-index:0; }
+        .step { text-align:center; position:relative; z-index:1; }
+        .step-num { width:72px; height:72px; border-radius:50%; background:var(--blue); color:#fff; font-family:'DM Serif Display',serif; font-size:28px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; border:4px solid var(--off-white); box-shadow:0 4px 20px rgba(21,101,192,.3); }
+        .step h4 { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+        .step p { font-size:13.5px; color:var(--muted); line-height:1.65; padding:0 12px; }
+
+        /* ── INSURANCE ── */
+        .insurance-strip { background:linear-gradient(135deg,var(--navy),var(--blue)); color:#fff; padding:60px 24px; text-align:center; }
+        .insurance-strip h2 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3.5vw,36px); margin-bottom:14px; }
+        .insurance-strip p { font-size:16px; opacity:.82; max-width:560px; margin:0 auto 30px; line-height:1.7; }
+        .ins-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:700px; margin:0 auto 32px; }
+        .ins-tag { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#fff; padding:8px 18px; border-radius:50px; font-size:13.5px; font-weight:500; }
+
+        /* ── CTA ── */
+        .cta-section { background:linear-gradient(135deg, var(--red), #b71c1c); padding:80px 24px; text-align:center; }
+        .cta-section h2 { font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,44px); color:#fff; margin-bottom:14px; }
+        .cta-section p { font-size:17px; color:rgba(255,255,255,.85); max-width:520px; margin:0 auto 32px; line-height:1.7; }
+        .btn-cta { display:inline-block; background:#fff; color:var(--red); padding:16px 40px; border-radius:10px; font-size:16px; font-weight:700; text-decoration:none; transition:transform .2s, box-shadow .2s; box-shadow:0 4px 20px rgba(0,0,0,.2); }
+        .btn-cta:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,0,0,.3); }
+        .btn-cta-outline { display:inline-block; background:transparent; color:#fff; padding:16px 40px; border-radius:10px; font-size:16px; font-weight:600; text-decoration:none; border:2px solid rgba(255,255,255,.6); transition:border-color .2s, background .2s; margin-left:14px; }
+        .btn-cta-outline:hover { border-color:#fff; background:rgba(255,255,255,.08); }
+
+        /* ── FOOTER ── */
+        footer { background:var(--navy); color:rgba(255,255,255,.8); }
+        .footer-top { max-width:1200px; margin:0 auto; padding:60px 24px 40px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
+        .footer-brand .line1 { font-family:'DM Serif Display',serif; font-size:26px; color:var(--soft-red); }
+        .footer-brand .line2 { font-family:'DM Serif Display',serif; font-size:26px; color:var(--sky); }
+        .footer-brand p { font-size:14px; margin-top:12px; line-height:1.7; max-width:260px; }
+        .footer-col h5 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#fff; margin-bottom:16px; }
+        .footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.65); text-decoration:none; margin-bottom:10px; transition:color .2s; }
+        .footer-col a:hover { color:var(--sky); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding:20px 24px; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; font-size:13px; flex-wrap:wrap; gap:10px; }
+        .footer-bottom a { color:var(--sky); text-decoration:none; }
+
+        /* ── BACK TO TOP + CHAT ── */
+        #backToTop { position:fixed; bottom:28px; right:28px; z-index:999; width:46px; height:46px; border-radius:50%; background:var(--blue); color:#fff; border:none; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(21,101,192,.4); opacity:0; transform:translateY(16px); transition:opacity .3s,transform .3s; }
+        #backToTop.visible { opacity:1; transform:none; }
+        #backToTop:hover { background:var(--navy); }
+        #chatWidget { position:fixed; bottom:28px; left:28px; z-index:999; width:54px; height:54px; border-radius:50%; background:var(--red); color:#fff; border:none; cursor:pointer; font-size:22px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(198,40,40,.4); transition:background .2s,transform .2s; }
+        #chatWidget:hover { background:#b71c1c; transform:scale(1.08); }
+        #chatBox { position:fixed; bottom:94px; left:28px; z-index:998; width:300px; background:#fff; border-radius:16px; box-shadow:0 12px 40px rgba(10,36,99,.18); padding:20px; display:none; }
+        #chatBox.open { display:block; animation:slideUp .25s ease; }
+        @keyframes slideUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+        #chatBox h5 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+        #chatBox p { font-size:13.5px; color:var(--muted); margin-bottom:14px; }
+        #chatBox a { display:block; background:var(--blue); color:#fff; text-align:center; padding:10px; border-radius:8px; text-decoration:none; font-weight:600; font-size:14px; margin-bottom:8px; }
+        #chatBox a.alt { background:var(--off-white); color:var(--navy); }
+
+        /* ── REVEAL ── */
+        .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+        .reveal.visible { opacity:1; transform:none; }
+
+        /* ── SEARCH ── */
+        .search-bar { max-width:600px; margin:0 auto 54px; display:flex; gap:0; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(10,36,99,.12); }
+        .search-bar input { flex:1; padding:14px 20px; border:2px solid #dde5f0; border-right:none; border-radius:12px 0 0 12px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--text); background:#fff; }
+        .search-bar input:focus { outline:none; border-color:var(--blue); }
+        .search-bar button { background:var(--blue); color:#fff; border:none; padding:14px 24px; font-size:15px; font-family:'DM Sans',sans-serif; font-weight:600; cursor:pointer; transition:background .2s; border-radius:0 12px 12px 0; }
+        .search-bar button:hover { background:var(--navy); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:1024px) {
+            .conditions-grid { grid-template-columns:repeat(2,1fr); }
+            .checklist-grid { grid-template-columns:repeat(2,1fr); }
+            .gallery-grid { grid-template-columns:repeat(2,1fr); }
+            .process-steps { grid-template-columns:repeat(2,1fr); gap:30px; }
+            .process-steps::before { display:none; }
+        }
+        @media (max-width:768px) {
+            .hamburger { display:block; }
+            .nav-links { display:none; }
+            .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:#fff; padding:16px 24px 24px; box-shadow:0 12px 40px rgba(10,36,99,.1); z-index:900; }
+            .core-grid { grid-template-columns:1fr; }
+            .core-card { flex-direction:column; gap:16px; }
+            .footer-top { grid-template-columns:1fr 1fr; }
+            .btn-cta-outline { margin-left:0; margin-top:12px; }
+        }
+        @media (max-width:540px) {
+            .conditions-grid, .checklist-grid, .gallery-grid { grid-template-columns:1fr 1fr; }
+            .footer-top { grid-template-columns:1fr; }
+            .process-steps { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="inner">
+        <div><i class="far fa-clock" style="margin-right:6px;"></i> Mon–Fri: 8:00am–5:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</div>
+        <div>
+            <a href="mailto:maxgiohealth@gmail.com"><i class="fa fa-envelope" style="margin-right:5px;"></i>maxgiohealth@gmail.com</a>
+            &nbsp;|&nbsp;
+            <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:5px;"></i>+1 (804) 901-0053</a>
+        </div>
+    </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+    <div class="marquee-track">
+        <p>🧠 Maxgio Healthcare LLC — Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner. &nbsp;•&nbsp; Evidence-based mental health care for all ages.</p>
+        <p>🧠 Maxgio Healthcare LLC — Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner. &nbsp;•&nbsp; Evidence-based mental health care for all ages.</p>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <img src="maxgio img/mxgLogo.jpeg" alt="Maxgio Logo" class="brand-logo" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <div class="line1">MAXGIO</div>
+                <div class="line2">Healthcare</div>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
+            <li class="dropdown">
+              <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <div class="dropdown-menu">
+                    <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
+                </div>
+            </li>  
+            <li><a href="contact.html">Contact</a></li>
+            <li class="dropdown">
+                <a href="appointment.html">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <div class="dropdown-menu-nav">
+                    <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="supportive therapy.html"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="telecare.html"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                </div>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank">Book Appointment</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="breadcrumb-row">
+        <a href="index.html">Home</a>
+        <i class="fa fa-chevron-right" style="font-size:10px;"></i>
+        <span>Services</span>
+    </div>
+    <h1>Our Services</h1>
+    <p>Comprehensive, evidence-based mental health care delivered with compassion, precision, and deep respect for every patient we serve.</p>
+</div>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--off-white);">
+    <svg viewBox="0 0 1440 54" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="54">
+        <path d="M0,32 C360,0 1080,64 1440,32 L1440,54 L0,54 Z" fill="#1565c0"/>
+    </svg>
+</div>
+
+<!-- CORE SERVICES -->
+<div class="section">
+    <div class="section-header reveal">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Comprehensive Mental Health Services</h2>
+        <p>Every service is built around your unique needs — with evidence-based care and a genuinely personal touch.</p>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar reveal">
+        <input type="text" id="serviceSearch" placeholder="Search services (e.g. anxiety, ADHD, telehealth…)" oninput="filterServices()" />
+        <button><i class="fa fa-search"></i> Search</button>
+    </div>
+
+    <div class="core-grid" id="coreGrid">
+        <a href="MHD&E.html" class="core-card reveal" data-tags="evaluation diagnosis adhd depression anxiety bipolar ocd insomnia ptsd substance">
+            <div class="core-icon blue"><i class="fa fa-stethoscope"></i></div>
+            <div class="core-body">
+                <h3>Mental Health Evaluation &amp; Diagnosis</h3>
+                <p>Thorough psychiatric assessments for ADHD, depression, anxiety disorders, bipolar disorder, OCD, insomnia, PTSD, and substance use disorders. We take time to understand your full story for the most accurate diagnosis.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="MM.html" class="core-card reveal" style="transition-delay:.1s;" data-tags="medication management prescriptions psychiatric drugs monitoring">
+            <div class="core-icon sky"><i class="fa fa-pills"></i></div>
+            <div class="core-body">
+                <h3>Medication Management</h3>
+                <p>Ongoing monitoring and personalized adjustments to ensure safe, effective use of psychiatric medications — with regular follow-ups tailored to your progress and response.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="suptherapy.html" class="core-card reveal" style="transition-delay:.2s;" data-tags="therapy cbt counseling coping skills supportive sessions talk">
+            <div class="core-icon red"><i class="fa fa-heart"></i></div>
+            <div class="core-body">
+                <h3>Therapeutic Support</h3>
+                <p>Sessions grounded in Cognitive Behavioral Therapy (CBT), solution-focused therapy, and client-centered approaches to build insight, develop coping skills, and overcome daily challenges.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="subAbuse.html" class="core-card reveal" style="transition-delay:.3s;" data-tags="substance abuse addiction counseling recovery">
+            <div class="core-icon green"><i class="fa fa-shield-heart"></i></div>
+            <div class="core-body">
+                <h3>Substance Abuse Counseling</h3>
+                <p>Compassionate, evidence-based counseling to support recovery, increase self-awareness, break unhealthy patterns, and achieve lasting stability and renewed wellbeing.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="telecare.html" class="core-card reveal" style="transition-delay:.4s;" data-tags="telehealth telecare video virtual online remote appointments">
+            <div class="core-icon blue"><i class="fa fa-video"></i></div>
+            <div class="core-body">
+                <h3>TeleCare / Telehealth</h3>
+                <p>Secure, HIPAA-compliant video appointments so you can access quality psychiatric care from anywhere — convenient scheduling designed to fit your life and schedule.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="evalua.html" class="core-card reveal" style="transition-delay:.5s;" data-tags="evaluation wellbeing behavioral geriatric older adults">
+            <div class="core-icon sky"><i class="fa fa-user-check"></i></div>
+            <div class="core-body">
+                <h3>Geriatric Psychiatry &amp; Wellness</h3>
+                <p>Specialized mental health care for older adults, including long-term management of cognitive conditions, mood disorders, and the unique psychiatric needs of aging patients.</p>
+                <span class="core-link">Learn more <i class="fa fa-arrow-right"></i></span>
+            </div>
+        </a>
+    </div>
+    <div id="noResults" style="display:none;text-align:center;padding:40px;color:var(--muted);font-size:16px;">
+        No services found. Try a different search term, or <a href="contact.html" style="color:var(--blue);">contact us</a> directly.
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="background:#fff;padding:80px 0;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div class="section-header reveal">
+            <span class="eyebrow">Your Journey</span>
+            <h2>How It Works</h2>
+            <p>Getting started is simple. We'll guide you every step of the way.</p>
+        </div>
+        <div class="process-steps reveal">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Book an Appointment</h4>
+                <p>Schedule online through our secure patient portal or call our office directly during office hours.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Initial Evaluation</h4>
+                <p>Meet with our provider for a thorough psychiatric evaluation. Your history, concerns, and goals are fully heard.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>Personalized Plan</h4>
+                <p>Receive a treatment plan built specifically for you — collaboratively, so you're always a partner in your care.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Ongoing Support</h4>
+                <p>Regular follow-ups to monitor progress, adjust treatment, and provide continuous support on your wellness journey.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONDITIONS WE TREAT -->
+<div class="conditions-bg">
+    <div class="conditions-inner">
+        <div class="section-header reveal">
+            <span class="eyebrow" style="color:var(--sky);">Conditions</span>
+            <h2 style="color:#fff;">Conditions We Treat</h2>
+            <p style="color:rgba(255,255,255,.65);">We provide specialized care for a wide range of psychiatric and mental health conditions.</p>
+        </div>
+        <div class="conditions-grid">
+            <a href="depression.html" class="cond-card reveal">
+                <span class="cond-emoji">😔</span>
+                <h4>Depression</h4>
+                <p>Major depressive disorder, persistent depressive disorder, and seasonal affective disorder.</p>
+            </a>
+            <a href="ADHD.html" class="cond-card reveal" style="transition-delay:.05s;">
+                <span class="cond-emoji">⚡</span>
+                <h4>ADHD</h4>
+                <p>Attention deficit hyperactivity disorder in children, adolescents, and adults.</p>
+            </a>
+            <a href="anxiety.html" class="cond-card reveal" style="transition-delay:.1s;">
+                <span class="cond-emoji">😰</span>
+                <h4>Anxiety Disorders</h4>
+                <p>Generalized anxiety, panic disorder, social anxiety, and phobias.</p>
+            </a>
+            <a href="bipolarDis.html" class="cond-card reveal" style="transition-delay:.15s;">
+                <span class="cond-emoji">🔄</span>
+                <h4>Bipolar Disorder</h4>
+                <p>Bipolar I, II, and cyclothymic disorder — mood stabilization and long-term management.</p>
+            </a>
+            <a href="ocd.html" class="cond-card reveal" style="transition-delay:.2s;">
+                <span class="cond-emoji">🔁</span>
+                <h4>OCD</h4>
+                <p>Obsessive-compulsive disorder evaluation, therapy, and medication management.</p>
+            </a>
+            <a href="ptsd.html" class="cond-card reveal" style="transition-delay:.25s;">
+                <span class="cond-emoji">🛡️</span>
+                <h4>PTSD</h4>
+                <p>Trauma-focused care and evidence-based treatment for post-traumatic stress.</p>
+            </a>
+            <a href="insomia.html" class="cond-card reveal" style="transition-delay:.3s;">
+                <span class="cond-emoji">🌙</span>
+                <h4>Insomnia</h4>
+                <p>Assessment and treatment of chronic sleep disorders and sleep-related conditions.</p>
+            </a>
+            <a href="behavDisorder.html" class="cond-card reveal" style="transition-delay:.35s;">
+                <span class="cond-emoji">🧠</span>
+                <h4>Behavioral Disorders</h4>
+                <p>Conduct disorder, oppositional defiant disorder, and behavioral wellness support.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE GALLERY -->
+<div class="section">
+    <div class="section-header reveal">
+        <span class="eyebrow">Explore</span>
+        <h2>Find the Right Service</h2>
+        <p>Browse our full range of specialized mental health services and resources.</p>
+    </div>
+    <div class="gallery-grid">
+        <a href="depression.html" class="gallery-item reveal">
+            <div class="gallery-placeholder"><i class="fa fa-face-sad-tear" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img1.jpeg" alt="Depression" onerror="this.style.display='none'">
+            <div class="gallery-label">Depression</div>
+        </a>
+        <a href="ADHD.html" class="gallery-item reveal" style="transition-delay:.05s;">
+            <div class="gallery-placeholder"><i class="fa fa-bolt" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img2.jpeg" alt="ADHD" onerror="this.style.display='none'">
+            <div class="gallery-label">ADHD</div>
+        </a>
+        <a href="MM.html" class="gallery-item reveal" style="transition-delay:.1s;">
+            <div class="gallery-placeholder"><i class="fa fa-pills" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img3.jpeg" alt="Medication Management" onerror="this.style.display='none'">
+            <div class="gallery-label">Medication Management</div>
+        </a>
+        <a href="ptsd.html" class="gallery-item reveal" style="transition-delay:.15s;">
+            <div class="gallery-placeholder"><i class="fa fa-shield" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img4.jpeg" alt="PTSD" onerror="this.style.display='none'">
+            <div class="gallery-label">PTSD</div>
+        </a>
+        <a href="anxDisorder.html" class="gallery-item reveal" style="transition-delay:.2s;">
+            <div class="gallery-placeholder"><i class="fa fa-brain" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img5.jpeg" alt="Anxiety Disorder" onerror="this.style.display='none'">
+            <div class="gallery-label">Anxiety Disorder</div>
+        </a>
+        <a href="ocd.html" class="gallery-item reveal" style="transition-delay:.25s;">
+            <div class="gallery-placeholder"><i class="fa fa-rotate" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img13.jpeg" alt="OCD" onerror="this.style.display='none'">
+            <div class="gallery-label">OCD</div>
+        </a>
+        <a href="bipolarDis.html" class="gallery-item reveal" style="transition-delay:.3s;">
+            <div class="gallery-placeholder"><i class="fa fa-arrows-up-down" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img7.jpeg" alt="Bipolar Disorder" onerror="this.style.display='none'">
+            <div class="gallery-label">Bipolar Disorder</div>
+        </a>
+        <a href="diag.html" class="gallery-item reveal" style="transition-delay:.35s;">
+            <div class="gallery-placeholder"><i class="fa fa-stethoscope" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img8.jpeg" alt="Diagnosis" onerror="this.style.display='none'">
+            <div class="gallery-label">Diagnosis</div>
+        </a>
+        <a href="suptherapy.html" class="gallery-item reveal" style="transition-delay:.4s;">
+            <div class="gallery-placeholder"><i class="fa fa-heart" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img9.jpeg" alt="Supportive Therapy" onerror="this.style.display='none'">
+            <div class="gallery-label">Supportive Therapy</div>
+        </a>
+        <a href="evalua.html" class="gallery-item reveal" style="transition-delay:.45s;">
+            <div class="gallery-placeholder"><i class="fa fa-clipboard-check" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img10.jpeg" alt="Evaluation" onerror="this.style.display='none'">
+            <div class="gallery-label">Evaluation</div>
+        </a>
+        <a href="tele.html" class="gallery-item reveal" style="transition-delay:.5s;">
+            <div class="gallery-placeholder"><i class="fa fa-video" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/images.jpeg" alt="TeleCare" onerror="this.style.display='none'">
+            <div class="gallery-label">TeleCare Follow-Up</div>
+        </a>
+        <a href="wellbn.html" class="gallery-item reveal" style="transition-delay:.55s;">
+            <div class="gallery-placeholder"><i class="fa fa-seedling" style="color:var(--blue);"></i></div>
+            <img src="maxgio img/img12.jpeg" alt="Behavioural Well-being" onerror="this.style.display='none'">
+            <div class="gallery-label">Behavioural Well-being</div>
+        </a>
+    </div>
+</div>
+
+<!-- HEALTHCARE SERVICES CHECKLIST -->
+<div class="checklist-bg">
+    <div class="checklist-inner">
+        <div class="section-header reveal">
+            <span class="eyebrow">Full Spectrum</span>
+            <h2>All Healthcare Services Provided</h2>
+            <p>A complete overview of the psychiatric and mental health services available at our practice.</p>
+        </div>
+        <div class="checklist-grid">
+            <a href="depression.html" class="check-card reveal">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Depression</h5>
+            </a>
+            <a href="anxiety.html" class="check-card reveal" style="transition-delay:.05s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Anxiety</h5>
+            </a>
+            <a href="ADHD.html" class="check-card reveal" style="transition-delay:.1s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>ADHD</h5>
+            </a>
+            <a href="ocd.html" class="check-card reveal" style="transition-delay:.15s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>OCD</h5>
+            </a>
+            <a href="bipolar.html" class="check-card reveal" style="transition-delay:.2s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Bipolar Disorder</h5>
+            </a>
+            <a href="insomia.html" class="check-card reveal" style="transition-delay:.25s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Insomnia</h5>
+            </a>
+            <a href="genericPsych.html" class="check-card reveal" style="transition-delay:.3s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Geriatric Psychiatry</h5>
+            </a>
+            <a href="behavDisorder.html" class="check-card reveal" style="transition-delay:.35s;">
+                <div class="check-mark"><i class="fa fa-check"></i></div>
+                <h5>Behavioral Disorders</h5>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- INSURANCE -->
+<div class="insurance-strip">
+    <h2>Insurance &amp; Health Plans Accepted</h2>
+    <p>We work with a wide range of insurance providers to keep quality mental health care accessible and affordable for every patient.</p>
+    <div class="ins-tags">
+        <span class="ins-tag">Medicaid</span>
+        <span class="ins-tag">Medicare</span>
+        <span class="ins-tag">Anthem BCBS</span>
+        <span class="ins-tag">Aetna</span>
+        <span class="ins-tag">United Healthcare</span>
+        <span class="ins-tag">Cigna</span>
+        <span class="ins-tag">Optima Health</span>
+        <span class="ins-tag">Tricare</span>
+        <span class="ins-tag">Self-Pay Welcome</span>
+    </div>
+    <p style="font-size:14px;opacity:.7;">Don't see your plan? <a href="contact.html" style="color:var(--sky);font-weight:600;">Contact us</a> to verify your coverage.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+    <h2>Ready to Start Your Journey to Wellness?</h2>
+    <p>Take the first step toward healing with compassionate, professional psychiatric care tailored just for you.</p>
+    <div>
+        <a href="https://rose-chigbo.clientsecure.me/" class="btn-cta" target="_blank">Book an Appointment</a>
+        <a href="contact.html" class="btn-cta-outline">Contact Us</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="line1">MAXGIO</div>
+            <div class="line2">Healthcare LLC</div>
+            <p>Providing personalized, evidence-based mental health care to the Richmond, VA community and beyond.</p>
+        </div>
+        <div class="footer-col">
+            <h5>Quick Links</h5>
+            <a href="index.html">Home</a>
+            <a href="About Us.html">About Us</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+            <h5>Services</h5>
+            <a href="diagnosis.html">Diagnosis</a>
+            <a href="supportive therapy.html">Supportive Therapy</a>
+            <a href="medication management.html">Medication Mgmt</a>
+            <a href="telecare.html">TeleCare</a>
+        </div>
+        <div class="footer-col">
+            <h5>Contact</h5>
+            <a href="tel:+18049010053">+1 (804) 901-0053</a>
+            <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
+            <a href="#">411 Branchway Rd, VA 23236</a>
+            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Maxgio Healthcare LLC. All rights reserved.</span>
+        <span>Designed by <a href="mailto:Leumasitnexus@gmail.com">Leumas IT Nexus</a></span>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <i class="fa fa-chevron-up"></i>
+</button>
+
+<!-- CHAT WIDGET -->
+<button id="chatWidget" onclick="toggleChat()" aria-label="Get help">
+    <i class="fa fa-comment-medical"></i>
+</button>
+<div id="chatBox">
+    <h5>👋 How can we help?</h5>
+    <p>Reach us quickly through any of these options.</p>
+    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
+    <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
+    <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
+</div>
+
+<script>
+    // Sticky nav
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Service search
+    function filterServices() {
+        const q = document.getElementById('serviceSearch').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('#coreGrid .core-card');
+        let visible = 0;
+        cards.forEach(card => {
+            const tags = card.dataset.tags || '';
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            const match = !q || tags.includes(q) || title.includes(q) || desc.includes(q);
+            card.style.display = match ? '' : 'none';
+            if (match) visible++;
+        });
+        document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    // Chat widget
+    function toggleChat() {
+        document.getElementById('chatBox').classList.toggle('open');
+    }
+</script>
+</body>
+</html>
