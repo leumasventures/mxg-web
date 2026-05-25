@@ -349,7 +349,13 @@
                 </div>
             </li>
         </ul>
-        <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt-nav nav-links a" target="_blank" style="font-size:14.5px;font-weight:600;color:#fff;padding:10px 20px;border-radius:8px;background:var(--blue);text-decoration:none;transition:background .2s;">Book Online</a>
+        <div class="dropdown" style="position:relative;">
+            <a href="#" class="btn-appt-nav" style="font-size:14.5px;font-weight:600;color:#fff;padding:10px 20px;border-radius:8px;background:var(--blue);text-decoration:none;display:inline-block;transition:background .2s;">Book Online <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+            <div class="dropdown-menu-nav" style="min-width:240px;">
+                <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank"><i class="fa fa-user-nurse" style="margin-right:8px;color:var(--blue);"></i>Rose Idemili</a>
+                <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794" target="_blank"><i class="fa fa-user-doctor" style="margin-right:8px;color:#0097a7;"></i>Innocent Mario</a>
+            </div>
+        </div>
         <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -413,22 +419,27 @@
             <div class="step-connector" id="conn1"></div>
             <div class="step-col">
                 <div class="step-circle" id="sc2">2</div>
-                <div class="step-label" id="sl2">Schedule</div>
+                <div class="step-label" id="sl2">Physician</div>
             </div>
             <div class="step-connector" id="conn2"></div>
             <div class="step-col">
                 <div class="step-circle" id="sc3">3</div>
-                <div class="step-label" id="sl3">Your Info</div>
+                <div class="step-label" id="sl3">Schedule</div>
             </div>
             <div class="step-connector" id="conn3"></div>
             <div class="step-col">
                 <div class="step-circle" id="sc4">4</div>
-                <div class="step-label" id="sl4">Insurance</div>
+                <div class="step-label" id="sl4">Your Info</div>
             </div>
             <div class="step-connector" id="conn4"></div>
             <div class="step-col">
                 <div class="step-circle" id="sc5">5</div>
-                <div class="step-label" id="sl5">Review</div>
+                <div class="step-label" id="sl5">Insurance</div>
+            </div>
+            <div class="step-connector" id="conn5"></div>
+            <div class="step-col">
+                <div class="step-circle" id="sc6">6</div>
+                <div class="step-label" id="sl6">Review</div>
             </div>
         </div>
 
@@ -438,7 +449,7 @@
             <div class="form-panel active" id="panel1">
                 <div class="panel-card">
                     <div class="panel-header">
-                        <span class="eyebrow">Step 1 of 5</span>
+                        <span class="eyebrow">Step 1 of 6</span>
                         <h2>What can we help you with?</h2>
                         <p>Select the service that best describes the reason for your visit.</p>
                     </div>
@@ -504,11 +515,48 @@
                 </div>
             </div>
 
-            <!-- ═══════════════ STEP 2: SCHEDULE ═══════════════ -->
+            <!-- ═══════════════ STEP 2: PHYSICIAN ═══════════════ -->
             <div class="form-panel" id="panel2">
                 <div class="panel-card">
                     <div class="panel-header">
-                        <span class="eyebrow">Step 2 of 5</span>
+                        <span class="eyebrow">Step 2 of 6</span>
+                        <h2>Select Your Physician</h2>
+                        <p>Choose the provider you'd like to see for your appointment.</p>
+                    </div>
+
+                    <div class="service-grid" id="physicianGrid">
+                        <div class="svc-option" onclick="selectPhysician(this,'Rose Idemili','https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731')">
+                            <div class="svc-ic blue"><i class="fa fa-user-doctor"></i></div>
+                            <div class="svc-body">
+                                <h4>Rose Idemili</h4>
+                                <p>Psychiatric-Mental Health Nurse Practitioner — Board-certified provider specializing in comprehensive psychiatric care.</p>
+                            </div>
+                            <div class="svc-dot"></div>
+                        </div>
+                        <div class="svc-option" onclick="selectPhysician(this,'Innocent Mario','https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794')">
+                            <div class="svc-ic sky"><i class="fa fa-user-doctor"></i></div>
+                            <div class="svc-body">
+                                <h4>Innocent Mario</h4>
+                                <p>Psychiatric-Mental Health Nurse Practitioner — Experienced provider offering personalized mental health treatment and support.</p>
+                            </div>
+                            <div class="svc-dot"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedPhysician" value="">
+                    <input type="hidden" id="selectedPhysicianLink" value="">
+
+                    <div class="nav-btns">
+                        <button class="btn-back" onclick="goTo(1)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
+                        <button class="btn-next" onclick="goTo(3)">Continue <i class="fa fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════ STEP 3: SCHEDULE ═══════════════ -->
+            <div class="form-panel" id="panel3">
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <span class="eyebrow">Step 3 of 6</span>
                         <h2>Choose Your Visit Type &amp; Date</h2>
                         <p>Select how you'd like to meet and your preferred appointment date and time.</p>
                     </div>
@@ -560,17 +608,17 @@
                     </div>
 
                     <div class="nav-btns">
-                        <button class="btn-back" onclick="goTo(1)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
-                        <button class="btn-next" onclick="goTo(3)">Continue <i class="fa fa-arrow-right"></i></button>
+                        <button class="btn-back" onclick="goTo(2)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
+                        <button class="btn-next" onclick="goTo(4)">Continue <i class="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- ═══════════════ STEP 3: PERSONAL INFO ═══════════════ -->
-            <div class="form-panel" id="panel3">
+            <!-- ═══════════════ STEP 4: PERSONAL INFO ═══════════════ -->
+            <div class="form-panel" id="panel4">
                 <div class="panel-card">
                     <div class="panel-header">
-                        <span class="eyebrow">Step 3 of 5</span>
+                        <span class="eyebrow">Step 4 of 6</span>
                         <h2>Your Personal Information</h2>
                         <p>Please provide your contact details so we can confirm your appointment.</p>
                     </div>
@@ -650,17 +698,17 @@
                     </div>
 
                     <div class="nav-btns">
-                        <button class="btn-back" onclick="goTo(2)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
-                        <button class="btn-next" onclick="goTo(4)">Continue <i class="fa fa-arrow-right"></i></button>
+                        <button class="btn-back" onclick="goTo(3)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
+                        <button class="btn-next" onclick="goTo(5)">Continue <i class="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
 
             <!-- ═══════════════ STEP 4: INSURANCE ═══════════════ -->
-            <div class="form-panel" id="panel4">
+            <div class="form-panel" id="panel5">
                 <div class="panel-card">
                     <div class="panel-header">
-                        <span class="eyebrow">Step 4 of 5</span>
+                        <span class="eyebrow">Step 5 of 6</span>
                         <h2>Insurance &amp; Coverage</h2>
                         <p>Select your insurance plan. Self-pay is also welcome.</p>
                     </div>
@@ -719,17 +767,17 @@
                     </div>
 
                     <div class="nav-btns">
-                        <button class="btn-back" onclick="goTo(3)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
-                        <button class="btn-next" onclick="goTo(5)">Review Appointment <i class="fa fa-arrow-right"></i></button>
+                        <button class="btn-back" onclick="goTo(4)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
+                        <button class="btn-next" onclick="goTo(6)">Review Appointment <i class="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
 
             <!-- ═══════════════ STEP 5: REVIEW ═══════════════ -->
-            <div class="form-panel" id="panel5">
+            <div class="form-panel" id="panel6">
                 <div class="panel-card">
                     <div class="panel-header">
-                        <span class="eyebrow">Step 5 of 5</span>
+                        <span class="eyebrow">Step 6 of 6</span>
                         <h2>Review Your Appointment</h2>
                         <p>Please check everything below before submitting.</p>
                     </div>
@@ -741,13 +789,18 @@
                     </div>
 
                     <div class="review-block">
-                        <h4><i class="fa fa-calendar"></i> Schedule <a class="edit-link" onclick="goTo(2)">Edit</a></h4>
+                        <h4><i class="fa fa-user-doctor"></i> Physician <a class="edit-link" onclick="goTo(2)">Edit</a></h4>
+                        <div class="review-row"><span class="rk">Selected Physician</span><span class="rv" id="rv-physician">—</span></div>
+                    </div>
+
+                    <div class="review-block">
+                        <h4><i class="fa fa-calendar"></i> Schedule <a class="edit-link" onclick="goTo(3)">Edit</a></h4>
                         <div class="review-row"><span class="rk">Preferred Date</span><span class="rv" id="rv-date">—</span></div>
                         <div class="review-row"><span class="rk">Preferred Time</span><span class="rv" id="rv-time">—</span></div>
                     </div>
 
                     <div class="review-block">
-                        <h4><i class="fa fa-user"></i> Patient Info <a class="edit-link" onclick="goTo(3)">Edit</a></h4>
+                        <h4><i class="fa fa-user"></i> Patient Info <a class="edit-link" onclick="goTo(4)">Edit</a></h4>
                         <div class="review-row"><span class="rk">Name</span><span class="rv" id="rv-name">—</span></div>
                         <div class="review-row"><span class="rk">Date of Birth</span><span class="rv" id="rv-dob">—</span></div>
                         <div class="review-row"><span class="rk">Email</span><span class="rv" id="rv-email">—</span></div>
@@ -756,7 +809,7 @@
                     </div>
 
                     <div class="review-block">
-                        <h4><i class="fa fa-id-card"></i> Insurance <a class="edit-link" onclick="goTo(4)">Edit</a></h4>
+                        <h4><i class="fa fa-id-card"></i> Insurance <a class="edit-link" onclick="goTo(5)">Edit</a></h4>
                         <div class="review-row"><span class="rk">Insurance Plan</span><span class="rv" id="rv-ins">—</span></div>
                     </div>
 
@@ -766,7 +819,7 @@
                     </div>
 
                     <div class="nav-btns">
-                        <button class="btn-back" onclick="goTo(4)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
+                        <button class="btn-back" onclick="goTo(5)"><i class="fa fa-arrow-left" style="margin-right:6px;"></i> Back</button>
                         <button class="btn-next" id="submitBtn" onclick="submitAppt()" style="background:var(--green);">
                             <span id="btnTxt">Submit Request</span>
                             <i class="fa fa-check" id="btnIco"></i>
@@ -787,7 +840,7 @@
             <p style="font-size:14px;color:var(--muted);margin-bottom:24px;">A confirmation summary has been sent to your email address.</p>
             <div class="success-actions">
                 <a href="index.html" class="btn-home"><i class="fa fa-house" style="margin-right:6px;"></i>Back to Home</a>
-                <a href="https://rose-chigbo.clientsecure.me/" target="_blank" class="btn-portal"><i class="fa fa-arrow-up-right-from-square" style="margin-right:6px;"></i>Patient Portal</a>
+                <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank" id="portalBtn" class="btn-portal"><i class="fa fa-arrow-up-right-from-square" style="margin-right:6px;"></i>Patient Portal</a>
             </div>
         </div>
 
@@ -799,8 +852,11 @@
         <!-- Book online CTA -->
         <div class="sidebar-card">
             <h4>Prefer to Book Online?</h4>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" class="online-appt-btn">
-                <i class="fa fa-arrow-up-right-from-square"></i> Open Patient Portal
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank" class="online-appt-btn" style="margin-bottom:10px;">
+                <i class="fa fa-user-nurse" style="margin-right:8px;"></i> Book with Rose Idemili
+            </a>
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794" target="_blank" class="online-appt-btn" style="background:linear-gradient(135deg,var(--sky),#0097a7);">
+                <i class="fa fa-user-doctor" style="margin-right:8px;"></i> Book with Innocent Mario
             </a>
             <div class="divider-or">or call us directly</div>
             <div class="info-row">
@@ -896,7 +952,8 @@
             <a href="tel:+18049010053">+1 (804) 901-0053</a>
             <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
             <a href="#">411 Branchway Rd, VA 23236</a>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank" style="color:var(--sky);font-weight:600;display:block;margin-bottom:6px;">Book with Rose →</a>
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794" target="_blank" style="color:var(--sky);font-weight:600;">Book with Innocent →</a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -915,7 +972,8 @@
 <div id="chatBox">
     <h5>👋 Need help booking?</h5>
     <p>Our team is happy to assist you.</p>
-    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book via Patient Portal</a>
+    <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank"><i class="fa fa-user-nurse" style="margin-right:6px;"></i>Book with Rose</a>
+    <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794" target="_blank"><i class="fa fa-user-doctor" style="margin-right:6px;"></i>Book with Innocent</a>
     <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
     <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
 </div>
@@ -953,7 +1011,7 @@
         document.getElementById('panel' + step).classList.add('active');
 
         // Update stepper
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 6; i++) {
             const sc = document.getElementById('sc' + i);
             const sl = document.getElementById('sl' + i);
             sc.classList.remove('active','done');
@@ -962,19 +1020,18 @@
             else if (i === step) { sc.classList.add('active'); sl.classList.add('active'); sc.innerHTML = i; }
             else                 { sc.innerHTML = i; }
         }
-        for (let i = 1; i <= 4; i++) {
+        for (let i = 1; i <= 5; i++) {
             const conn = document.getElementById('conn' + i);
             conn.classList.toggle('done', i < step);
         }
 
-        // Populate review on step 5
-        if (step === 5) populateReview();
+        // Populate review on step 6
+        if (step === 6) populateReview();
 
         currentStep = step;
         window.scrollTo({ top: document.getElementById('stepper').offsetTop - 100, behavior: 'smooth' });
     }
 
-    /* ── Validation ── */
     function validateStep(step) {
         if (step === 1) {
             if (!document.getElementById('selectedService').value) {
@@ -982,6 +1039,11 @@
             }
         }
         if (step === 2) {
+            if (!document.getElementById('selectedPhysician').value) {
+                alert('Please select a physician to continue.'); return false;
+            }
+        }
+        if (step === 3) {
             if (!document.getElementById('selectedVisit').value) {
                 alert('Please select In-Person or Telehealth.'); return false;
             }
@@ -992,7 +1054,7 @@
                 alert('Please choose a preferred time.'); return false;
             }
         }
-        if (step === 3) {
+        if (step === 4) {
             const f = document.getElementById('pFirst').value.trim();
             const l = document.getElementById('pLast').value.trim();
             const e = document.getElementById('pEmail').value.trim();
@@ -1004,7 +1066,7 @@
             }
             if (!e.includes('@')) { alert('Please enter a valid email address.'); return false; }
         }
-        if (step === 4) {
+        if (step === 5) {
             if (!document.getElementById('selectedIns').value) {
                 alert('Please select your insurance plan.'); return false;
             }
@@ -1028,6 +1090,14 @@
         document.getElementById('selectedService').value = name;
     }
 
+    /* ── Physician selection ── */
+    function selectPhysician(el, name, link) {
+        document.querySelectorAll('#physicianGrid .svc-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('selectedPhysician').value = name;
+        document.getElementById('selectedPhysicianLink').value = link;
+    }
+
     /* ── Visit type ── */
     function selectVisit(el, type) {
         document.querySelectorAll('.visit-opt').forEach(o => o.classList.remove('selected'));
@@ -1048,6 +1118,7 @@
     function populateReview() {
         document.getElementById('rv-service').textContent = document.getElementById('selectedService').value || '—';
         document.getElementById('rv-visit').textContent   = document.getElementById('selectedVisit').value   || '—';
+        document.getElementById('rv-physician').textContent = document.getElementById('selectedPhysician').value || '—';
         document.getElementById('rv-date').textContent    = document.getElementById('prefDate').value        || '—';
         document.getElementById('rv-time').textContent    = document.getElementById('prefTime').value        || '—';
         const first = document.getElementById('pFirst').value;
@@ -1071,12 +1142,21 @@
         setTimeout(() => {
             // Hide form, show success
             document.getElementById('stepper').style.display = 'none';
-            document.getElementById('panel5').style.display  = 'none';
+            document.getElementById('panel6').style.display  = 'none';
             const sc = document.getElementById('successCard');
             sc.classList.add('show');
             // Generate a reference number
             const ref = 'MXG-' + Math.floor(100000 + Math.random() * 900000);
             document.getElementById('refNum').textContent = 'Ref: ' + ref;
+            // Update patient portal links to selected physician
+            const physicianLink = document.getElementById('selectedPhysicianLink').value;
+            if (physicianLink) {
+                document.querySelectorAll('.btn-portal').forEach(el => { el.href = physicianLink; });
+                const onlineBtn = document.querySelector('.online-appt-btn');
+                if (onlineBtn) onlineBtn.href = physicianLink;
+                const sidebarLink = document.querySelector('.sidebar-card a[target="_blank"]');
+                if (sidebarLink) sidebarLink.href = physicianLink;
+            }
             window.scrollTo({ top: sc.offsetTop - 120, behavior: 'smooth' });
         }, 1600);
     }

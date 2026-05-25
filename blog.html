@@ -296,6 +296,24 @@
         @media (max-width:500px) {
             .footer-top { grid-template-columns:1fr; }
         }
+    
+        /* ── Physician booking modal ── */
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(10,36,99,0.55); backdrop-filter:blur(4px); z-index:2000; align-items:center; justify-content:center; padding:24px; }
+        .modal-overlay.open { display:flex; animation:fadeIn .2s ease; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .modal-box { background:#fff; border-radius:20px; padding:36px; max-width:540px; width:100%; box-shadow:0 24px 80px rgba(10,36,99,0.25); animation:modalUp .25s ease; position:relative; }
+        @keyframes modalUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+        .modal-box h3 { font-family:'DM Serif Display',serif; font-size:26px; color:var(--navy,#0a2463); margin-bottom:6px; }
+        .modal-box .modal-sub { font-size:14px; color:var(--muted,#607080); margin-bottom:26px; line-height:1.6; }
+        .provider-choice { display:flex; flex-direction:column; gap:14px; }
+        .provider-choice-btn { display:flex; align-items:center; gap:16px; padding:18px 20px; border:2px solid #dde5f0; border-radius:14px; background:#f8f9fc; cursor:pointer; transition:border-color .2s,background .2s,transform .2s; text-decoration:none; color:inherit; }
+        .provider-choice-btn:hover { border-color:#1565c0; background:#e3f0ff; transform:translateY(-2px); }
+        .provider-choice-avatar { width:54px; height:54px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid #4fc3f7; flex-shrink:0; }
+        .provider-choice-avatar-placeholder { width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg,#1565c0,#4fc3f7); display:flex; align-items:center; justify-content:center; color:#fff; font-size:20px; flex-shrink:0; }
+        .provider-choice-info strong { display:block; font-size:15px; font-weight:700; color:var(--navy,#0a2463); margin-bottom:3px; }
+        .provider-choice-info span { font-size:13px; color:var(--muted,#607080); }
+        .modal-close { position:absolute; top:16px; right:16px; background:none; border:none; font-size:20px; color:var(--muted,#607080); cursor:pointer; padding:4px 8px; border-radius:6px; transition:background .2s; }
+        .modal-close:hover { background:#f0f0f0; }
     </style>
 </head>
 <body>
@@ -348,11 +366,38 @@
             </li>
             <li><a href="blog.html" class="active">Blog</a></li>
         </ul>
-        <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank">Book Appointment</a>
+        <button onclick="openBookingModal(event)" class="btn-appt" style="cursor:pointer;">Book Appointment</button>
         <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
+
+<!-- PHYSICIAN BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeBookingModal()"><i class="fa fa-times"></i></button>
+        <h3>Book an Appointment</h3>
+        <p class="modal-sub">Choose a provider to continue to their scheduling portal.</p>
+        <div class="provider-choice">
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=1561731" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Rose Idemili, PMHNP-BC</strong>
+                    <span>Psychiatric Mental Health NP &nbsp;·&nbsp; 17+ yrs experience</span>
+                </div>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:#1565c0;font-size:14px;"></i>
+            </a>
+            <a href="https://spwidget-maxgiohealth.clientsecure.me/widget/service?appearance=%7B%22fullScreen%22%3Atrue%7D&channel=client_portal&clinicianId=2056794" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/innocent.jpeg" alt="Innocent Mario" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-doctor\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Innocent Mario, PMHNP-BC</strong>
+                    <span>Psychiatric Provider &nbsp;·&nbsp; Children, Adolescents &amp; Adults</span>
+                </div>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:#1565c0;font-size:14px;"></i>
+            </a>
+        </div>
+    </div>
+</div>
 <!-- HERO -->
 <div class="page-hero">
     <div class="ph-circle ph-c1"></div><div class="ph-circle ph-c2"></div>
@@ -714,10 +759,10 @@
                 <span style="color:#fff;">Ready for Care?</span>
             </h4>
             <p style="font-size:14px;color:rgba(255,255,255,.72);margin-bottom:18px;line-height:1.65;">Book a confidential appointment with Rose Idemili, PMHNP-BC today.</p>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank"
+            <button onclick="openBookingModal(event)" target="_blank"
                style="display:block;background:var(--sky);color:var(--navy);padding:12px;border-radius:8px;font-weight:700;font-size:14.5px;text-decoration:none;">
                 Book Appointment <i class="fa fa-arrow-right" style="margin-left:6px;"></i>
-            </a>
+            </button>
         </div>
 
     </aside>
@@ -849,7 +894,7 @@
 <div class="cta-sec">
     <h2>Ready to Begin Your Wellness Journey?</h2>
     <p>Take the first step toward healing with compassionate, professional psychiatric care.</p>
-    <a href="https://rose-chigbo.clientsecure.me/" class="btn-cta" target="_blank">Book an Appointment</a>
+    <button onclick="openBookingModal(event)" class="btn-cta" style="cursor:pointer;">Book an Appointment</button>
 </div>
 
 <!-- FOOTER -->
@@ -880,7 +925,7 @@
             <a href="tel:+18049010053">+1 (804) 901-0053</a>
             <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
             <a href="#">411 Branchway Rd, VA 23236</a>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
+            <button onclick="openBookingModal(event)" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</button>
         </div>
     </div>
     <div class="footer-bottom">
@@ -894,7 +939,7 @@
 <div id="chatBox">
     <h5>👋 How can we help?</h5>
     <p>Reach us quickly through any of these options.</p>
-    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book Appointment</a>
+    <button onclick="openBookingModal(event)" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book Appointment</button>
     <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
     <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
 </div>
@@ -982,6 +1027,21 @@
 
     // ── Chat ──
     function toggleChat() { document.getElementById('chatBox').classList.toggle('open'); }
+
+    /* ── Physician booking modal ── */
+    function openBookingModal(e) {
+        if(e) e.preventDefault();
+        document.getElementById('bookingModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeBookingModal() {
+        document.getElementById('bookingModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function handleModalClick(e) {
+        if (e.target === document.getElementById('bookingModal')) closeBookingModal();
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeBookingModal(); });
 </script>
 </body>
 </html>
