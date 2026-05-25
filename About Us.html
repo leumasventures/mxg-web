@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us — Maxgio Healthcare LLC</title>
+    <title>Maxgio Healthcare LLC</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
     <style>
         :root {
-            --navy:    #0a2463;
-            --blue:    #1565c0;
-            --sky:     #4fc3f7;
-            --red:     #c62828;
-            --soft-red:#ef5350;
-            --white:   #ffffff;
-            --off-white:#f0f4ff;
-            --text:    #1a1a2e;
-            --muted:   #607d9b;
+            --navy: #0a2463;
+            --blue: #1565c0;
+            --sky: #4fc3f7;
+            --red: #c62828;
+            --soft-red: #ef5350;
+            --white: #ffffff;
+            --off-white: #f0f4ff;
+            --text: #1a1a2e;
+            --muted: #607d9b;
             --card-shadow: 0 8px 32px rgba(10,36,99,0.10);
         }
 
@@ -28,222 +28,258 @@
         body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
 
         /* ── TOPBAR ── */
-        .topbar { background: var(--navy); color: rgba(255,255,255,.82); font-size: 13px; padding: 8px 0; }
-        .topbar .inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; }
+        .topbar { background: var(--navy); color: rgba(255,255,255,0.85); font-size: 13px; padding: 8px 0; }
+        .topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
         .topbar a { color: var(--sky); text-decoration: none; }
+        .topbar span { margin: 0 18px; opacity: .4; }
 
         /* ── MARQUEE ── */
-        .marquee-bar { background: linear-gradient(90deg, var(--red), var(--soft-red)); color:#fff; font-size:13.5px; padding:7px 0; overflow:hidden; }
-        .marquee-track { display:inline-flex; white-space:nowrap; animation:marquee 28s linear infinite; }
-        .marquee-track p { margin:0; padding-right:80px; }
-        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        .marquee-bar { background: linear-gradient(90deg, var(--red), var(--soft-red)); color: #fff; font-size: 13.5px; padding: 7px 0; overflow: hidden; }
+        .marquee-track { display: inline-flex; white-space: nowrap; animation: marqueeScroll 28s linear infinite; }
+        .marquee-track p { margin: 0; padding-right: 80px; }
+        @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* ── NAVBAR ── */
-        nav { background:#fff; padding:14px 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 20px rgba(10,36,99,0.08); transition:box-shadow .3s; }
-        nav.scrolled { box-shadow:0 4px 30px rgba(10,36,99,0.14); }
-        .nav-inner { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0 24px; }
-        .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
-        .brand-logo { width:54px; height:54px; border-radius:50%; object-fit:cover; border:2px solid var(--sky); }
-        .brand-text .line1 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--red); line-height:1; }
-        .brand-text .line2 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--blue); line-height:1; }
-        .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
-        .nav-links a { font-size:14.5px; font-weight:500; color:var(--text); padding:8px 14px; border-radius:6px; text-decoration:none; transition:background .2s,color .2s; }
-        .nav-links a:hover, .nav-links a.active { background:var(--off-white); color:var(--blue); }
-        .dropdown { position:relative; }
-        .dropdown-menu { display:none; position:absolute; top:calc(100% + 8px); left:0; background:#fff; border-radius:10px; min-width:200px; box-shadow:0 12px 40px rgba(10,36,99,0.14); padding:8px 0; z-index:200; }
-        .dropdown:hover .dropdown-menu { display:block; }
-        .dropdown-menu a { display:block; padding:10px 18px; font-size:14px; color:var(--text); text-decoration:none; transition:background .2s; }
-        .dropdown-menu a:hover { background:var(--off-white); color:var(--blue); }
-        .btn-appt { background:var(--blue); color:#fff; border:none; border-radius:8px; padding:10px 22px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:background .2s,transform .15s; text-decoration:none; }
-        .btn-appt:hover { background:var(--navy); transform:translateY(-1px); }
-        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:6px; }
-        .hamburger span { display:block; width:24px; height:2px; background:var(--text); margin:5px 0; border-radius:2px; }
+        nav { background: #fff; padding: 14px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(10,36,99,0.08); transition: box-shadow .3s; }
+        nav.scrolled { box-shadow: 0 4px 30px rgba(10,36,99,0.14); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-logo { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sky); }
+        .brand-text .line1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--red); line-height: 1; }
+        .brand-text .line2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--blue); line-height: 1; }
+        .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+        .nav-links a { font-size: 14.5px; font-weight: 500; color: var(--text); padding: 8px 14px; border-radius: 6px; text-decoration: none; transition: background .2s, color .2s; }
+        .nav-links a:hover, .nav-links a.active { background: var(--off-white); color: var(--blue); }
+        .dropdown { position: relative; }
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: 10px; min-width: 220px; box-shadow: 0 12px 40px rgba(10,36,99,0.14); padding: 8px 0; z-index: 200; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 18px; font-size: 14px; color: var(--text); text-decoration: none; transition: background .2s; }
+        .dropdown-menu a:hover { background: var(--off-white); color: var(--blue); }
+        .dropdown-menu .menu-section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 10px 18px 4px; }
+        .dropdown-menu .menu-divider { height: 1px; background: #dde5f0; margin: 6px 0; }
+        .btn-appt { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s, transform .15s; }
+        .btn-appt:hover { background: var(--navy); transform: translateY(-1px); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
 
-        /* ── PAGE HERO ── */
-        .page-hero {
-            position: relative;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-            padding: 90px 24px 110px;
-            text-align: center;
-            overflow: hidden;
-        }
-        .page-hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .page-hero .breadcrumb-row { display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:rgba(255,255,255,.6); margin-bottom:18px; }
-        .page-hero .breadcrumb-row a { color:var(--sky); text-decoration:none; }
-        .page-hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(38px,6vw,60px); color:#fff; position:relative; z-index:1; }
-        .page-hero p { font-size:18px; color:rgba(255,255,255,.8); margin-top:14px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.7; position:relative; z-index:1; }
-        /* Decorative circles */
-        .page-hero .circle { position:absolute; border-radius:50%; opacity:.08; }
-        .page-hero .c1 { width:320px; height:320px; background:#fff; top:-80px; left:-80px; }
-        .page-hero .c2 { width:200px; height:200px; background:var(--sky); bottom:-60px; right:10%; }
+        /* ── HERO ── */
+        .hero { position: relative; height: 88vh; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: url('maxgio img/officeRoom.jpeg') center/cover no-repeat; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,36,99,0.78) 0%, rgba(21,101,192,0.55) 60%, rgba(0,0,0,0.35) 100%); }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 0 24px; max-width: 760px; animation: heroFadeUp .9s ease both; }
+        @keyframes heroFadeUp { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: none; } }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 18px; margin-bottom: 22px; color: var(--sky); }
+        .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 64px); line-height: 1.12; margin-bottom: 18px; }
+        .hero h1 em { font-style: italic; color: var(--sky); }
+        .hero p { font-size: 18px; opacity: .88; max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary-hero { background: var(--sky); color: var(--navy); padding: 14px 34px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(79,195,247,0.35); }
+        .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,195,247,0.5); }
+        .btn-outline-hero { background: transparent; color: #fff; padding: 14px 34px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); transition: border-color .2s, background .2s; }
+        .btn-outline-hero:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+        .hero-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.6); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .hero-scroll .arrow { width: 20px; height: 20px; border-right: 2px solid rgba(255,255,255,0.5); border-bottom: 2px solid rgba(255,255,255,0.5); transform: rotate(45deg); animation: bounce 1.5s infinite; }
+        @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
 
-        /* ── WAVE DIVIDER ── */
-        .wave { display:block; width:100%; overflow:hidden; line-height:0; background:var(--blue); }
-        .wave svg { display:block; }
+        /* ── QUICK INFO CARDS ── */
+        .quick-info { max-width: 1200px; margin: -56px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+        .quick-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .q-card { background: #fff; border-radius: 16px; padding: 30px 28px; box-shadow: var(--card-shadow); border-top: 4px solid var(--blue); transition: transform .25s, box-shadow .25s; }
+        .q-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,36,99,0.14); }
+        .q-card:nth-child(2) { border-color: var(--sky); }
+        .q-card:nth-child(3) { border-color: var(--red); }
+        .q-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 18px; }
+        .q-icon.blue { background: #e3f0ff; color: var(--blue); }
+        .q-icon.sky { background: #e0f7fd; color: #0097a7; }
+        .q-icon.red { background: #fce8e8; color: var(--red); }
+        .q-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+        .q-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+        .q-card .hours span { display: block; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+        .q-card .phone-num { font-size: 26px; font-weight: 700; color: var(--red); font-family: 'DM Serif Display', serif; }
+        .btn-book { display: inline-block; background: var(--blue); color: #fff; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, transform .15s; }
+        .btn-book:hover { background: var(--navy); transform: translateY(-1px); }
 
-        /* ── SECTION WRAPPER ── */
-        .section { max-width:1200px; margin:0 auto; padding:80px 24px; }
-        .section-header { text-align:center; margin-bottom:54px; }
-        .eyebrow { font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
-        .section-header h2 { font-family:'DM Serif Display',serif; font-size:clamp(28px,4vw,42px); color:var(--navy); }
-        .section-header p { font-size:16px; color:var(--muted); max-width:560px; margin:12px auto 0; line-height:1.7; }
+        /* Finder form */
+        .finder-form select, .finder-form input { width: 100%; padding: 10px 12px; border: 1.5px solid #dde5f0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--off-white); margin-bottom: 10px; transition: border-color .2s; }
+        .finder-form select:focus, .finder-form input:focus { outline: none; border-color: var(--sky); }
+        .btn-search { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s; }
+        .btn-search:hover { background: var(--navy); }
 
-        /* ── MISSION STRIP ── */
-        .mission-strip { background:var(--navy); padding:60px 0; }
-        .mission-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.1); border-radius:16px; overflow:hidden; }
-        .mission-item { background:var(--navy); padding:40px 36px; text-align:center; }
-        .mission-item .m-icon { font-size:36px; margin-bottom:16px; }
-        .mission-item h3 { font-family:'DM Serif Display',serif; font-size:22px; color:#fff; margin-bottom:10px; }
-        .mission-item p { font-size:14.5px; color:rgba(255,255,255,.68); line-height:1.7; }
+        /* ── STATS STRIP ── */
+        .stats-strip { background: var(--navy); color: #fff; padding: 52px 0; margin-top: 80px; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center; }
+        .stat-num { font-family: 'DM Serif Display', serif; font-size: 46px; color: var(--sky); line-height: 1; }
+        .stat-label { font-size: 14px; opacity: .75; margin-top: 6px; }
 
-        /* ── ABOUT SPLIT ── */
-        .about-split { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-        .about-img-wrap { position:relative; }
-        .about-img-wrap img { width:100%; height:480px; object-fit:cover; border-radius:20px; display:block; }
-        .about-img-placeholder {
-            width:100%; height:480px; border-radius:20px;
-            background: linear-gradient(135deg, #e3f0ff 0%, #ddf0fa 100%);
-            display:flex; align-items:center; justify-content:center;
-            font-size:80px; color:var(--blue);
-        }
-        .about-img-badge {
-            position:absolute; bottom:24px; left:24px;
-            background:var(--navy); color:#fff; border-radius:14px;
-            padding:16px 22px; display:flex; align-items:center; gap:12px;
-            box-shadow:0 8px 24px rgba(10,36,99,0.3);
-        }
-        .about-img-badge .num { font-family:'DM Serif Display',serif; font-size:34px; color:var(--sky); line-height:1; }
-        .about-img-badge .lbl { font-size:13px; color:rgba(255,255,255,.75); }
-        .about-text .eyebrow { display:block; margin-bottom:10px; }
-        .about-text h2 { font-family:'DM Serif Display',serif; font-size:clamp(28px,3.5vw,40px); color:var(--navy); line-height:1.2; margin-bottom:20px; }
-        .about-text p { font-size:15px; color:var(--muted); line-height:1.8; margin-bottom:16px; }
-        .services-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; margin:24px 0; }
-        .services-list li { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text); }
-        .services-list li::before { content:'✓'; color:var(--blue); font-weight:700; flex-shrink:0; }
+        /* ── WHY US ── */
+        .section { max-width: 1200px; margin: 80px auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 54px; }
+        .section-header .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+        .section-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 44px); color: var(--navy); }
+        .section-header p { font-size: 16px; color: var(--muted); max-width: 520px; margin: 12px auto 0; line-height: 1.7; }
 
-        /* ── PROVIDER SECTION ── */
-        .provider-wrap { background:#fff; border-radius:24px; padding:54px; box-shadow:var(--card-shadow); display:grid; grid-template-columns:340px 1fr; gap:54px; align-items:start; }
-        .provider-photo-col { position:sticky; top:100px; }
-        .provider-img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:18px; display:block; }
-        .provider-img-placeholder {
-            width:100%; aspect-ratio:3/4; border-radius:18px;
-            background:linear-gradient(160deg, #e3f0ff, #ddf0fa);
-            display:flex; align-items:center; justify-content:center;
-            font-size:80px; color:var(--blue);
-        }
-        .provider-cred { background:var(--navy); color:#fff; border-radius:12px; padding:18px 20px; margin-top:18px; }
-        .provider-cred .cred-title { font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:10px; }
-        .cred-item { display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:13.5px; }
-        .cred-item i { color:var(--sky); font-size:14px; }
+        .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .why-card { background: #fff; border-radius: 16px; padding: 34px 28px; box-shadow: var(--card-shadow); transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden; }
+        .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); }
+        .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,36,99,0.14); }
+        .why-icon { font-size: 32px; margin-bottom: 18px; }
+        .why-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+        .why-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
 
-        .provider-info h2 { font-family:'DM Serif Display',serif; font-size:clamp(28px,3vw,38px); color:var(--navy); line-height:1.15; margin-bottom:8px; }
-        .provider-role { display:inline-block; background:#e3f0ff; color:var(--blue); font-size:13px; font-weight:700; letter-spacing:.5px; padding:5px 14px; border-radius:50px; margin-bottom:24px; }
-        .provider-info p { font-size:15px; color:var(--muted); line-height:1.85; margin-bottom:16px; }
-        .specialties { margin:28px 0; }
-        .specialties h4 { font-size:14px; font-weight:700; color:var(--navy); letter-spacing:.5px; text-transform:uppercase; margin-bottom:14px; }
-        .spec-tags { display:flex; flex-wrap:wrap; gap:8px; }
-        .spec-tag { background:var(--off-white); color:var(--navy); font-size:13px; font-weight:500; padding:6px 14px; border-radius:50px; border:1px solid #dde5f0; transition:background .2s,border-color .2s; }
-        .spec-tag:hover { background:#e3f0ff; border-color:var(--sky); }
-        .provider-highlights { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:28px; }
-        .highlight-box { background:var(--off-white); border-radius:12px; padding:18px; border-left:3px solid var(--blue); }
-        .highlight-box h5 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
-        .highlight-box p { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+        /* ── SERVICES ── */
+        .services-bg { background: var(--navy); padding: 80px 0; }
+        .services-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .services-inner .section-header .eyebrow { color: var(--sky); }
+        .services-inner .section-header h2 { color: #fff; }
+        .services-inner .section-header p { color: rgba(255,255,255,.65); }
+        .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+        .svc-card { background: rgba(255,255,255,.07); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 30px 24px; text-align: center; color: #fff; transition: background .25s, transform .25s, box-shadow .25s; cursor: pointer; text-decoration: none; display: block; }
+        .svc-card:hover { background: rgba(255,255,255,.14); transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+        .svc-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(79,195,247,0.18); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--sky); margin: 0 auto 18px; transition: background .2s; }
+        .svc-card:hover .svc-icon { background: rgba(79,195,247,0.3); }
+        .svc-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+        .svc-card p { font-size: 13.5px; opacity: .72; line-height: 1.65; }
 
-        /* ── VALUES ── */
-        .values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
-        .value-card {
-            background:#fff; border-radius:16px; padding:32px 24px; text-align:center;
-            box-shadow:var(--card-shadow); transition:transform .25s,box-shadow .25s;
-            position:relative; overflow:hidden;
-        }
-        .value-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--blue),var(--sky)); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
-        .value-card:hover { transform:translateY(-6px); box-shadow:0 16px 44px rgba(10,36,99,0.14); }
-        .value-card:hover::after { transform:scaleX(1); }
-        .v-icon { font-size:38px; margin-bottom:16px; }
-        .value-card h4 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
-        .value-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
+        /* ── TEAM ── */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+        .team-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--card-shadow); transition: transform .25s, box-shadow .25s; }
+        .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,36,99,0.14); }
+        .team-photo-wrap { position: relative; overflow: hidden; }
+        .team-photo { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; transition: transform .4s; }
+        .team-card:hover .team-photo { transform: scale(1.04); }
+        .team-photo-placeholder { width: 100%; height: 280px; background: linear-gradient(135deg, #e3f0ff, #ddf0fa); display: flex; align-items: center; justify-content: center; font-size: 64px; color: var(--blue); }
+        .team-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,36,99,0.7)); padding: 40px 24px 20px; }
+        .team-overlay .role-badge { display: inline-block; background: var(--sky); color: var(--navy); font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 20px; letter-spacing: .5px; }
+        .team-body { padding: 22px 26px 28px; }
+        .team-body h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+        .team-body .role { font-size: 13px; color: var(--blue); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px; }
+        .team-body p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+        .team-book-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, transform .15s; }
+        .team-book-btn:hover { background: var(--navy); transform: translateY(-1px); }
+        .team-specialties { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+        .team-spec-tag { background: var(--off-white); color: var(--navy); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; border: 1px solid #dde5f0; }
 
-        /* ── NEWSLETTER ── */
-        .newsletter { background:linear-gradient(135deg, var(--red), #b71c1c); padding:70px 24px; text-align:center; }
-        .newsletter h2 { font-family:'DM Serif Display',serif; font-size:clamp(26px,3.5vw,38px); color:#fff; margin-bottom:12px; }
-        .newsletter p { font-size:16px; color:rgba(255,255,255,.82); margin-bottom:32px; }
-        .nl-form { display:flex; gap:0; max-width:500px; margin:0 auto; border-radius:10px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.2); }
-        .nl-form input { flex:1; padding:15px 20px; border:none; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--text); }
-        .nl-form input:focus { outline:none; }
-        .nl-form button { background:var(--navy); color:#fff; border:none; padding:15px 28px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:background .2s; white-space:nowrap; }
-        .nl-form button:hover { background:#05123a; }
-        #nlSuccess { display:none; color:#fff; font-size:16px; font-weight:600; margin-top:16px; }
+        /* ── TESTIMONIALS ── */
+        .testimonials-bg { background: linear-gradient(135deg, #e8f0fe, #f0f8ff); padding: 80px 0; }
+        .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .testimonials-track { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .testi-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: var(--card-shadow); transition: transform .25s; }
+        .testi-card:hover { transform: translateY(-4px); }
+        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 14px; }
+        .testi-text { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 12px; }
+        .testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; }
+        .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+        .testi-since { font-size: 12px; color: var(--muted); }
+
+        /* ── FAQ ── */
+        .faq-item { border-bottom: 1px solid #dde5f0; }
+        .faq-q { width: 100%; background: none; border: none; padding: 18px 0; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color .2s; }
+        .faq-q:hover { color: var(--blue); }
+        .faq-q .chevron { transition: transform .3s; font-size: 14px; color: var(--blue); }
+        .faq-q.open .chevron { transform: rotate(180deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; }
+        .faq-a.open { max-height: 300px; padding-bottom: 16px; }
+        .faq-a p { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
+
+        /* ── CONTACT / MAP ── */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .contact-info h3 { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--navy); margin-bottom: 20px; }
+        .contact-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+        .contact-ic { width: 44px; height: 44px; border-radius: 10px; background: #e3f0ff; color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
+        .contact-row h5 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 4px; }
+        .contact-row p { font-size: 15px; color: var(--text); }
+        .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: var(--card-shadow); }
+        .contact-form h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 22px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #dde5f0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--off-white); transition: border-color .2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); background: #fff; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .btn-send { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, transform .15s; margin-top: 6px; }
+        .btn-send:hover { background: var(--navy); transform: translateY(-1px); }
+        .form-success { display: none; text-align: center; padding: 20px; background: #e8f5e9; border-radius: 10px; color: #2e7d32; font-weight: 600; }
 
         /* ── FOOTER ── */
-        footer { background:var(--navy); color:rgba(255,255,255,.8); }
-        .footer-top { max-width:1200px; margin:0 auto; padding:60px 24px 40px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
-        .footer-brand .line1 { font-family:'DM Serif Display',serif; font-size:26px; color:var(--soft-red); }
-        .footer-brand .line2 { font-family:'DM Serif Display',serif; font-size:26px; color:var(--sky); }
-        .footer-brand p { font-size:14px; margin-top:12px; line-height:1.7; max-width:260px; }
-        .footer-col h5 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#fff; margin-bottom:16px; }
-        .footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.65); text-decoration:none; margin-bottom:10px; transition:color .2s; }
-        .footer-col a:hover { color:var(--sky); }
-        .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding:20px 24px; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; font-size:13px; flex-wrap:wrap; gap:10px; }
-        .footer-bottom a { color:var(--sky); text-decoration:none; }
+        footer { background: var(--navy); color: rgba(255,255,255,.8); }
+        .footer-top { max-width: 1200px; margin: 0 auto; padding: 60px 24px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand .line1 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--soft-red); }
+        .footer-brand .line2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--sky); }
+        .footer-brand p { font-size: 14px; margin-top: 12px; line-height: 1.7; max-width: 260px; }
+        .footer-col h5 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #fff; margin-bottom: 16px; }
+        .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,.65); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+        .footer-col a:hover { color: var(--sky); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 10px; }
+        .footer-bottom a { color: var(--sky); text-decoration: none; }
 
-        /* ── BACK TO TOP + CHAT ── */
-        #backToTop { position:fixed; bottom:28px; right:28px; z-index:999; width:46px; height:46px; border-radius:50%; background:var(--blue); color:#fff; border:none; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(21,101,192,0.4); opacity:0; transform:translateY(16px); transition:opacity .3s,transform .3s; }
-        #backToTop.visible { opacity:1; transform:none; }
-        #backToTop:hover { background:var(--navy); }
-        #chatWidget { position:fixed; bottom:28px; left:28px; z-index:999; width:54px; height:54px; border-radius:50%; background:var(--red); color:#fff; border:none; cursor:pointer; font-size:22px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(198,40,40,0.4); transition:background .2s,transform .2s; }
-        #chatWidget:hover { background:#b71c1c; transform:scale(1.08); }
-        #chatBox { position:fixed; bottom:94px; left:28px; z-index:998; width:300px; background:#fff; border-radius:16px; box-shadow:0 12px 40px rgba(10,36,99,0.18); padding:20px; display:none; }
-        #chatBox.open { display:block; animation:slideUp .25s ease; }
-        @keyframes slideUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
-        #chatBox h5 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
-        #chatBox p { font-size:13.5px; color:var(--muted); margin-bottom:14px; }
-        #chatBox a { display:block; background:var(--blue); color:#fff; text-align:center; padding:10px; border-radius:8px; text-decoration:none; font-weight:600; font-size:14px; margin-bottom:8px; }
-        #chatBox a.alt { background:var(--off-white); color:var(--navy); }
+        /* ── BACK TO TOP ── */
+        #backToTop { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--blue); color: #fff; border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(21,101,192,0.4); opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s; }
+        #backToTop.visible { opacity: 1; transform: none; }
+        #backToTop:hover { background: var(--navy); }
 
-        /* ── REVEAL ── */
-        .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
-        .reveal.visible { opacity:1; transform:none; }
+        /* ── CHAT WIDGET ── */
+        #chatWidget { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 54px; height: 54px; border-radius: 50%; background: var(--red); color: #fff; border: none; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(198,40,40,0.4); transition: background .2s, transform .2s; }
+        #chatWidget:hover { background: #b71c1c; transform: scale(1.08); }
+        #chatBox { position: fixed; bottom: 94px; left: 28px; z-index: 998; width: 310px; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(10,36,99,0.18); padding: 20px; display: none; animation: slideUp .25s ease; }
+        #chatBox.open { display: block; }
+        @keyframes slideUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: none; } }
+        #chatBox h5 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        #chatBox p { font-size: 13.5px; color: var(--muted); margin-bottom: 14px; }
+        #chatBox a { display: block; background: var(--blue); color: #fff; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+        #chatBox a:last-of-type { background: var(--off-white); color: var(--navy); }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width:1024px) {
-            .provider-wrap { grid-template-columns:1fr; }
-            .provider-photo-col { position:static; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-            .provider-img, .provider-img-placeholder { aspect-ratio:4/3; }
-            .about-split { grid-template-columns:1fr; gap:40px; }
-            .values-grid { grid-template-columns:repeat(2,1fr); }
+        /* ── PROVIDER PICKER MODAL ── */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,36,99,0.55); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+        .modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .modal-box { background: #fff; border-radius: 20px; padding: 36px; max-width: 540px; width: 100%; box-shadow: 0 24px 80px rgba(10,36,99,0.25); animation: modalUp .25s ease; }
+        @keyframes modalUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+        .modal-box h3 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 6px; }
+        .modal-box .modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 26px; line-height: 1.6; }
+        .provider-choice { display: flex; flex-direction: column; gap: 14px; }
+        .provider-choice-btn { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 2px solid #dde5f0; border-radius: 14px; background: var(--off-white); cursor: pointer; transition: border-color .2s, background .2s, transform .2s; text-decoration: none; color: var(--text); }
+        .provider-choice-btn:hover { border-color: var(--blue); background: #e3f0ff; transform: translateY(-2px); }
+        .provider-choice-avatar { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--sky); flex-shrink: 0; }
+        .provider-choice-avatar-placeholder { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+        .provider-choice-info strong { display: block; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+        .provider-choice-info span { font-size: 13px; color: var(--muted); }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--muted); cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: background .2s; }
+        .modal-close:hover { background: var(--off-white); color: var(--navy); }
+        .modal-box { position: relative; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 900px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 16px 24px 24px; box-shadow: 0 12px 40px rgba(10,36,99,0.1); z-index: 900; }
+            .nav-actions { display: none; }
+            .quick-grid, .why-grid, .services-grid { grid-template-columns: 1fr; }
+            .testimonials-track { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width:768px) {
-            .hamburger { display:block; }
-            .nav-links { display:none; }
-            .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:#fff; padding:16px 24px 24px; box-shadow:0 12px 40px rgba(10,36,99,0.1); z-index:900; }
-            .mission-inner { grid-template-columns:1fr; }
-            .provider-photo-col { grid-template-columns:1fr; }
-            .provider-highlights { grid-template-columns:1fr; }
-            .footer-top { grid-template-columns:1fr 1fr; }
-            .values-grid { grid-template-columns:1fr 1fr; }
-            .nl-form { flex-direction:column; border-radius:10px; overflow:visible; }
-            .nl-form input, .nl-form button { border-radius:8px; }
+        @media (max-width: 500px) {
+            .footer-top { grid-template-columns: 1fr; }
         }
-        @media (max-width:500px) {
-            .values-grid { grid-template-columns:1fr; }
-            .services-list { grid-template-columns:1fr; }
-            .footer-top { grid-template-columns:1fr; }
-        }
+
+        /* ── ANIMATE ON SCROLL ── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
     </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-    <div class="inner">
-        <div><i class="far fa-clock" style="margin-right:6px;"></i> Mon–Fri: 8:00am–5:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</div>
+    <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div><i class="far fa-clock" style="margin-right:6px;"></i> Mon–Fri: 8:00am – 5:00pm &nbsp;|&nbsp; Sat: 9:00am – 1:00pm</div>
         <div>
             <a href="mailto:maxgiohealth@gmail.com"><i class="fa fa-envelope" style="margin-right:5px;"></i>maxgiohealth@gmail.com</a>
-            &nbsp;|&nbsp;
+            <span>|</span>
             <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:5px;"></i>+1 (804) 901-0053</a>
         </div>
     </div>
@@ -252,8 +288,8 @@
 <!-- MARQUEE -->
 <div class="marquee-bar">
     <div class="marquee-track">
-        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
-        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioners on staff.</p>
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioners on staff.</p>
     </div>
 </div>
 
@@ -268,28 +304,35 @@
             </div>
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="About Us.html" class="active">About</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="About Us.html">About</a></li>
             <li class="dropdown">
-              <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
                 <div class="dropdown-menu">
                     <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
                 </div>
-            </li>         
+            </li>
             <li><a href="contact.html">Contact</a></li>
             <li class="dropdown">
-              <a href="appointment.html">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <a href="#" onclick="openBookingModal(event)">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
                 <div class="dropdown-menu">
-                    <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
-                    <a href="supportive therapy.html"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
-                    <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
-                    <a href="telecare.html"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                    <div class="menu-section-label">With Rose Idemili</div>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                    <div class="menu-divider"></div>
+                    <div class="menu-section-label">With Innocent</div>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
                 </div>
             </li>
             <li><a href="blog.html">Blog</a></li>
         </ul>
-        <div style="display:flex;align-items:center;gap:12px;">
-            <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank">Book Appointment</a>
+        <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+            <button class="btn-appt" onclick="openBookingModal(event)">Book Appointment</button>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -297,202 +340,383 @@
     </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-    <div class="circle c1"></div>
-    <div class="circle c2"></div>
-    <div class="breadcrumb-row">
-        <a href="index.html">Home</a>
-        <i class="fa fa-chevron-right" style="font-size:10px;"></i>
-        <span>About Us</span>
-    </div>
-    <h1>About Maxgio Healthcare</h1>
-    <p>Compassionate mental health care rooted in evidence, respect, and a deep commitment to every patient we serve.</p>
-</div>
-
-<!-- WAVE -->
-<div class="wave" style="background:var(--off-white);">
-    <svg viewBox="0 0 1440 54" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="54">
-        <path d="M0,32 C360,0 1080,64 1440,32 L1440,54 L0,54 Z" fill="#1565c0"/>
-    </svg>
-</div>
-
-<!-- MISSION STRIP -->
-<div class="mission-strip">
-    <div class="mission-inner">
-        <div class="mission-item reveal">
-            <div class="m-icon">🎯</div>
-            <h3>Our Mission</h3>
-            <p>To provide personalized, evidence-based psychiatric care that empowers individuals to achieve lasting mental wellness and a better quality of life.</p>
-        </div>
-        <div class="mission-item reveal" style="transition-delay:.1s;">
-            <div class="m-icon">👁️</div>
-            <h3>Our Vision</h3>
-            <p>A community where mental health is prioritized, stigma is eliminated, and every person has access to compassionate, high-quality psychiatric support.</p>
-        </div>
-        <div class="mission-item reveal" style="transition-delay:.2s;">
-            <div class="m-icon">💙</div>
-            <h3>Our Promise</h3>
-            <p>To treat each patient with dignity, to listen deeply, and to build individualized treatment plans that put the patient at the center of every decision.</p>
-        </div>
-    </div>
-</div>
-
-<!-- ABOUT SPLIT -->
-<div class="section">
-    <div class="about-split">
-        <div class="about-img-wrap reveal">
-            <img src="maxgio img/officeRoom.jpeg" alt="Maxgio Healthcare Office" onerror="this.outerHTML='<div class=\'about-img-placeholder\'><i class=\'fa fa-hospital\'></i></div>'">
-            <div class="about-img-badge">
-                <div>
-                    <div class="num">17+</div>
-                    <div class="lbl">Years of<br>Experience</div>
+<!-- PROVIDER BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeBookingModal()"><i class="fa fa-times"></i></button>
+        <h3>Book an Appointment</h3>
+        <p class="modal-sub">Choose a provider to continue to their scheduling portal.</p>
+        <div class="provider-choice">
+            <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Rose Idemili, PMHNP-BC</strong>
+                    <span>Psychiatric Mental Health Nurse Practitioner &nbsp;·&nbsp; 17+ yrs experience</span>
                 </div>
-            </div>
-        </div>
-        <div class="about-text reveal" style="transition-delay:.15s;">
-            <span class="eyebrow">Who We Are</span>
-            <h2>Dedicated to Your Mental Health &amp; Wellbeing</h2>
-            <p>MAXGIO Health Care LLC is dedicated to providing high-quality psychiatric and mental health services to patients of all ages. We believe that mental health is the foundation of overall wellbeing, and every person deserves compassionate, individualized care.</p>
-            <p>Our practice offers a comprehensive range of services delivered by a board-certified Psychiatric-Mental Health Nurse Practitioner with over 17 years of clinical experience across diverse healthcare settings.</p>
-            <ul class="services-list">
-                <li>Psychiatric Evaluations &amp; Assessments</li>
-                <li>Individual Psychotherapy &amp; Counseling</li>
-                <li>Medication Management</li>
-                <li>Mood Disorder Treatment</li>
-                <li>Anxiety &amp; Stress Management</li>
-                <li>PTSD &amp; Trauma-Focused Care</li>
-                <li>ADHD Diagnosis &amp; Management</li>
-                <li>Geriatric Psychiatry</li>
-                <li>Depression Treatment</li>
-                <li>Telehealth Services</li>
-            </ul>
-            <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank" style="display:inline-block;text-decoration:none;">
-                Schedule a Consultation <i class="fa fa-arrow-right" style="margin-left:6px;"></i>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:var(--blue);font-size:14px;"></i>
+            </a>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/innocent.jpeg" alt="Innocent" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-doctor\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Innocent</strong>
+                    <span>Psychiatric Provider &nbsp;·&nbsp; Children, Adolescents &amp; Adults</span>
+                </div>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:var(--blue);font-size:14px;"></i>
             </a>
         </div>
     </div>
 </div>
 
-<!-- PROVIDER -->
-<div style="background:#fff;padding:80px 0;">
-    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
-        <div class="section-header reveal">
-            <div class="eyebrow">Meet Your Provider</div>
-            <h2>Your Psychiatric Care Expert</h2>
-            <p>Experienced, board-certified, and deeply committed to compassionate mental health care.</p>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fa fa-shield-heart" style="margin-right:6px;"></i> Trusted Mental Health Care</div>
+        <h1>Exceptional <em>Mental Health</em> Care for Every Journey</h1>
+        <p>Evidence-based evaluation, diagnosis, medication management and therapy — delivered with care, compassion, and complete confidentiality.</p>
+        <div class="hero-btns">
+            <button class="btn-primary-hero" onclick="openBookingModal(event)" style="border:none;cursor:pointer;">Book an Appointment</button>
+            <a href="#contact" class="btn-outline-hero">Contact Us</a>
         </div>
-        <div class="provider-wrap reveal">
-            <div class="provider-photo-col">
-                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili PMHNP-BC" class="provider-img" onerror="this.outerHTML='<div class=\'provider-img-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
-                <div class="provider-cred">
-                    <div class="cred-title">Credentials &amp; Licenses</div>
-                    <div class="cred-item"><i class="fa fa-certificate"></i> PMHNP-BC (Board Certified)</div>
-                    <div class="cred-item"><i class="fa fa-map-marker-alt"></i> Licensed: Virginia</div>
-                    <div class="cred-item"><i class="fa fa-map-marker-alt"></i> Licensed: Washington State</div>
-                    <div class="cred-item"><i class="fa fa-map-marker-alt"></i> Licensed: North Dakota</div>
-                    <div class="cred-item"><i class="fa fa-graduation-cap"></i> Advanced Psychiatric NP Training</div>
-                    <div class="cred-item"><i class="fa fa-clock"></i> 17+ Years Clinical Experience</div>
-                </div>
+    </div>
+    <div class="hero-scroll">Scroll <div class="arrow"></div></div>
+</section>
+
+<!-- QUICK INFO -->
+<div class="quick-info">
+    <div class="quick-grid">
+        <div class="q-card reveal">
+            <div class="q-icon blue"><i class="fa fa-clock"></i></div>
+            <h3>Office Hours</h3>
+            <div class="hours">
+                <span><strong>Mon – Fri:</strong> 9:00am – 4:00pm</span>
+                <span><strong>Saturday:</strong> 9:00am – 1:00pm</span>
+                <span style="color:var(--red);font-size:13px;"><strong>Sunday:</strong> Closed</span>
             </div>
-            <div class="provider-info">
-                <h2>Rose Idemili</h2>
-                <span class="provider-role">PMHNP-BC — Psychiatric Mental Health Nurse Practitioner</span>
+            <button class="btn-book" onclick="openBookingModal(event)" style="margin-top:16px;border:none;cursor:pointer;">Book Now</button>
+        </div>
 
-                <p>Meet Rose Idemili, an accomplished Psychiatric-Mental Health Nurse Practitioner (PMHNP-BC) with an exceptional career spanning over <strong>17 years in nursing and healthcare</strong>. Licensed to practice in Virginia, Washington State, and North Dakota, Rose has consistently demonstrated an unwavering commitment to providing compassionate, evidence-based mental health care.</p>
-
-                <p>With a solid foundation in nursing, she pursued advanced education and specialized training to become a board-certified Psychiatric-Mental Health Nurse Practitioner. This extensive experience equips her with a comprehensive understanding of psychiatric disorders, enabling accurate assessment, diagnosis, and treatment of individuals <strong>across the entire lifespan</strong> — from children and adolescents to geriatric patients.</p>
-
-                <p>Rose's clinical philosophy centers on <em>actively listening</em>, sharing the decision-making process of the treatment plan with each patient, and providing the ongoing support needed for meaningful improvement in mental health. She is dedicated to helping every client find balance, resilience, and hope.</p>
-
-                <div class="specialties">
-                    <h4>Areas of Specialization</h4>
-                    <div class="spec-tags">
-                        <span class="spec-tag">Depression</span>
-                        <span class="spec-tag">ADHD</span>
-                        <span class="spec-tag">Anxiety Disorders</span>
-                        <span class="spec-tag">Bipolar Disorder</span>
-                        <span class="spec-tag">PTSD</span>
-                        <span class="spec-tag">Trauma-Focused Care</span>
-                        <span class="spec-tag">Geriatric Psychiatry</span>
-                        <span class="spec-tag">Schizophrenia Management</span>
-                        <span class="spec-tag">Mood Disorders</span>
-                        <span class="spec-tag">Supportive Therapy</span>
-                    </div>
-                </div>
-
-                <div class="provider-highlights">
-                    <div class="highlight-box">
-                        <h5>Patient-Centered Approach</h5>
-                        <p>Treatment decisions are made collaboratively with each patient, honoring their voice and individual needs.</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h5>Evidence-Based Practice</h5>
-                        <p>All care is grounded in the latest psychiatric research and clinical best practices.</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h5>Diverse Care Settings</h5>
-                        <p>Experienced in acute care, outpatient, and long-term geriatric psychiatric management.</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h5>Telehealth Available</h5>
-                        <p>Secure, HIPAA-compliant video visits for patients who prefer care from home.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top:32px;">
-                    <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank" style="display:inline-block;text-decoration:none;margin-right:12px;">
-                        Book with Rose <i class="fa fa-calendar-check" style="margin-left:6px;"></i>
-                    </a>
-                    <a href="contact.html" style="display:inline-block;color:var(--blue);font-weight:600;font-size:15px;text-decoration:none;">
-                        Ask a Question <i class="fa fa-arrow-right" style="margin-left:4px;font-size:12px;"></i>
-                    </a>
-                </div>
+        <div class="q-card reveal" style="transition-delay:.1s">
+            <div class="q-icon sky"><i class="fa fa-user-doctor"></i></div>
+            <h3>Find a Provider</h3>
+            <div class="finder-form">
+                <input type="date" id="apptDate" />
+                <select id="apptService">
+                    <option value="">Select a Service</option>
+                    <option>Diagnosis</option>
+                    <option>Supportive Therapy</option>
+                    <option>Medication Management</option>
+                    <option>TeleCare / Telehealth</option>
+                </select>
+                <button class="btn-search" onclick="handleSearch()">Search Availability</button>
             </div>
+        </div>
+
+        <div class="q-card reveal" style="transition-delay:.2s;text-align:center;">
+            <div class="q-icon red" style="margin:0 auto 14px;"><i class="fa fa-phone"></i></div>
+            <h3>Call for Support</h3>
+            <div class="phone-num">+1 (804) 901-0053</div>
+            <p style="margin-top:10px;">Available during office hours for questions, guidance, and scheduling.</p>
+            <p style="font-size:13px;color:var(--muted);">Fax: (804) 509-0514</p>
         </div>
     </div>
 </div>
 
-<!-- VALUES -->
+<!-- STATS -->
+<div class="stats-strip" style="margin-top:100px;">
+    <div class="stats-grid">
+        <div>
+            <div class="stat-num" data-target="500">0+</div>
+            <div class="stat-label">Patients Served</div>
+        </div>
+        <div>
+            <div class="stat-num" data-target="10">0+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+        <div>
+            <div class="stat-num" data-target="4">0</div>
+            <div class="stat-label">Specialty Services</div>
+        </div>
+        <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Confidential & Secure</div>
+        </div>
+    </div>
+</div>
+
+<!-- WHY US -->
 <div class="section">
     <div class="section-header reveal">
-        <div class="eyebrow">What Guides Us</div>
-        <h2>Our Core Values</h2>
-        <p>The principles that shape every interaction, every treatment decision, and every patient relationship.</p>
+        <div class="eyebrow">Why Choose Us</div>
+        <h2>Why Maxgio Healthcare LLC</h2>
+        <p>We combine clinical excellence with compassionate, patient-centered care for every individual.</p>
     </div>
-    <div class="values-grid">
-        <div class="value-card reveal">
-            <div class="v-icon">🤝</div>
-            <h4>Compassion</h4>
-            <p>We approach every patient with warmth, empathy, and genuine concern for their wellbeing and dignity.</p>
+    <div class="why-grid">
+        <div class="why-card reveal">
+            <div class="why-icon">🏥</div>
+            <h4>Health Plans Accepted</h4>
+            <p>We work with a wide range of insurance providers to make quality mental health care accessible and affordable. Contact our office to confirm your coverage.</p>
         </div>
-        <div class="value-card reveal" style="transition-delay:.1s;">
-            <div class="v-icon">🔬</div>
-            <h4>Evidence-Based Care</h4>
-            <p>Every treatment decision is grounded in the latest clinical research and proven psychiatric best practices.</p>
+        <div class="why-card reveal" style="transition-delay:.1s">
+            <div class="why-icon">⭐</div>
+            <h4>Quality Care You Can Trust</h4>
+            <p>Our mental healthcare professionals are committed to helping you achieve your goals with evidence-based treatments and ongoing support every step of the way.</p>
         </div>
-        <div class="value-card reveal" style="transition-delay:.2s;">
-            <div class="v-icon">🔒</div>
-            <h4>Confidentiality</h4>
-            <p>Patient privacy is sacred to us. All records and sessions are handled with strict HIPAA compliance.</p>
+        <div class="why-card reveal" style="transition-delay:.2s">
+            <div class="why-icon">👩‍⚕️</div>
+            <h4>Board-Certified Specialists</h4>
+            <p>Our psychiatry team is led by board-certified Nurse Practitioners with extensive experience in acute care, outpatient, and geriatric psychiatry management.</p>
         </div>
-        <div class="value-card reveal" style="transition-delay:.3s;">
-            <div class="v-icon">🌱</div>
-            <h4>Empowerment</h4>
-            <p>We equip patients with knowledge and tools to take an active role in their own mental health journey.</p>
+        <div class="why-card reveal" style="transition-delay:.3s">
+            <div class="why-icon">💻</div>
+            <h4>Telehealth Available</h4>
+            <p>Receive care from the comfort of your home with our secure, HIPAA-compliant telehealth platform — flexible scheduling to fit your life.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.4s">
+            <div class="why-icon">🔒</div>
+            <h4>Confidential & Private</h4>
+            <p>Your privacy is our priority. All sessions and records are handled with the strictest confidentiality in full compliance with HIPAA regulations.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.5s">
+            <div class="why-icon">🤝</div>
+            <h4>Personalized Treatment Plans</h4>
+            <p>We don't believe in one-size-fits-all. Every patient receives a thoughtfully crafted care plan built around their unique needs and circumstances.</p>
         </div>
     </div>
 </div>
 
-<!-- NEWSLETTER -->
-<div class="newsletter">
-    <h2>Stay Connected with Maxgio Healthcare</h2>
-    <p>Subscribe for mental health tips, practice updates, and community resources delivered to your inbox.</p>
-    <div class="nl-form" id="nlFormWrap">
-        <input type="email" placeholder="Your email address" id="nlEmail" />
-        <button onclick="subscribeNl()">Subscribe</button>
+<!-- SERVICES -->
+<div class="services-bg">
+    <div class="services-inner">
+        <div class="section-header reveal">
+            <div class="eyebrow">What We Offer</div>
+            <h2>Our Services</h2>
+            <p>Comprehensive mental health services tailored to every stage of your journey.</p>
+        </div>
+        <div class="services-grid">
+            <a href="diagnosis.html" class="svc-card reveal">
+                <div class="svc-icon"><i class="fa fa-stethoscope"></i></div>
+                <h4>Diagnosis</h4>
+                <p>Thorough psychiatric evaluations to identify conditions and guide an accurate, personalized treatment path.</p>
+            </a>
+            <a href="supportive therapy.html" class="svc-card reveal" style="transition-delay:.1s">
+                <div class="svc-icon"><i class="fa fa-heart"></i></div>
+                <h4>Supportive Therapy</h4>
+                <p>One-on-one therapy sessions designed to build resilience, coping skills, and emotional wellbeing.</p>
+            </a>
+            <a href="medication management.html" class="svc-card reveal" style="transition-delay:.2s">
+                <div class="svc-icon"><i class="fa fa-pills"></i></div>
+                <h4>Medication Management</h4>
+                <p>Expert medication reviews, prescriptions, and ongoing monitoring to optimize your mental health outcomes.</p>
+            </a>
+            <a href="telecare.html" class="svc-card reveal" style="transition-delay:.3s">
+                <div class="svc-icon"><i class="fa fa-video"></i></div>
+                <h4>TeleCare</h4>
+                <p>Secure, convenient video appointments so you can access quality care from anywhere, anytime.</p>
+            </a>
+        </div>
     </div>
-    <div id="nlSuccess">✅ You're subscribed! Thank you for connecting with us.</div>
+</div>
+
+<!-- MEET THE TEAM -->
+<div class="section">
+    <div class="section-header reveal">
+        <div class="eyebrow">Our Team</div>
+        <h2>Meet Your Care Team</h2>
+        <p>Compassionate professionals dedicated to your mental health and wellness.</p>
+    </div>
+    <div class="team-grid">
+
+        <!-- ROSE -->
+        <div class="team-card reveal">
+            <div class="team-photo-wrap">
+                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili PMHNP-BC" class="team-photo" onerror="this.outerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
+                <div class="team-overlay">
+                    <span class="role-badge">PMHNP-BC</span>
+                </div>
+            </div>
+            <div class="team-body">
+                <h4>Rose Idemili</h4>
+                <div class="role">Psychiatric Mental Health Nurse Practitioner</div>
+                <p>Board-certified with 17+ years of experience across outpatient psychiatry, acute care, and geriatric mental health. Licensed in Virginia, Washington State, and North Dakota.</p>
+                <div class="team-specialties">
+                    <span class="team-spec-tag">Depression</span>
+                    <span class="team-spec-tag">Anxiety</span>
+                    <span class="team-spec-tag">ADHD</span>
+                    <span class="team-spec-tag">PTSD</span>
+                    <span class="team-spec-tag">Geriatric Psychiatry</span>
+                </div>
+                <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank" class="team-book-btn">
+                    <i class="fa fa-calendar-check"></i> Book with Rose
+                </a>
+            </div>
+        </div>
+
+        <!-- INNOCENT -->
+        <div class="team-card reveal" style="transition-delay:.15s;">
+            <div class="team-photo-wrap">
+                <img src="maxgio img/innocent.jpeg" alt="Innocent — Psychiatric Provider" class="team-photo" onerror="this.outerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa fa-user-doctor\'></i></div>'">
+                <div class="team-overlay">
+                    <span class="role-badge">Psychiatric Provider</span>
+                </div>
+            </div>
+            <div class="team-body">
+                <h4>Innocent</h4>
+                <div class="role">Psychiatric Provider</div>
+                <p>Provides compassionate psychiatric care in a supportive space where patients feel heard, respected, and understood — serving children, adolescents, and adults.</p>
+                <div class="team-specialties">
+                    <span class="team-spec-tag">Anxiety</span>
+                    <span class="team-spec-tag">Depression</span>
+                    <span class="team-spec-tag">ADHD</span>
+                    <span class="team-spec-tag">Mood Concerns</span>
+                    <span class="team-spec-tag">All Ages</span>
+                </div>
+                <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank" class="team-book-btn">
+                    <i class="fa fa-calendar-check"></i> Book with Innocent
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-bg">
+    <div class="testimonials-inner">
+        <div class="section-header reveal">
+            <div class="eyebrow">Patient Stories</div>
+            <h2>What Our Patients Say</h2>
+            <p>Real experiences from the people we are honored to serve.</p>
+        </div>
+        <div class="testimonials-track">
+            <div class="testi-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"Maxgio Healthcare has completely changed my life. The care I receive is thoughtful, thorough, and always respectful. I finally feel heard and understood."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">J</div>
+                    <div>
+                        <div class="testi-name">J. Williams</div>
+                        <div class="testi-since">Patient since 2022</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.1s">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"The telehealth option is a game-changer. I can attend appointments from home without any compromise in quality. Highly recommend to anyone seeking mental health support."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">M</div>
+                    <div>
+                        <div class="testi-name">M. Johnson</div>
+                        <div class="testi-since">Patient since 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card reveal" style="transition-delay:.2s">
+                <div class="stars">★★★★★</div>
+                <p class="testi-text">"Professional, compassionate, and genuinely caring. The medication management has made such a difference in my daily life. I'm grateful for this practice."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">T</div>
+                    <div>
+                        <div class="testi-name">T. Roberts</div>
+                        <div class="testi-since">Patient since 2021</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+    <div class="section-header reveal">
+        <div class="eyebrow">FAQs</div>
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers to questions we hear most often from new and returning patients.</p>
+    </div>
+    <div style="max-width:760px;margin:0 auto;" class="reveal">
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Do you accept insurance? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Yes, we accept a wide range of health insurance plans. Please call our office at +1 (804) 901-0053 or email us to confirm your specific coverage before your appointment.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How do I choose which provider to see? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Both Rose and Innocent offer compassionate, evidence-based psychiatric care. Rose specializes in patients across the full lifespan including geriatric care, while Innocent has a focused approach for children, adolescents, and adults dealing with anxiety, depression, ADHD, and mood concerns. You're welcome to call our office if you'd like guidance on which provider best fits your needs.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How do I schedule a telehealth appointment? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>You can book a telehealth session through either provider's online portal — click "Book Appointment" and choose your provider. We use a secure, HIPAA-compliant video platform.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What should I bring to my first appointment? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Please bring a valid photo ID, your insurance card, a list of current medications, and any prior psychiatric or medical records if available. Arriving 10–15 minutes early allows time to complete intake paperwork.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Is everything I share confidential? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Absolutely. All patient information is protected under HIPAA and held in strict confidence. Your privacy and trust are fundamental to our practice.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How long are appointments? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Initial evaluation appointments typically last 60–90 minutes. Follow-up appointments for medication management or therapy are generally 30–45 minutes.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+    <div class="contact-grid">
+        <div class="contact-info reveal">
+            <div class="eyebrow" style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Get In Touch</div>
+            <h3>We're Here to Help</h3>
+            <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:28px;">Have a question or ready to start your mental health journey? Reach out — our team is happy to assist.</p>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-location-dot"></i></div>
+                <div><h5>Address</h5><p>411 Branchway Rd, North Chesterfield, VA 23236</p></div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-phone"></i></div>
+                <div><h5>Phone & Fax</h5><p>+1 (804) 901-0053 &nbsp;|&nbsp; Fax: (804) 509-0514</p></div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-envelope"></i></div>
+                <div><h5>Email</h5><p><a href="mailto:maxgiohealth@gmail.com" style="color:var(--blue);">maxgiohealth@gmail.com</a></p></div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-ic"><i class="fa fa-clock"></i></div>
+                <div><h5>Hours</h5><p>Mon–Fri: 9:00am–4:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</p></div>
+            </div>
+            <div style="margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
+                <iframe src="https://www.google.com/maps?q=411+Branchway+Rd,+North+Chesterfield,+VA+23236&output=embed" width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="contact-form reveal" style="transition-delay:.1s">
+            <h4>Send Us a Message</h4>
+            <div id="contactFormEl">
+                <div class="form-row">
+                    <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane" id="cfFirst" /></div>
+                    <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" id="cfLast" /></div>
+                </div>
+                <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@email.com" id="cfEmail" /></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (804) 000-0000" id="cfPhone" /></div>
+                <div class="form-group">
+                    <label>Service of Interest</label>
+                    <select id="cfService">
+                        <option value="">Select a service</option>
+                        <option>Diagnosis</option>
+                        <option>Supportive Therapy</option>
+                        <option>Medication Management</option>
+                        <option>TeleCare</option>
+                        <option>General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help you..." id="cfMsg"></textarea></div>
+                <button class="btn-send" onclick="submitContactForm()">Send Message &nbsp;<i class="fa fa-paper-plane"></i></button>
+            </div>
+            <div class="form-success" id="formSuccess">
+                <i class="fa fa-circle-check" style="font-size:32px;display:block;margin-bottom:10px;"></i>
+                Thank you! Your message has been received. We'll be in touch shortly.
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- FOOTER -->
@@ -518,11 +742,11 @@
             <a href="telecare.html">TeleCare</a>
         </div>
         <div class="footer-col">
-            <h5>Contact</h5>
+            <h5>Book Appointments</h5>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank">Book with Rose →</a>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank">Book with Innocent →</a>
             <a href="tel:+18049010053">+1 (804) 901-0053</a>
             <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
-            <a href="#">411 Branchway Rd, VA 23236</a>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -542,43 +766,98 @@
 </button>
 <div id="chatBox">
     <h5>👋 How can we help?</h5>
-    <p>Quick links to reach our team.</p>
-    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
+    <p>Need to reach us quickly? Choose an option below.</p>
+    <a href="#" onclick="closeChat();openBookingModal(event);return false;"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
     <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
-    <a href="mailto:maxgiohealth@gmail.com" class="alt"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
+    <a href="mailto:maxgiohealth@gmail.com" style="background:var(--off-white);color:var(--navy);"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
 </div>
 
 <script>
-    // Sticky nav
+    // ── Sticky Nav ──
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 40);
         document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
     });
 
-    // Hamburger
+    // ── Hamburger ──
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // Reveal on scroll
+    // ── Reveal on Scroll ──
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Newsletter
-    function subscribeNl() {
-        const email = document.getElementById('nlEmail').value.trim();
-        if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-        document.getElementById('nlFormWrap').style.display = 'none';
-        document.getElementById('nlSuccess').style.display = 'block';
+    // ── FAQ Accordion ──
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        document.querySelectorAll('.faq-q.open').forEach(q => {
+            q.classList.remove('open');
+            q.nextElementSibling.classList.remove('open');
+        });
+        if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
     }
 
-    // Chat
-    function toggleChat() {
-        document.getElementById('chatBox').classList.toggle('open');
+    // ── Provider Search ──
+    function handleSearch() {
+        const date = document.getElementById('apptDate').value;
+        const svc = document.getElementById('apptService').value;
+        if (!date || !svc) { alert('Please select a date and service to check availability.'); return; }
+        openBookingModal(new Event('click'));
     }
+
+    // ── Contact Form ──
+    function submitContactForm() {
+        const first = document.getElementById('cfFirst').value.trim();
+        const email = document.getElementById('cfEmail').value.trim();
+        const msg = document.getElementById('cfMsg').value.trim();
+        if (!first || !email || !msg) { alert('Please fill in your name, email, and message.'); return; }
+        document.getElementById('contactFormEl').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // ── Chat Widget ──
+    function toggleChat() { document.getElementById('chatBox').classList.toggle('open'); }
+    function closeChat() { document.getElementById('chatBox').classList.remove('open'); }
+
+    // ── Booking Modal ──
+    function openBookingModal(e) {
+        if (e) e.preventDefault();
+        document.getElementById('bookingModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeBookingModal() {
+        document.getElementById('bookingModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function handleModalClick(e) {
+        if (e.target === document.getElementById('bookingModal')) closeBookingModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBookingModal(); });
+
+    // ── Animated Stats ──
+    const statEls = document.querySelectorAll('.stat-num[data-target]');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const el = e.target;
+                const target = parseInt(el.dataset.target);
+                let current = 0;
+                const step = Math.ceil(target / 50);
+                const timer = setInterval(() => {
+                    current = Math.min(current + step, target);
+                    el.textContent = current + '+';
+                    if (current >= target) clearInterval(timer);
+                }, 30);
+                statsObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    statEls.forEach(el => statsObserver.observe(el));
 </script>
 </body>
 </html>

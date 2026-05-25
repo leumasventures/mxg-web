@@ -24,53 +24,23 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--off-white);
-            color: var(--text);
-            overflow-x: hidden;
-        }
+        body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
 
         /* ── TOPBAR ── */
-        .topbar {
-            background: var(--navy);
-            color: rgba(255,255,255,0.85);
-            font-size: 13px;
-            padding: 8px 0;
-        }
+        .topbar { background: var(--navy); color: rgba(255,255,255,0.85); font-size: 13px; padding: 8px 0; }
         .topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
         .topbar a { color: var(--sky); text-decoration: none; }
         .topbar span { margin: 0 18px; opacity: .4; }
 
         /* ── MARQUEE ── */
-        .marquee-bar {
-            background: linear-gradient(90deg, var(--red), var(--soft-red));
-            color: #fff;
-            font-size: 13.5px;
-            padding: 7px 0;
-            overflow: hidden;
-        }
-        .marquee-track {
-            display: inline-flex;
-            white-space: nowrap;
-            animation: marqueeScroll 28s linear infinite;
-        }
+        .marquee-bar { background: linear-gradient(90deg, var(--red), var(--soft-red)); color: #fff; font-size: 13.5px; padding: 7px 0; overflow: hidden; }
+        .marquee-track { display: inline-flex; white-space: nowrap; animation: marqueeScroll 28s linear infinite; }
         .marquee-track p { margin: 0; padding-right: 80px; }
         @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* ── NAVBAR ── */
-        nav {
-            background: #fff;
-            padding: 14px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(10,36,99,0.08);
-            transition: box-shadow .3s;
-        }
+        nav { background: #fff; padding: 14px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(10,36,99,0.08); transition: box-shadow .3s; }
         nav.scrolled { box-shadow: 0 4px 30px rgba(10,36,99,0.14); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -78,96 +48,43 @@
         .brand-text .line1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--red); line-height: 1; }
         .brand-text .line2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--blue); line-height: 1; }
         .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-        .nav-links a {
-            font-size: 14.5px; font-weight: 500; color: var(--text);
-            padding: 8px 14px; border-radius: 6px; text-decoration: none;
-            transition: background .2s, color .2s;
-        }
+        .nav-links a { font-size: 14.5px; font-weight: 500; color: var(--text); padding: 8px 14px; border-radius: 6px; text-decoration: none; transition: background .2s, color .2s; }
         .nav-links a:hover, .nav-links a.active { background: var(--off-white); color: var(--blue); }
         .dropdown { position: relative; }
-        .dropdown-menu {
-            display: none; position: absolute; top: calc(100% + 8px); left: 0;
-            background: #fff; border-radius: 10px; min-width: 200px;
-            box-shadow: 0 12px 40px rgba(10,36,99,0.14); padding: 8px 0; z-index: 200;
-        }
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: 10px; min-width: 220px; box-shadow: 0 12px 40px rgba(10,36,99,0.14); padding: 8px 0; z-index: 200; }
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu a { display: block; padding: 10px 18px; font-size: 14px; color: var(--text); text-decoration: none; transition: background .2s; }
         .dropdown-menu a:hover { background: var(--off-white); color: var(--blue); }
-        .btn-appt {
-            background: var(--blue); color: #fff; border: none; border-radius: 8px;
-            padding: 10px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
-            cursor: pointer; transition: background .2s, transform .15s;
-        }
+        .dropdown-menu .menu-section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 10px 18px 4px; }
+        .dropdown-menu .menu-divider { height: 1px; background: #dde5f0; margin: 6px 0; }
+        .btn-appt { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s, transform .15s; }
         .btn-appt:hover { background: var(--navy); transform: translateY(-1px); }
-
-        /* Hamburger */
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
         .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
 
         /* ── HERO ── */
-        .hero {
-            position: relative; height: 88vh; min-height: 560px;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: url('maxgio img/officeRoom.jpeg') center/cover no-repeat;
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(10,36,99,0.78) 0%, rgba(21,101,192,0.55) 60%, rgba(0,0,0,0.35) 100%);
-        }
-        .hero-content {
-            position: relative; z-index: 2;
-            text-align: center; color: #fff; padding: 0 24px; max-width: 760px;
-            animation: heroFadeUp .9s ease both;
-        }
+        .hero { position: relative; height: 88vh; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: url('maxgio img/officeRoom.jpeg') center/cover no-repeat; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,36,99,0.78) 0%, rgba(21,101,192,0.55) 60%, rgba(0,0,0,0.35) 100%); }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 0 24px; max-width: 760px; animation: heroFadeUp .9s ease both; }
         @keyframes heroFadeUp { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: none; } }
-        .hero-badge {
-            display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.3); border-radius: 50px;
-            font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
-            padding: 6px 18px; margin-bottom: 22px; color: var(--sky);
-        }
-        .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(38px, 6vw, 64px);
-            line-height: 1.12; margin-bottom: 18px;
-        }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 18px; margin-bottom: 22px; color: var(--sky); }
+        .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 64px); line-height: 1.12; margin-bottom: 18px; }
         .hero h1 em { font-style: italic; color: var(--sky); }
         .hero p { font-size: 18px; opacity: .88; max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
         .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary-hero {
-            background: var(--sky); color: var(--navy); padding: 14px 34px;
-            border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none;
-            transition: transform .2s, box-shadow .2s;
-            box-shadow: 0 4px 20px rgba(79,195,247,0.35);
-        }
+        .btn-primary-hero { background: var(--sky); color: var(--navy); padding: 14px 34px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(79,195,247,0.35); }
         .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,195,247,0.5); }
-        .btn-outline-hero {
-            background: transparent; color: #fff; padding: 14px 34px; border-radius: 10px;
-            font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
-            transition: border-color .2s, background .2s;
-        }
+        .btn-outline-hero { background: transparent; color: #fff; padding: 14px 34px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); transition: border-color .2s, background .2s; }
         .btn-outline-hero:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-        .hero-scroll {
-            position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2;
-            display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.6);
-            font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
-        }
+        .hero-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.6); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
         .hero-scroll .arrow { width: 20px; height: 20px; border-right: 2px solid rgba(255,255,255,0.5); border-bottom: 2px solid rgba(255,255,255,0.5); transform: rotate(45deg); animation: bounce 1.5s infinite; }
         @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
 
         /* ── QUICK INFO CARDS ── */
         .quick-info { max-width: 1200px; margin: -56px auto 0; padding: 0 24px; position: relative; z-index: 10; }
         .quick-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-        .q-card {
-            background: #fff; border-radius: 16px; padding: 30px 28px;
-            box-shadow: var(--card-shadow); border-top: 4px solid var(--blue);
-            transition: transform .25s, box-shadow .25s;
-        }
+        .q-card { background: #fff; border-radius: 16px; padding: 30px 28px; box-shadow: var(--card-shadow); border-top: 4px solid var(--blue); transition: transform .25s, box-shadow .25s; }
         .q-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,36,99,0.14); }
         .q-card:nth-child(2) { border-color: var(--sky); }
         .q-card:nth-child(3) { border-color: var(--red); }
@@ -179,26 +96,13 @@
         .q-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
         .q-card .hours span { display: block; font-size: 14px; color: var(--text); margin-bottom: 4px; }
         .q-card .phone-num { font-size: 26px; font-weight: 700; color: var(--red); font-family: 'DM Serif Display', serif; }
-        .btn-book {
-            display: inline-block; background: var(--blue); color: #fff; padding: 9px 22px;
-            border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none;
-            transition: background .2s, transform .15s;
-        }
+        .btn-book { display: inline-block; background: var(--blue); color: #fff; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, transform .15s; }
         .btn-book:hover { background: var(--navy); transform: translateY(-1px); }
 
         /* Finder form */
-        .finder-form select, .finder-form input {
-            width: 100%; padding: 10px 12px; border: 1.5px solid #dde5f0; border-radius: 8px;
-            font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
-            background: var(--off-white); margin-bottom: 10px;
-            transition: border-color .2s;
-        }
+        .finder-form select, .finder-form input { width: 100%; padding: 10px 12px; border: 1.5px solid #dde5f0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--off-white); margin-bottom: 10px; transition: border-color .2s; }
         .finder-form select:focus, .finder-form input:focus { outline: none; border-color: var(--sky); }
-        .btn-search {
-            width: 100%; background: var(--blue); color: #fff; border: none;
-            border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 600;
-            font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s;
-        }
+        .btn-search { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s; }
         .btn-search:hover { background: var(--navy); }
 
         /* ── STATS STRIP ── */
@@ -215,17 +119,8 @@
         .section-header p { font-size: 16px; color: var(--muted); max-width: 520px; margin: 12px auto 0; line-height: 1.7; }
 
         .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-        .why-card {
-            background: #fff; border-radius: 16px; padding: 34px 28px;
-            box-shadow: var(--card-shadow);
-            transition: transform .25s, box-shadow .25s;
-            position: relative; overflow: hidden;
-        }
-        .why-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, var(--blue), var(--sky));
-        }
+        .why-card { background: #fff; border-radius: 16px; padding: 34px 28px; box-shadow: var(--card-shadow); transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden; }
+        .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); }
         .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,36,99,0.14); }
         .why-icon { font-size: 32px; margin-bottom: 18px; }
         .why-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
@@ -237,76 +132,49 @@
         .services-inner .section-header .eyebrow { color: var(--sky); }
         .services-inner .section-header h2 { color: #fff; }
         .services-inner .section-header p { color: rgba(255,255,255,.65); }
-
         .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
-        .svc-card {
-            background: rgba(255,255,255,.07); backdrop-filter: blur(6px);
-            border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 30px 24px;
-            text-align: center; color: #fff;
-            transition: background .25s, transform .25s, box-shadow .25s;
-            cursor: pointer; text-decoration: none; display: block;
-        }
-        .svc-card:hover {
-            background: rgba(255,255,255,.14); transform: translateY(-6px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.3);
-        }
-        .svc-icon {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: rgba(79,195,247,0.18); display: flex; align-items: center; justify-content: center;
-            font-size: 26px; color: var(--sky); margin: 0 auto 18px;
-            transition: background .2s;
-        }
+        .svc-card { background: rgba(255,255,255,.07); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 30px 24px; text-align: center; color: #fff; transition: background .25s, transform .25s, box-shadow .25s; cursor: pointer; text-decoration: none; display: block; }
+        .svc-card:hover { background: rgba(255,255,255,.14); transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+        .svc-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(79,195,247,0.18); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--sky); margin: 0 auto 18px; transition: background .2s; }
         .svc-card:hover .svc-icon { background: rgba(79,195,247,0.3); }
         .svc-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
         .svc-card p { font-size: 13.5px; opacity: .72; line-height: 1.65; }
 
         /* ── TEAM ── */
-        .team-card {
-            background: #fff; border-radius: 16px; overflow: hidden;
-            box-shadow: var(--card-shadow); text-align: center; padding-bottom: 28px;
-            transition: transform .25s;
-        }
-        .team-card:hover { transform: translateY(-5px); }
-        .team-photo { width: 100%; height: 220px; object-fit: cover; background: var(--off-white); }
-        .team-photo-placeholder {
-            width: 100%; height: 220px; background: linear-gradient(135deg, #e3f0ff, #ddf0fa);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 64px; color: var(--blue);
-        }
-        .team-card h4 { font-size: 18px; font-weight: 700; margin: 18px 0 4px; color: var(--navy); }
-        .team-card .role { font-size: 13.5px; color: var(--blue); font-weight: 600; letter-spacing: .5px; }
-        .team-card p { font-size: 13.5px; color: var(--muted); margin: 10px 18px 0; line-height: 1.6; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+        .team-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--card-shadow); transition: transform .25s, box-shadow .25s; }
+        .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,36,99,0.14); }
+        .team-photo-wrap { position: relative; overflow: hidden; }
+        .team-photo { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; transition: transform .4s; }
+        .team-card:hover .team-photo { transform: scale(1.04); }
+        .team-photo-placeholder { width: 100%; height: 280px; background: linear-gradient(135deg, #e3f0ff, #ddf0fa); display: flex; align-items: center; justify-content: center; font-size: 64px; color: var(--blue); }
+        .team-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,36,99,0.7)); padding: 40px 24px 20px; }
+        .team-overlay .role-badge { display: inline-block; background: var(--sky); color: var(--navy); font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 20px; letter-spacing: .5px; }
+        .team-body { padding: 22px 26px 28px; }
+        .team-body h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+        .team-body .role { font-size: 13px; color: var(--blue); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px; }
+        .team-body p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+        .team-book-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, transform .15s; }
+        .team-book-btn:hover { background: var(--navy); transform: translateY(-1px); }
+        .team-specialties { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+        .team-spec-tag { background: var(--off-white); color: var(--navy); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; border: 1px solid #dde5f0; }
 
         /* ── TESTIMONIALS ── */
         .testimonials-bg { background: linear-gradient(135deg, #e8f0fe, #f0f8ff); padding: 80px 0; }
         .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .testimonials-track { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-        .testi-card {
-            background: #fff; border-radius: 16px; padding: 28px;
-            box-shadow: var(--card-shadow);
-            transition: transform .25s;
-        }
+        .testi-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: var(--card-shadow); transition: transform .25s; }
         .testi-card:hover { transform: translateY(-4px); }
         .stars { color: #f59e0b; font-size: 14px; margin-bottom: 14px; }
         .testi-text { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
         .testi-author { display: flex; align-items: center; gap: 12px; }
-        .testi-avatar {
-            width: 42px; height: 42px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue), var(--sky));
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 700; font-size: 16px;
-        }
+        .testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; }
         .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
         .testi-since { font-size: 12px; color: var(--muted); }
 
         /* ── FAQ ── */
         .faq-item { border-bottom: 1px solid #dde5f0; }
-        .faq-q {
-            width: 100%; background: none; border: none; padding: 18px 0; text-align: left;
-            font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy);
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-            transition: color .2s;
-        }
+        .faq-q { width: 100%; background: none; border: none; padding: 18px 0; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color .2s; }
         .faq-q:hover { color: var(--blue); }
         .faq-q .chevron { transition: transform .3s; font-size: 14px; color: var(--blue); }
         .faq-q.open .chevron { transform: rotate(180deg); }
@@ -321,26 +189,15 @@
         .contact-ic { width: 44px; height: 44px; border-radius: 10px; background: #e3f0ff; color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
         .contact-row h5 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 4px; }
         .contact-row p { font-size: 15px; color: var(--text); }
-
         .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: var(--card-shadow); }
         .contact-form h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 22px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 11px 14px;
-            border: 1.5px solid #dde5f0; border-radius: 8px;
-            font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
-            background: var(--off-white); transition: border-color .2s;
-        }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #dde5f0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--off-white); transition: border-color .2s; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); background: #fff; }
         .form-group textarea { resize: vertical; min-height: 100px; }
-        .btn-send {
-            width: 100%; background: var(--blue); color: #fff; border: none;
-            border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 700;
-            font-family: 'DM Sans', sans-serif; cursor: pointer;
-            transition: background .2s, transform .15s; margin-top: 6px;
-        }
+        .btn-send { width: 100%; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, transform .15s; margin-top: 6px; }
         .btn-send:hover { background: var(--navy); transform: translateY(-1px); }
         .form-success { display: none; text-align: center; padding: 20px; background: #e8f5e9; border-radius: 10px; color: #2e7d32; font-weight: 600; }
 
@@ -357,32 +214,14 @@
         .footer-bottom a { color: var(--sky); text-decoration: none; }
 
         /* ── BACK TO TOP ── */
-        #backToTop {
-            position: fixed; bottom: 28px; right: 28px; z-index: 999;
-            width: 46px; height: 46px; border-radius: 50%;
-            background: var(--blue); color: #fff; border: none; cursor: pointer;
-            font-size: 18px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(21,101,192,0.4);
-            opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s;
-        }
+        #backToTop { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--blue); color: #fff; border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(21,101,192,0.4); opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s; }
         #backToTop.visible { opacity: 1; transform: none; }
         #backToTop:hover { background: var(--navy); }
 
         /* ── CHAT WIDGET ── */
-        #chatWidget {
-            position: fixed; bottom: 28px; left: 28px; z-index: 999;
-            width: 54px; height: 54px; border-radius: 50%;
-            background: var(--red); color: #fff; border: none; cursor: pointer;
-            font-size: 22px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(198,40,40,0.4); transition: background .2s, transform .2s;
-        }
+        #chatWidget { position: fixed; bottom: 28px; left: 28px; z-index: 999; width: 54px; height: 54px; border-radius: 50%; background: var(--red); color: #fff; border: none; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(198,40,40,0.4); transition: background .2s, transform .2s; }
         #chatWidget:hover { background: #b71c1c; transform: scale(1.08); }
-        #chatBox {
-            position: fixed; bottom: 94px; left: 28px; z-index: 998;
-            width: 310px; background: #fff; border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(10,36,99,0.18);
-            padding: 20px; display: none; animation: slideUp .25s ease;
-        }
+        #chatBox { position: fixed; bottom: 94px; left: 28px; z-index: 998; width: 310px; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(10,36,99,0.18); padding: 20px; display: none; animation: slideUp .25s ease; }
         #chatBox.open { display: block; }
         @keyframes slideUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: none; } }
         #chatBox h5 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
@@ -390,16 +229,30 @@
         #chatBox a { display: block; background: var(--blue); color: #fff; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
         #chatBox a:last-of-type { background: var(--off-white); color: var(--navy); }
 
-        /* ── MOBILE NAV ── */
+        /* ── PROVIDER PICKER MODAL ── */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,36,99,0.55); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+        .modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .modal-box { background: #fff; border-radius: 20px; padding: 36px; max-width: 540px; width: 100%; box-shadow: 0 24px 80px rgba(10,36,99,0.25); animation: modalUp .25s ease; }
+        @keyframes modalUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+        .modal-box h3 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 6px; }
+        .modal-box .modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 26px; line-height: 1.6; }
+        .provider-choice { display: flex; flex-direction: column; gap: 14px; }
+        .provider-choice-btn { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 2px solid #dde5f0; border-radius: 14px; background: var(--off-white); cursor: pointer; transition: border-color .2s, background .2s, transform .2s; text-decoration: none; color: var(--text); }
+        .provider-choice-btn:hover { border-color: var(--blue); background: #e3f0ff; transform: translateY(-2px); }
+        .provider-choice-avatar { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--sky); flex-shrink: 0; }
+        .provider-choice-avatar-placeholder { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+        .provider-choice-info strong { display: block; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+        .provider-choice-info span { font-size: 13px; color: var(--muted); }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--muted); cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: background .2s; }
+        .modal-close:hover { background: var(--off-white); color: var(--navy); }
+        .modal-box { position: relative; }
+
+        /* ── MOBILE ── */
         @media (max-width: 900px) {
             .hamburger { display: block; }
             .nav-links { display: none; }
-            .nav-links.open {
-                display: flex; flex-direction: column; position: absolute;
-                top: 100%; left: 0; right: 0; background: #fff;
-                padding: 16px 24px 24px; box-shadow: 0 12px 40px rgba(10,36,99,0.1);
-                z-index: 900;
-            }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 16px 24px 24px; box-shadow: 0 12px 40px rgba(10,36,99,0.1); z-index: 900; }
             .nav-actions { display: none; }
             .quick-grid, .why-grid, .services-grid { grid-template-columns: 1fr; }
             .testimonials-track { grid-template-columns: 1fr; }
@@ -407,6 +260,10 @@
             .contact-grid { grid-template-columns: 1fr; }
             .footer-top { grid-template-columns: 1fr 1fr; }
             .form-row { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 500px) {
+            .footer-top { grid-template-columns: 1fr; }
         }
 
         /* ── ANIMATE ON SCROLL ── */
@@ -431,8 +288,8 @@
 <!-- MARQUEE -->
 <div class="marquee-bar">
     <div class="marquee-track">
-        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
-        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioner on staff.</p>
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioners on staff.</p>
+        <p>🧠 Maxgio Healthcare LLC provides personalized mental health care with a focus on accurate diagnosis, effective treatment, and supportive guidance. &nbsp;•&nbsp; Accepting new patients! &nbsp;•&nbsp; Telehealth available. &nbsp;•&nbsp; Board-certified Nurse Practitioners on staff.</p>
     </div>
 </div>
 
@@ -450,31 +307,65 @@
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="About Us.html">About</a></li>
             <li class="dropdown">
-              <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <a href="service.html">Services <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
                 <div class="dropdown-menu">
                     <a href="myAssessment.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Self Assessment</a>
                 </div>
-            </li> 
+            </li>
             <li><a href="contact.html">Contact</a></li>
             <li class="dropdown">
-                <a href="appointment.html">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+                <a href="#" onclick="openBookingModal(event)">Appointments <i class="fa fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
                 <div class="dropdown-menu">
-                    <a href="diagnosis.html"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
-                    <a href="supportive therapy.html"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
-                    <a href="medication management.html"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
-                    <a href="telecare.html"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                    <div class="menu-section-label">With Rose Idemili</div>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731clinicianId=1561731" target="_blank"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731clinicianId=1561731" target="_blank"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731clinicianId=1561731" target="_blank"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731clinicianId=1561731" target="_blank"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
+                    <div class="menu-divider"></div>
+                    <div class="menu-section-label">With Innocent</div>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-stethoscope" style="margin-right:8px;color:var(--blue);"></i>Diagnosis</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-heart" style="margin-right:8px;color:var(--red);"></i>Supportive Therapy</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-pills" style="margin-right:8px;color:var(--blue);"></i>Medication Management</a>
+                    <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank"><i class="fa fa-video" style="margin-right:8px;color:#0097a7;"></i>TeleCare</a>
                 </div>
             </li>
             <li><a href="blog.html">Blog</a></li>
         </ul>
         <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
-            <a href="https://rose-chigbo.clientsecure.me/" class="btn-appt" target="_blank">Book Appointment</a>
+            <button class="btn-appt" onclick="openBookingModal(event)">Book Appointment</button>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
     </div>
 </nav>
+
+<!-- PROVIDER BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeBookingModal()"><i class="fa fa-times"></i></button>
+        <h3>Book an Appointment</h3>
+        <p class="modal-sub">Choose a provider to continue to their scheduling portal.</p>
+        <div class="provider-choice">
+            <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Rose Idemili, PMHNP-BC</strong>
+                    <span>Psychiatric Mental Health Nurse Practitioner &nbsp;·&nbsp; 17+ yrs experience</span>
+                </div>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:var(--blue);font-size:14px;"></i>
+            </a>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank" class="provider-choice-btn" onclick="closeBookingModal()">
+                <img src="maxgio img/innocent.jpeg" alt="Innocent" class="provider-choice-avatar" onerror="this.outerHTML='<div class=\'provider-choice-avatar-placeholder\'><i class=\'fa fa-user-doctor\'></i></div>'">
+                <div class="provider-choice-info">
+                    <strong>Innocent</strong>
+                    <span>Psychiatric Provider &nbsp;·&nbsp; Children, Adolescents &amp; Adults</span>
+                </div>
+                <i class="fa fa-arrow-right" style="margin-left:auto;color:var(--blue);font-size:14px;"></i>
+            </a>
+        </div>
+    </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -484,7 +375,7 @@
         <h1>Exceptional <em>Mental Health</em> Care for Every Journey</h1>
         <p>Evidence-based evaluation, diagnosis, medication management and therapy — delivered with care, compassion, and complete confidentiality.</p>
         <div class="hero-btns">
-            <a href="https://rose-chigbo.clientsecure.me/" class="btn-primary-hero" target="_blank">Book an Appointment</a>
+            <button class="btn-primary-hero" onclick="openBookingModal(event)" style="border:none;cursor:pointer;">Book an Appointment</button>
             <a href="#contact" class="btn-outline-hero">Contact Us</a>
         </div>
     </div>
@@ -502,7 +393,7 @@
                 <span><strong>Saturday:</strong> 9:00am – 1:00pm</span>
                 <span style="color:var(--red);font-size:13px;"><strong>Sunday:</strong> Closed</span>
             </div>
-            <a href="https://rose-chigbo.clientsecure.me/" class="btn-book" style="margin-top:16px;" target="_blank">Book Now</a>
+            <button class="btn-book" onclick="openBookingModal(event)" style="margin-top:16px;border:none;cursor:pointer;">Book Now</button>
         </div>
 
         <div class="q-card reveal" style="transition-delay:.1s">
@@ -574,7 +465,7 @@
         <div class="why-card reveal" style="transition-delay:.2s">
             <div class="why-icon">👩‍⚕️</div>
             <h4>Board-Certified Specialists</h4>
-            <p>Our psychiatry team is led by a board-certified Nurse Practitioner with extensive experience in acute care, outpatient, and geriatric psychiatry management.</p>
+            <p>Our psychiatry team is led by board-certified Nurse Practitioners with extensive experience in acute care, outpatient, and geriatric psychiatry management.</p>
         </div>
         <div class="why-card reveal" style="transition-delay:.3s">
             <div class="why-icon">💻</div>
@@ -634,19 +525,58 @@
         <h2>Meet Your Care Team</h2>
         <p>Compassionate professionals dedicated to your mental health and wellness.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+    <div class="team-grid">
+
+        <!-- ROSE -->
         <div class="team-card reveal">
-            <div class="team-photo-placeholder"><i class="fa fa-user-nurse"></i></div>
-            <h4>Rose Chigbo, PMHNP-BC</h4>
-            <div class="role">Psychiatric Mental Health NP</div>
-            <p>Board-certified with extensive experience in outpatient psychiatry, acute care, and geriatric mental health management.</p>
+            <div class="team-photo-wrap">
+                <img src="maxgio img/swtsis.jpeg" alt="Rose Idemili PMHNP-BC" class="team-photo" onerror="this.outerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa fa-user-nurse\'></i></div>'">
+                <div class="team-overlay">
+                    <span class="role-badge">PMHNP-BC</span>
+                </div>
+            </div>
+            <div class="team-body">
+                <h4>Rose Idemili</h4>
+                <div class="role">Psychiatric Mental Health Nurse Practitioner</div>
+                <p>Board-certified with 17+ years of experience across outpatient psychiatry, acute care, and geriatric mental health. Licensed in Virginia, Washington State, and North Dakota.</p>
+                <div class="team-specialties">
+                    <span class="team-spec-tag">Depression</span>
+                    <span class="team-spec-tag">Anxiety</span>
+                    <span class="team-spec-tag">ADHD</span>
+                    <span class="team-spec-tag">PTSD</span>
+                    <span class="team-spec-tag">Geriatric Psychiatry</span>
+                </div>
+                <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank" class="team-book-btn">
+                    <i class="fa fa-calendar-check"></i> Book with Rose
+                </a>
+            </div>
         </div>
-        <div class="team-card reveal" style="transition-delay:.1s">
-            <div class="team-photo-placeholder"><i class="fa fa-user-doctor"></i></div>
-            <h4>Care Coordination Team</h4>
-            <div class="role">Patient Services & Support</div>
-            <p>Our friendly support staff is here to assist with scheduling, insurance verification, and any questions you may have.</p>
+
+        <!-- INNOCENT -->
+        <div class="team-card reveal" style="transition-delay:.15s;">
+            <div class="team-photo-wrap">
+                <img src="maxgio img/innocent.jpeg" alt="Innocent — Psychiatric Provider" class="team-photo" onerror="this.outerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa fa-user-doctor\'></i></div>'">
+                <div class="team-overlay">
+                    <span class="role-badge">Psychiatric Provider</span>
+                </div>
+            </div>
+            <div class="team-body">
+                <h4>Innocent</h4>
+                <div class="role">Psychiatric Provider</div>
+                <p>Provides compassionate psychiatric care in a supportive space where patients feel heard, respected, and understood — serving children, adolescents, and adults.</p>
+                <div class="team-specialties">
+                    <span class="team-spec-tag">Anxiety</span>
+                    <span class="team-spec-tag">Depression</span>
+                    <span class="team-spec-tag">ADHD</span>
+                    <span class="team-spec-tag">Mood Concerns</span>
+                    <span class="team-spec-tag">All Ages</span>
+                </div>
+                <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank" class="team-book-btn">
+                    <i class="fa fa-calendar-check"></i> Book with Innocent
+                </a>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -705,44 +635,28 @@
     </div>
     <div style="max-width:760px;margin:0 auto;" class="reveal">
         <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-                Do you accept insurance? <i class="fa fa-chevron-down chevron"></i>
-            </button>
-            <div class="faq-a">
-                <p>Yes, we accept a wide range of health insurance plans. Please call our office at +1 (804) 901-0053 or email us to confirm your specific coverage before your appointment.</p>
-            </div>
+            <button class="faq-q" onclick="toggleFaq(this)">Do you accept insurance? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Yes, we accept a wide range of health insurance plans. Please call our office at +1 (804) 901-0053 or email us to confirm your specific coverage before your appointment.</p></div>
         </div>
         <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-                How do I schedule a telehealth appointment? <i class="fa fa-chevron-down chevron"></i>
-            </button>
-            <div class="faq-a">
-                <p>You can book a telehealth session through our online patient portal at rose-chigbo.clientsecure.me, or by calling our office directly. We use a secure, HIPAA-compliant video platform.</p>
-            </div>
+            <button class="faq-q" onclick="toggleFaq(this)">How do I choose which provider to see? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Both Rose and Innocent offer compassionate, evidence-based psychiatric care. Rose specializes in patients across the full lifespan including geriatric care, while Innocent has a focused approach for children, adolescents, and adults dealing with anxiety, depression, ADHD, and mood concerns. You're welcome to call our office if you'd like guidance on which provider best fits your needs.</p></div>
         </div>
         <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-                What should I bring to my first appointment? <i class="fa fa-chevron-down chevron"></i>
-            </button>
-            <div class="faq-a">
-                <p>Please bring a valid photo ID, your insurance card, a list of current medications, and any prior psychiatric or medical records if available. Arriving 10–15 minutes early allows time to complete intake paperwork.</p>
-            </div>
+            <button class="faq-q" onclick="toggleFaq(this)">How do I schedule a telehealth appointment? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>You can book a telehealth session through either provider's online portal — click "Book Appointment" and choose your provider. We use a secure, HIPAA-compliant video platform.</p></div>
         </div>
         <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-                Is everything I share confidential? <i class="fa fa-chevron-down chevron"></i>
-            </button>
-            <div class="faq-a">
-                <p>Absolutely. All patient information is protected under HIPAA and held in strict confidence. Your privacy and trust are fundamental to our practice.</p>
-            </div>
+            <button class="faq-q" onclick="toggleFaq(this)">What should I bring to my first appointment? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Please bring a valid photo ID, your insurance card, a list of current medications, and any prior psychiatric or medical records if available. Arriving 10–15 minutes early allows time to complete intake paperwork.</p></div>
         </div>
         <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-                How long are appointments? <i class="fa fa-chevron-down chevron"></i>
-            </button>
-            <div class="faq-a">
-                <p>Initial evaluation appointments typically last 60–90 minutes. Follow-up appointments for medication management or therapy are generally 30–45 minutes.</p>
-            </div>
+            <button class="faq-q" onclick="toggleFaq(this)">Is everything I share confidential? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Absolutely. All patient information is protected under HIPAA and held in strict confidence. Your privacy and trust are fundamental to our practice.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How long are appointments? <i class="fa fa-chevron-down chevron"></i></button>
+            <div class="faq-a"><p>Initial evaluation appointments typically last 60–90 minutes. Follow-up appointments for medication management or therapy are generally 30–45 minutes.</p></div>
         </div>
     </div>
 </div>
@@ -754,66 +668,35 @@
             <div class="eyebrow" style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Get In Touch</div>
             <h3>We're Here to Help</h3>
             <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:28px;">Have a question or ready to start your mental health journey? Reach out — our team is happy to assist.</p>
-
             <div class="contact-row">
                 <div class="contact-ic"><i class="fa fa-location-dot"></i></div>
-                <div>
-                    <h5>Address</h5>
-                    <p>411 Branchway Rd, North Chesterfield, VA 23236</p>
-                </div>
+                <div><h5>Address</h5><p>411 Branchway Rd, North Chesterfield, VA 23236</p></div>
             </div>
             <div class="contact-row">
                 <div class="contact-ic"><i class="fa fa-phone"></i></div>
-                <div>
-                    <h5>Phone & Fax</h5>
-                    <p>+1 (804) 901-0053 &nbsp;|&nbsp; Fax: (804) 509-0514</p>
-                </div>
+                <div><h5>Phone & Fax</h5><p>+1 (804) 901-0053 &nbsp;|&nbsp; Fax: (804) 509-0514</p></div>
             </div>
             <div class="contact-row">
                 <div class="contact-ic"><i class="fa fa-envelope"></i></div>
-                <div>
-                    <h5>Email</h5>
-                    <p><a href="mailto:maxgiohealth@gmail.com" style="color:var(--blue);">maxgiohealth@gmail.com</a></p>
-                </div>
+                <div><h5>Email</h5><p><a href="mailto:maxgiohealth@gmail.com" style="color:var(--blue);">maxgiohealth@gmail.com</a></p></div>
             </div>
             <div class="contact-row">
                 <div class="contact-ic"><i class="fa fa-clock"></i></div>
-                <div>
-                    <h5>Hours</h5>
-                    <p>Mon–Fri: 9:00am–4:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</p>
-                </div>
+                <div><h5>Hours</h5><p>Mon–Fri: 9:00am–4:00pm &nbsp;|&nbsp; Sat: 9:00am–1:00pm</p></div>
             </div>
-
-            <!-- Embedded map placeholder -->
             <div style="margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
-                <iframe
-                    src="https://www.google.com/maps?q=411+Branchway+Rd,+North+Chesterfield,+VA+23236&output=embed"
-                    width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps?q=411+Branchway+Rd,+North+Chesterfield,+VA+23236&output=embed" width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-
         <div class="contact-form reveal" style="transition-delay:.1s">
             <h4>Send Us a Message</h4>
             <div id="contactFormEl">
                 <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" placeholder="Jane" id="cfFirst" />
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" placeholder="Doe" id="cfLast" />
-                    </div>
+                    <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane" id="cfFirst" /></div>
+                    <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" id="cfLast" /></div>
                 </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="jane@email.com" id="cfEmail" />
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" placeholder="+1 (804) 000-0000" id="cfPhone" />
-                </div>
+                <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@email.com" id="cfEmail" /></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (804) 000-0000" id="cfPhone" /></div>
                 <div class="form-group">
                     <label>Service of Interest</label>
                     <select id="cfService">
@@ -825,10 +708,7 @@
                         <option>General Inquiry</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea placeholder="Tell us how we can help you..." id="cfMsg"></textarea>
-                </div>
+                <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help you..." id="cfMsg"></textarea></div>
                 <button class="btn-send" onclick="submitContactForm()">Send Message &nbsp;<i class="fa fa-paper-plane"></i></button>
             </div>
             <div class="form-success" id="formSuccess">
@@ -862,11 +742,11 @@
             <a href="telecare.html">TeleCare</a>
         </div>
         <div class="footer-col">
-            <h5>Contact</h5>
+            <h5>Book Appointments</h5>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=44cb251e-38fd-47bc-90a8-d6a09b9ee26e&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=1561731" target="_blank">Book with Rose →</a>
+            <a href="https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483https://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505bhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794channel=client_portalhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794appearance=%7B%22fullScreen%22%3Atrue%7Dhttps://clientsecure.me/widget-redirect?scopeId=cba184cc-c8fa-4b11-88ac-4443b0f8b483&applicationId=7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b&channel=client_portal&appearance=%7B%22fullScreen%22%3Atrue%7D&clinicianId=2056794clinicianId=2056794" target="_blank">Book with Innocent →</a>
             <a href="tel:+18049010053">+1 (804) 901-0053</a>
             <a href="mailto:maxgiohealth@gmail.com">maxgiohealth@gmail.com</a>
-            <a href="#">411 Branchway Rd, VA</a>
-            <a href="https://rose-chigbo.clientsecure.me/" target="_blank" style="color:var(--sky);font-weight:600;">Book Online →</a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -887,7 +767,7 @@
 <div id="chatBox">
     <h5>👋 How can we help?</h5>
     <p>Need to reach us quickly? Choose an option below.</p>
-    <a href="https://rose-chigbo.clientsecure.me/" target="_blank"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
+    <a href="#" onclick="closeChat();openBookingModal(event);return false;"><i class="fa fa-calendar-check" style="margin-right:6px;"></i>Book an Appointment</a>
     <a href="tel:+18049010053"><i class="fa fa-phone" style="margin-right:6px;"></i>Call Us Now</a>
     <a href="mailto:maxgiohealth@gmail.com" style="background:var(--off-white);color:var(--navy);"><i class="fa fa-envelope" style="margin-right:6px;"></i>Send an Email</a>
 </div>
@@ -906,11 +786,10 @@
     });
 
     // ── Reveal on Scroll ──
-    const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // ── FAQ Accordion ──
     function toggleFaq(btn) {
@@ -920,21 +799,15 @@
             q.classList.remove('open');
             q.nextElementSibling.classList.remove('open');
         });
-        if (!isOpen) {
-            btn.classList.add('open');
-            answer.classList.add('open');
-        }
+        if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
     }
 
     // ── Provider Search ──
     function handleSearch() {
         const date = document.getElementById('apptDate').value;
         const svc = document.getElementById('apptService').value;
-        if (!date || !svc) {
-            alert('Please select a date and service to check availability.');
-            return;
-        }
-        window.open('https://rose-chigbo.clientsecure.me/', '_blank');
+        if (!date || !svc) { alert('Please select a date and service to check availability.'); return; }
+        openBookingModal(new Event('click'));
     }
 
     // ── Contact Form ──
@@ -942,18 +815,29 @@
         const first = document.getElementById('cfFirst').value.trim();
         const email = document.getElementById('cfEmail').value.trim();
         const msg = document.getElementById('cfMsg').value.trim();
-        if (!first || !email || !msg) {
-            alert('Please fill in your name, email, and message.');
-            return;
-        }
+        if (!first || !email || !msg) { alert('Please fill in your name, email, and message.'); return; }
         document.getElementById('contactFormEl').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
     }
 
     // ── Chat Widget ──
-    function toggleChat() {
-        document.getElementById('chatBox').classList.toggle('open');
+    function toggleChat() { document.getElementById('chatBox').classList.toggle('open'); }
+    function closeChat() { document.getElementById('chatBox').classList.remove('open'); }
+
+    // ── Booking Modal ──
+    function openBookingModal(e) {
+        if (e) e.preventDefault();
+        document.getElementById('bookingModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
+    function closeBookingModal() {
+        document.getElementById('bookingModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function handleModalClick(e) {
+        if (e.target === document.getElementById('bookingModal')) closeBookingModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBookingModal(); });
 
     // ── Animated Stats ──
     const statEls = document.querySelectorAll('.stat-num[data-target]');
